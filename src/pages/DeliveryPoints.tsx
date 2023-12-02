@@ -1,0 +1,5 @@
+export function DeliveryPoints() {
+	return (
+		<></>
+	)
+}

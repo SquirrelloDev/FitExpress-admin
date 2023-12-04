@@ -1,10 +1,10 @@
 import {Outlet} from "react-router-dom";
-
+import classes from "../sass/layouts/unauth.module.scss";
 export function UnauthorizedLayout() {
 	return (
-		<div>
+		<main className={classes.main}>
 			<Outlet />
-		</div>
+		</main>
 	)
 }
 export default UnauthorizedLayout

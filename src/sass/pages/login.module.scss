@@ -1,0 +1,16 @@
+@use '../utils' as *;
+.header{
+  &__heading{
+    font-size: calc($normal + 5rem);
+    margin-bottom: 1em;
+  }
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__submit{
+    margin-top: 1.5em;
+  }
+}

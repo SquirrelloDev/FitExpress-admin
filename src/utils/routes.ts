@@ -12,6 +12,6 @@ export const appRoutes = {
     promocodes: 'promocodes',
     reports: 'reports',
     tags: 'tags',
-    login: 'login',
+    login: '/login',
     notAuthorized: '/forbidden'
 }

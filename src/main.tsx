@@ -21,11 +21,12 @@ import {Reports} from "./pages/Reports";
 import {Tags} from "./pages/Tags";
 import {Users} from "./pages/Users";
 import {DeliveryPoints} from "./pages/DeliveryPoints";
+import {UserRole} from "./utils/userRoles";
 
 const router = createBrowserRouter([
     {
         path: appRoutes.home,
-        element: <MainLayout/>,
+        element: <MainLayout minPermLevel={UserRole.dietetician}/>,
         children: [
             {element: <Home/>, index: true},
             {path: appRoutes.addresses, element: <Addresses/>},
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
     },
     {
         path: appRoutes.delivery,
-        element: <MainLayout />,
+        element: <MainLayout minPermLevel={UserRole.dietetician} />,
         children: [
             {element: <DeliveryPoints/>, index: true}
         ]
@@ -53,8 +54,8 @@ const router = createBrowserRouter([
         element: <UnauthorizedLayout/>,
         errorElement: <NotFound/>,
         children: [
-            {path: 'login', element: <Login/>},
-            {path: '/forbidden', element: <Unauthorized/>},
+            {path: appRoutes.login, element: <Login/>},
+            {path: appRoutes.notAuthorized, element: <Unauthorized/>},
             {path: "*", element: <NotFound/>}
         ]
     }

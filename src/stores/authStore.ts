@@ -26,7 +26,7 @@ const useAuthStore = create(
                     userData:{
                         id: userData.id,
                         name: userData.name,
-                        role: UserRole[userData.role],
+                        role: userData.role,
                         token: userData.token
                     }
                 })

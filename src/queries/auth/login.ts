@@ -30,7 +30,7 @@ const loginUser: MutationFunction<LoginResponse, LoginFormDataSchema> = async ({
         {email, password}
     )
 
-    return {data: data.data}
+    return {data: data}
 }
 
 function useLoginMutation(

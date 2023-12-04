@@ -1,10 +1,10 @@
 import {Diet} from "./Diet";
-import {UserData} from "./UserData";
+import {UserFullData} from "./UserData";
 
 export type Order = {
     _id: string,
     dietId: Diet,
-    userId: UserData,
+    userId: UserFullData,
     price: number,
     subDate: {
         from: Date,

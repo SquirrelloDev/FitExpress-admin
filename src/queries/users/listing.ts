@@ -1,6 +1,7 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import {UserFullData} from "../../types/UserData";
 import axios from "axios";
+import {apiRoutes} from "../../utils/api";
 
 interface paginationInfo {
     totalItems: number,
@@ -24,7 +25,7 @@ interface UserResponse {
 
 const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<UserResponse>('http://localhost:3001/users', {
+    const res = await axios.get<UserResponse>(apiRoutes.GET_USERS, {
         signal,
         headers: {
             'Content-Type': 'application/json',

@@ -1,4 +1,4 @@
-import {UserData} from "./UserData";
+import {UserFullData, UserFullData} from "./UserData";
 
 export type Address = {
     _id: string,
@@ -10,5 +10,5 @@ export type Address = {
     voivodeship: 'Zachodniopomorskie' | 'Pomorskie' | 'Warmińsko-Mazurskie' | 'Kujawsko-Pomorskie' | 'Podlaskie' | 'Lubuskie' | 'Wielkopolskie' | 'Łódzkie' | 'Mazowieckie' | 'Świętokrzyskie' | 'Lubelskie' | 'Dolnośląskie' | 'Opolskie' | 'Śląskie' | 'Małopolskie' | 'Podkarpackie',
     isWeekend: boolean,
     isDefault: boolean,
-    userId: UserData
+    userId: UserFullData
 }

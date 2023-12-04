@@ -1,8 +1,8 @@
-import {UserData} from "./UserData";
+import {UserFullData} from "./UserData";
 
 export type ProgressEntry = {
     _id: string,
-    userId: UserData,
+    userId: UserFullData,
     weightProgress: {
         date: Date,
         weight: number

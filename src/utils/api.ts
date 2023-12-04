@@ -9,5 +9,6 @@ export const queryClient = new QueryClient({
     },
 })
 export const apiRoutes = {
-
+    GET_USERS: 'http://localhost:3001/users',
+    LOGIN: 'http://localhost:3001/users/login/'
 }

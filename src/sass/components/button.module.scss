@@ -1,0 +1,15 @@
+@use '../utils' as *;
+.btn{
+  padding: .75em 1.5em;
+  background-color: $cta;
+  border-radius: 8px;
+  font-family: $family;
+  font-size: calc($normal + .4rem);
+  color: $text-color-primary;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .3s;
+  &:hover{
+    background-color: rgb(80,215,116);
+  }
+}

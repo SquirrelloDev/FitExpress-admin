@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+import './sass/main.scss'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import UnauthorizedLayout from "./layouts/UnauthorizedLayout";
 import {NotFound} from "./pages/NotFound";

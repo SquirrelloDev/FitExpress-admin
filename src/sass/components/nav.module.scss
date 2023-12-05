@@ -13,6 +13,10 @@
     font-family: $family;
     font-size: 2.6rem;
     font-weight: $bold;
+    transition: color .2s ease-out;
+    &:hover{
+      color: $cta
+    }
   }
   &__container{
     display: flex;
@@ -64,7 +68,7 @@
       margin-right: 1em;
     }
     &:hover{
-      background-color: $desaturated-cta;
+      background-color: $desaturated-cta-red;
     }
   }
 }

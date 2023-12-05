@@ -4,6 +4,7 @@ import {UserRole} from "../utils/userRoles";
 import {useEffect} from "react";
 import useUserRole from "../hooks/useUserRole";
 import {appRoutes} from "../utils/routes";
+import classes from "../sass/layouts/main.module.scss";
 interface MainLayoutProps {
 	minPermLevel: UserRole
 }
@@ -19,7 +20,7 @@ export function MainLayout({minPermLevel}: MainLayoutProps) {
 		}
 	}, [isAuthorized, isLoggedIn, navigate]);
 	return (
-		<div>
+		<div className={classes.main}>
 			<Nav />
 			<Outlet />
 		</div>

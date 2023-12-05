@@ -10,12 +10,13 @@ interface NavItemProps {
     Icon?: (props: TablerIconsProps) => JSX.Element,
     children?: NavButton[]
 }
+const activeLink = `${classes.nav__container__item} ${classes['nav__container__item--active']}`;
 
 export function NavItem({label, Icon, url, children}: NavItemProps) {
     const [expanded, setExpanded] = useState<boolean>(false);
     if (url) {
         return (
-            <NavLink to={url} className={classes.nav__container__item}>
+            <NavLink to={url} className={({isActive}) => isActive ? activeLink : classes.nav__container__item}>
                 {Icon && <Icon className={classes.nav__container__item__icon}/>}
                 <p className={!Icon && classes.nav__container__item__text}>{label}</p>
             </NavLink>

@@ -20,7 +20,7 @@ export type NavButton = {
     icon?: (props: TablerIconsProps) => JSX.Element
     children?: NavButton[]
 }
-export const NavButtons: NavButton[] = [
+export const NavButtons = [
     {label: 'Użytkownicy', icon: IconUsers, allowed: [UserRole.dietetician, UserRole.admin], path: appRoutes.users},
     {label: 'Posiłki', icon: IconSalad, allowed: [UserRole.dietetician, UserRole.admin], path: appRoutes.meals},
     {label: 'Tagi posiłków', icon: IconTag, allowed: [UserRole.dietetician, UserRole.admin], path: appRoutes.tags},

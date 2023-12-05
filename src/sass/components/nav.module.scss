@@ -1,0 +1,74 @@
+@use "../utils" as *;
+.nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  min-height: 100vh;
+  background-color: $dark;
+  &__logo{
+    text-decoration: none;
+    color: $text-color-primary;
+    font-family: $family;
+    font-size: 2.6rem;
+    font-weight: $bold;
+    transition: color .2s ease-out;
+    &:hover{
+      color: $cta
+    }
+  }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    height: 577px;
+    overflow-y: auto;
+    &__item{
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $text-color-primary;
+      background: none;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color .2s;
+      &:hover, &--active{
+        background-color: $desaturated-cta;
+      }
+      &__icon{
+        margin-right: 1em;
+      }
+      &__text{
+        margin-left: 1.5em;
+      }
+    }
+    &__btn{
+      display: flex;
+      justify-content: space-between;
+      font-family: $family;
+      font-size: $normal;
+    }
+  }
+  &__logout{
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    color: $text-color-primary;
+    font-family: $family;
+    font-size: $normal;
+    transition: background-color .2s;
+    &__icon{
+      margin-right: 1em;
+    }
+    &:hover{
+      background-color: $desaturated-cta-red;
+    }
+  }
+}

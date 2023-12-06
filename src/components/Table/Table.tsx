@@ -1,57 +1,40 @@
-import {createColumnHelper, flexRender, getCoreRowModel, useReactTable} from "@tanstack/react-table";
-import {UserFullData} from "../../types/UserData";
+import {createColumnHelper, flexRender, getCoreRowModel, HeaderGroup, Row, useReactTable} from "@tanstack/react-table";
+import {UserFullData} from "../../types/dbtypes/UserData";
 import { UserRole } from "../../utils/userRoles";
-interface TableProps{
-    data?: UserFullData[]
+import RowActions from "./RowActions";
+import {TableListingType} from "../../types/table/tableListing";
+interface TableProps<T>{
+    headerGroups: HeaderGroup<T>[],
+    rows: Row<T>[]
+    isLoading: boolean,
 }
-
-const columnHelper = createColumnHelper<UserFullData>();
-const columns = [
-    columnHelper.accessor('name', {
-        header: 'Nazwa użytkownika',
-        cell: ({getValue}) => <p>{getValue()}</p>
-    }),
-    columnHelper.accessor('role', {
-        header: 'Rola',
-        cell: ({getValue}) => {
-            const enumVal = getValue()
-            return <p>{UserRole[enumVal]}</p>
-        }
-    }),
-    columnHelper.accessor('birth_date', {
-        header: 'Data ur.',
-        cell: ({getValue}) => {
-            const date = getValue()
-            return <p>{date.toLocaleString()}</p>
-        }
-    }),
-]
-
-export function Table({data}: TableProps) {
-    const table = useReactTable({
-        data,
-        columns,
-        getCoreRowModel: getCoreRowModel()
-    });
+export function Table({headerGroups, rows, isLoading}: TableProps<T>) {
     return (
         <div>
             <table border={1}>
-                {table.getHeaderGroups().map(headerGroup => <tr key={headerGroup.id}>
-                    {headerGroup.headers.map(header => <th key={header.id}>
-                        <p>{header.column.columnDef.header}</p>
-                    </th>)}
+                <thead>
+                {headerGroups.map(headerGroup => <tr key={headerGroup.id}>
+                    {headerGroup.headers.map(header =>{
+                        const headerName = header.column.columnDef.header as string;
+                        return (
+                            <th key={header.id}>{headerName}</th>
+                        )
+                    })}
                 </tr>)}
+                </thead>
+                <tbody>
                 {
-                    table.getRowModel().rows.map(row => <tr key={row.id}>
+                    rows.map(row => <tr key={row.id}>
                         {row.getVisibleCells().map(cell => <td key={cell.id}>
                             {flexRender(
                                 cell.column.columnDef.cell,
                                 cell.getContext()
                             )}
                         </td>)}
-
                     </tr>)
                 }
+                </tbody>
+
             </table>
         </div>
     )

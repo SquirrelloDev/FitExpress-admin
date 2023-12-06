@@ -1,5 +1,5 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
-import {UserFullData} from "../../types/UserData";
+import {UserFullData} from "../../types/dbtypes/UserData";
 import axios from "axios";
 import {apiRoutes} from "../../utils/api";
 

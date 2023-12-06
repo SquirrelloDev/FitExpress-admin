@@ -1,4 +1,4 @@
-import {UserRole} from "../utils/userRoles";
+import {UserRole} from "../../utils/userRoles";
 import {Address} from "./Address";
 import {Promocode} from "./Promocode";
 import {HealthData} from "./HealthData";

@@ -1,5 +1,5 @@
 import {MutationFunction, MutationKey, useMutation} from "@tanstack/react-query";
-import {UserData} from "../../types/UserData";
+import {UserData} from "../../types/dbtypes/UserData";
 import axios, {AxiosError} from "axios";
 import {apiRoutes} from "../../utils/api";
 import {z} from "zod";

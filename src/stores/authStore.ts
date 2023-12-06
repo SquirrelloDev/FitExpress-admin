@@ -1,4 +1,4 @@
-import {UserData} from "../types/UserData";
+import {UserData} from "../types/dbtypes/UserData";
 import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import {UserRole} from "../utils/userRoles";

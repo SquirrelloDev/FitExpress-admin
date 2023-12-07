@@ -20,9 +20,11 @@ export function MainLayout({minPermLevel}: MainLayoutProps) {
 		}
 	}, [isAuthorized, isLoggedIn, navigate]);
 	return (
-		<div className={classes.main}>
+		<div className={classes.app}>
 			<Nav />
+			<main className={classes.app__main}>
 			<Outlet />
+			</main>
 		</div>
 	)
 }

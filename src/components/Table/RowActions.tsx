@@ -1,11 +1,17 @@
 import {IconEdit, IconEye, IconTrashX} from "@tabler/icons-react";
-
-export function RowActions() {
+import classes from "../../sass/components/table.module.scss";
+interface RowActionsProps{
+	id?: string
+}
+export function RowActions({id}:RowActionsProps) {
+	const logId = () => {
+		console.log(id)
+	}
 	return (
-		<div>
-			<button><IconEye/></button>
-			<button><IconEdit /></button>
-			<button><IconTrashX /></button>
+		<div className={classes.actions}>
+			<button className={classes.actions__button} id='details' onClick={logId}><IconEye/></button>
+			<button className={classes.actions__button} id='edit'><IconEdit /></button>
+			<button className={classes.actions__button} id='delete'><IconTrashX /></button>
 		</div>
 	)
 }

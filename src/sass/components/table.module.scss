@@ -1,0 +1,97 @@
+@use "../utils" as *;
+
+.table {
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em;
+    margin-bottom: 1em;
+
+    &__button-new {
+      padding: 0.5em 2em;
+      width: 16%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $text-color-primary;
+      background-color: $desaturated-cta;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: $bold;
+      cursor: pointer;
+      transition: background-color .2s;
+
+      &:hover {
+        background-color: $cta;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    background-color: $dark;
+    border-radius: 8px;
+    height: 640px;
+    overflow-y: auto;
+  }
+
+  &__table {
+    border-collapse: collapse;
+
+    thead th {
+      position: sticky;
+      top: -17px;
+      z-index: 1;
+      background-color: $dark;
+    }
+
+    tbody {
+      position: relative;
+    }
+
+    &__row {
+      border-bottom: 1px solid $border;
+
+      &:last-child {
+        border: 1px solid transparent;
+      }
+
+      &__header {
+        border-bottom: 1px solid $border;
+      }
+
+      &__cell {
+        padding: 1em;
+      }
+    }
+
+  }
+}
+
+.actions {
+  &__button {
+    padding: .5em;
+    margin: 0 .5em;
+    background: none;
+    color: $text-color-primary;
+    cursor: pointer;
+    border: 1px solid $border;
+    border-radius: 8px;
+    transition: background-color .2s;
+
+    &:hover {
+      background-color: $desaturated-cta;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:last-child:hover {
+      background-color: $desaturated-cta-red;
+    }
+  }
+}

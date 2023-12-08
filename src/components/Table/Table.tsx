@@ -44,7 +44,7 @@ export function Table<T>({headerGroups, rows, isLoading, tableName}: TableProps<
                 </div>
             )}
             {!isLoading && rows.length < 1 && (
-                <div>
+                <div className={classes['table__not-found']}>
                     <p>No result found</p>
                 </div>
             )}

@@ -36,8 +36,10 @@ const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, quer
 }
 function useUserListQuery(params: AuthParams) {
     const queryKey = ['UsersList', params] as UserListKey
-    const {data, error, isLoading, isSuccess, isError} = useQuery(
-        queryKey, listUsers
+    const {data, error, isLoading, isSuccess, isError} = useQuery({
+            queryKey, queryFn: listUsers, keepPreviousData: true
+    }
+
     )
     return { data, error, isError, isSuccess, isLoading}
 }

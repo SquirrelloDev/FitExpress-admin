@@ -34,8 +34,15 @@
     padding: 1em;
     background-color: $dark;
     border-radius: 8px;
-    height: 640px;
+    max-height: 90vh;
     overflow-y: auto;
+  }
+  &__not-found{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-weight: $bold;
   }
 
   &__table {

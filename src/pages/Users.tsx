@@ -13,6 +13,10 @@ import Modal from "../components/Modal/Modal";
 export function Users() {
     const columnHelper = createColumnHelper<UserFullData>()
     const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const userData = useAuthStore((state) => state.userData);
+    const {isLoading, data, isSuccess} = useUserListQuery({
+        token: userData.token
+    })
     const columns = [
         columnHelper.accessor('name', {
             header: 'Nazwa użytkownika',
@@ -44,10 +48,7 @@ export function Users() {
             }
         })
     ]
-    const userData = useAuthStore((state) => state.userData);
-    const {isLoading, data, isSuccess} = useUserListQuery({
-        token: userData.token
-    })
+
     const {users} = useMemo(() => ({
         users: isSuccess ? data!.users : []
     }), [data, isSuccess])

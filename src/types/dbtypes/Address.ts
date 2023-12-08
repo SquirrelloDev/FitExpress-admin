@@ -1,4 +1,4 @@
-import {UserFullData, UserFullData} from "./UserData";
+import {UserFullData} from "./UserData";
 
 export type Address = {
     _id: string,

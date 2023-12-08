@@ -1,4 +1,4 @@
-import {UserRole} from "../utils/userRoles";
+import {UserRole} from "../../utils/userRoles";
 import {Address} from "./Address";
 import {Promocode} from "./Promocode";
 import {HealthData} from "./HealthData";
@@ -12,9 +12,11 @@ export type UserData = {
 export type UserFullData = {
     _id: string,
     name: string,
+
+    email: string,
     role: UserRole,
     resetToken: string,
-    birthDate: Date,
+    birth_date: Date,
     addresses: Address[],
     redeemedCodes: Promocode[],
     healthData: HealthData

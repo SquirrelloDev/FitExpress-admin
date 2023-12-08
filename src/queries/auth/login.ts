@@ -1,5 +1,5 @@
 import {MutationFunction, MutationKey, useMutation} from "@tanstack/react-query";
-import {UserData} from "../../types/UserData";
+import {UserData} from "../../types/dbtypes/UserData";
 import axios, {AxiosError} from "axios";
 import {apiRoutes} from "../../utils/api";
 import {z} from "zod";
@@ -15,6 +15,14 @@ type LoginResponse = {
 export type LoginErrorType = AxiosError<{
     errors: { general: string }
 }>
+const loginUser: MutationFunction<LoginResponse, LoginFormDataSchema> = async ({email, password}) => {
+    const {data} = await axios.post<LoginResponse>(
+        apiRoutes.LOGIN,
+        {email, password}
+    )
+
+    return {data: data as never}
+}
 export const mutationKey: MutationKey = ['loginUser']
 export type SuccessFunctionMutation<T> = (
     data: LoginResponse,
@@ -24,14 +32,7 @@ export type ErrorFunctionMutation = (
     err: LoginErrorType,
     variables: LoginFormDataSchema
 ) => unknown
-const loginUser: MutationFunction<LoginResponse, LoginFormDataSchema> = async ({email, password}) => {
-    const {data} = await axios.post<LoginResponse>(
-        apiRoutes.LOGIN,
-        {email, password}
-    )
 
-    return {data: data}
-}
 
 function useLoginMutation(
     onSuccess?: SuccessFunctionMutation<LoginFormDataSchema>,

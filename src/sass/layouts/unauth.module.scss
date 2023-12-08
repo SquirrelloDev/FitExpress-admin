@@ -1,7 +1,30 @@
+@use "../utils" as *;
 .main{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  h1{
+    margin: .5em 0;
+    font-size: 6rem;
+  }
+  p{
+    margin: 1em 0;
+    font-size: 2rem;
+  }
+  button{
+    padding: 1em 2em;
+    border: 1px solid transparent;
+    background-color: $cta;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: transform .3s;
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
 }

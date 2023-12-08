@@ -1,5 +1,5 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
-import {UserFullData} from "../../types/UserData";
+import {UserFullData} from "../../types/dbtypes/UserData";
 import axios from "axios";
 import {apiRoutes} from "../../utils/api";
 
@@ -35,11 +35,12 @@ const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, quer
     return res.data
 }
 function useUserListQuery(params: AuthParams) {
-    const queryKey = ['UsersList', params]
+    const queryKey = ['UsersList', params] as UserListKey
     const {data, error, isLoading, isSuccess, isError} = useQuery({
-        queryKey,
-        queryFn: listUsers
-    })
+            queryKey, queryFn: listUsers, keepPreviousData: true
+    }
+
+    )
     return { data, error, isError, isSuccess, isLoading}
 }
 export default useUserListQuery

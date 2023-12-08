@@ -18,7 +18,7 @@ export function NavItem({label, Icon, url, children}: NavItemProps) {
         return (
             <NavLink to={url} className={({isActive}) => isActive ? activeLink : classes.nav__container__item}>
                 {Icon && <Icon className={classes.nav__container__item__icon}/>}
-                <p className={!Icon && classes.nav__container__item__text}>{label}</p>
+                <p className={!Icon ? classes.nav__container__item__text : undefined}>{label}</p>
             </NavLink>
         )
     }
@@ -27,6 +27,8 @@ export function NavItem({label, Icon, url, children}: NavItemProps) {
             <button className={`${classes.nav__container__item} ${classes.nav__container__btn}`} type='button' onClick={() =>{
                 setExpanded(prevState => !prevState)}
             }>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/*@ts-expect-error*/}
                 <Icon />
                 {label}
                 {expanded ? <IconChevronUp/> : <IconChevronDown/>}

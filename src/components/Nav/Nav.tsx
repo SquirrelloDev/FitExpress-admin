@@ -13,7 +13,7 @@ export function Nav() {
                 <Link to={appRoutes.home} className={classes.nav__logo}>FitExpress</Link>
             </div>
             <NavContainer/>
-            <div style={{width: "100%", display: "flex", "justify-content": "center"}}>
+            <div style={{width: "100%", display: "flex", justifyContent: "center"}}>
             <button className={classes.nav__logout} onClick={() => {
                 logout();
                 navigate(appRoutes.login)

@@ -9,14 +9,17 @@ import RowActions from "../components/Table/RowActions";
 import useTableListing from "../hooks/useTableListing";
 import {TableListingType} from "../types/table/tableListing";
 import Modal from "../components/Modal/Modal";
+import UserDelete from "../components/Modal/Views/UserDelete";
+import useUserDelete from "../queries/users/delete";
 
 export function Users() {
     const columnHelper = createColumnHelper<UserFullData>()
-    const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const [modalOpen, setModalOpen] = useState<{isOpen: boolean, deleteId: string}>({isOpen: false, deleteId:""});
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data, isSuccess} = useUserListQuery({
         token: userData.token
     })
+
     const columns = [
         columnHelper.accessor('name', {
             header: 'Nazwa użytkownika',
@@ -44,11 +47,14 @@ export function Users() {
             id: 'actions', header: 'Akcje', cell: ({getValue}) => {
 
                 const id = getValue();
-                return <RowActions id={id} modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+                return <RowActions id={id} setModalOpen={setModalOpen}/>
             }
         })
     ]
-
+    const {mutate} = useUserDelete()
+    const deleteUser = () =>{
+        mutate({id: modalOpen.deleteId, token: userData.token}, {onSuccess: () => setModalOpen({isOpen: false, deleteId: ""})})
+    }
     const {users} = useMemo(() => ({
         users: isSuccess ? data!.users : []
     }), [data, isSuccess])
@@ -66,7 +72,7 @@ export function Users() {
                    rows={table.getRowModel().rows}
                    isLoading={isLoading}
                    tableName={polishTableName}/>
-            {modalOpen && <Modal>test</Modal>}
+            {modalOpen.isOpen && <Modal><UserDelete id={modalOpen.deleteId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
         </>
     )
 }

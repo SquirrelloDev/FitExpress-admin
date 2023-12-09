@@ -32,7 +32,7 @@ const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, quer
             Authorization: `Bearer ${token}`
         }
     })
-    return res.data
+    return res.data as UserResponse
 }
 function useUserListQuery(params: AuthParams) {
     const queryKey = ['UsersList', params] as UserListKey

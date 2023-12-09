@@ -1,9 +1,10 @@
 import {IconX} from "@tabler/icons-react";
 import classes from "../../../sass/components/deleteModalView.module.scss";
+import {Dispatch, SetStateAction} from "react";
 
 interface ViewDeleteProps {
 	id: string
-	closeModal: (data: {isOpen: boolean, deleteId: string}) => void
+	closeModal: Dispatch<SetStateAction<{ isOpen: boolean; deleteId: string; }>>
 	deleteMutation: () => void
 }
 function UserDelete({id, closeModal, deleteMutation}:ViewDeleteProps) {

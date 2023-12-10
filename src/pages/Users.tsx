@@ -11,10 +11,13 @@ import {TableListingType} from "../types/table/tableListing";
 import Modal from "../components/Modal/Modal";
 import UserDelete from "../components/Modal/Views/UserDelete";
 import useUserDelete from "../queries/users/delete";
+import {ModalType} from "../types/table/modalType";
+import UserDetails from "../components/Modal/Views/UserDetails";
 
 export function Users() {
     const columnHelper = createColumnHelper<UserFullData>()
-    const [modalOpen, setModalOpen] = useState<{isOpen: boolean, deleteId: string}>({isOpen: false, deleteId:""});
+    const [modalOpen, setModalOpen] = useState<{isOpen: boolean, modalType: ModalType}>({isOpen: false, modalType: ModalType.none});
+    const [itemId, setItemId] = useState<string>("");
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data, isSuccess} = useUserListQuery({
         token: userData.token
@@ -47,14 +50,19 @@ export function Users() {
             id: 'actions', header: 'Akcje', cell: ({getValue}) => {
 
                 const id = getValue();
-                return <RowActions id={id} setModalOpen={setModalOpen}/>
+                return <RowActions id={id} setItemId={setItemId} setModalOpen={setModalOpen}/>
             }
         })
     ]
     const {mutate} = useUserDelete()
     const deleteUser = () =>{
-        mutate({id: modalOpen.deleteId, token: userData.token}, {onSuccess: () => setModalOpen({isOpen: false, deleteId: ""})})
+        mutate({id: itemId, token: userData.token}, {onSuccess: () => {
+                setItemId("")
+                setModalOpen({isOpen: false, modalType: ModalType.none})
+            }})
     }
+
+
     const {users} = useMemo(() => ({
         users: isSuccess ? data!.users : []
     }), [data, isSuccess])
@@ -72,7 +80,8 @@ export function Users() {
                    rows={table.getRowModel().rows}
                    isLoading={isLoading}
                    tableName={polishTableName}/>
-            {modalOpen.isOpen && <Modal><UserDelete id={modalOpen.deleteId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
+            {modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><UserDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
+            {modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><UserDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
         </>
     )
 }

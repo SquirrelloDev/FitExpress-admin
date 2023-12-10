@@ -1,19 +1,24 @@
-import {IconEdit, IconEye, IconTrashX} from "@tabler/icons-react";
 import classes from "../../sass/components/table.module.scss";
 import {Dispatch, SetStateAction} from "react";
+import {ModalType} from "../../types/table/modalType";
+import {IconEdit, IconEye, IconTrashX} from "@tabler/icons-react";
+
 interface RowActionsProps{
 	id?: string
-	setModalOpen: Dispatch<SetStateAction<{ isOpen: boolean; deleteId: string; }>>
+	setModalOpen: Dispatch<SetStateAction<{ isOpen: boolean; modalType: ModalType; }>>
+	setItemId: Dispatch<SetStateAction<string>>
 }
-export function RowActions({id, setModalOpen}:RowActionsProps) {
-	const logId = () => {
-		console.log(id)
+export function RowActions({id, setModalOpen, setItemId}:RowActionsProps) {
+	const setIdAndOpenModal = (modalType: ModalType) => {
+		setItemId(id!)
+		setModalOpen({isOpen: true, modalType})
 	}
 	return (
 		<div className={classes.actions}>
-			<button className={classes.actions__button} id='details' onClick={logId}><IconEye/></button>
+			<button className={classes.actions__button} id='details' onClick={() => {setIdAndOpenModal(ModalType.details)}}><IconEye/></button>
 			<button className={classes.actions__button} id='edit'><IconEdit /></button>
-			<button className={classes.actions__button} id='delete' onClick={() => setModalOpen({isOpen: true, deleteId: id!})}><IconTrashX /></button>
+			<button className={classes.actions__button} id='delete' onClick={() => {setIdAndOpenModal(ModalType.delete)}
+			}><IconTrashX /></button>
 		</div>
 	)
 }

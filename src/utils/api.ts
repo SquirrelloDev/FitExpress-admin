@@ -10,6 +10,7 @@ export const queryClient = new QueryClient({
 })
 export const apiRoutes = {
     GET_USERS: 'http://localhost:3001/users',
+    GET_USER: (id: string) => `http://localhost:3001/users/${id}`,
     LOGIN: 'http://localhost:3001/users/login/',
     DELETE_USER: (id: string) => `http://localhost:3001/users/${id}`
 }

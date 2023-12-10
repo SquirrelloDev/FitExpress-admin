@@ -9,6 +9,7 @@ type polishNamesType = {
     orders: 'Zamówienia',
     addresses: 'Adresy',
     reports: 'Zgłoszenia',
+    tags: 'Tagi'
     promocodes: 'Vouchery',
     deliveryPoints: 'Punkty dostaw'
 }
@@ -23,6 +24,7 @@ function useTableListing(tableListing: TableListingType):string {
         orders: 'Zamówienia',
         addresses: 'Adresy',
         reports: 'Zgłoszenia',
+        tags: 'Tagi',
         promocodes: 'Vouchery',
         deliveryPoints: 'Punkty dostaw'
 

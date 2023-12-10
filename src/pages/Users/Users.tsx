@@ -50,7 +50,7 @@ function Users() {
             id: 'actions', header: 'Akcje', cell: ({getValue}) => {
 
                 const id = getValue();
-                return <RowActions id={id} setItemId={setItemId} setModalOpen={setModalOpen}/>
+                return <RowActions id={id} setItemId={setItemId} listingRoute={TableListingType.users} setModalOpen={setModalOpen}/>
             }
         })
     ]
@@ -79,7 +79,8 @@ function Users() {
             <Table headerGroups={table.getHeaderGroups()}
                    rows={table.getRowModel().rows}
                    isLoading={isLoading}
-                   tableName={polishTableName}/>
+                   tableName={polishTableName}
+             tableListing={TableListingType.users}/>
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><UserDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><UserDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
         </>

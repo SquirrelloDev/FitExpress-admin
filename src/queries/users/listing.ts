@@ -54,7 +54,7 @@ const listOneUser: QueryFunction<OneUserResponse, OneUserListKey> = async ({sign
             Authorization: `Bearer ${token}`
         }
     })
-    return {user: res.data} as OneUserResponse
+    return {user: res.data as unknown} as OneUserResponse
 }
 
 function useUserListQuery(params: AuthParams) {

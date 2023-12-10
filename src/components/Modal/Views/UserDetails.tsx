@@ -10,6 +10,8 @@ interface ViewDetailsProps {
 }
 function UserDetails({id, token, closeModal}:ViewDetailsProps) {
 	const {data: singleUserData, isLoading} = useOneUserListQuery({token, id})
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-expect-error
 	const birthDate = new Date(singleUserData?.user.birth_date)
 	if(isLoading) return (
 		<div>

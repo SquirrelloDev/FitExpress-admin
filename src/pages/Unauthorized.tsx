@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../utils/routes";
 
-export function Unauthorized() {
+function Unauthorized() {
 	const navigate = useNavigate()
 	const returnToSafe = () => {
 	  navigate(appRoutes.login)
@@ -15,3 +15,4 @@ export function Unauthorized() {
 		</main>
 	)
 }
+export default Unauthorized

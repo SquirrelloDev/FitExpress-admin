@@ -8,7 +8,7 @@ interface RowActionsProps{
 	setModalOpen: Dispatch<SetStateAction<{ isOpen: boolean; modalType: ModalType; }>>
 	setItemId: Dispatch<SetStateAction<string>>
 }
-export function RowActions({id, setModalOpen, setItemId}:RowActionsProps) {
+function RowActions({id, setModalOpen, setItemId}:RowActionsProps) {
 	const setIdAndOpenModal = (modalType: ModalType) => {
 		setItemId(id!)
 		setModalOpen({isOpen: true, modalType})

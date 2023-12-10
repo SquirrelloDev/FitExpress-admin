@@ -7,7 +7,7 @@ interface TableProps<T>{
     isLoading: boolean,
     tableName: string
 }
-export function Table<T>({headerGroups, rows, isLoading, tableName}: TableProps<T>) {
+function Table<T>({headerGroups, rows, isLoading, tableName}: TableProps<T>) {
     return (
         <div className={classes.table__container}>
             <div className={classes.table__title}>

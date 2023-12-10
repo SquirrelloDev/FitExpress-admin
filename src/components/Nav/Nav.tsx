@@ -4,7 +4,7 @@ import {appRoutes} from "../../utils/routes";
 import classes from "../../sass/components/nav.module.scss";
 import NavContainer from "./NavContainer";
 import {IconLogout} from "@tabler/icons-react";
-export function Nav() {
+function Nav() {
     const {logout} = useAuthStore();
     const navigate = useNavigate();
     return (
@@ -26,3 +26,4 @@ export function Nav() {
         </nav>
     )
 }
+export default Nav

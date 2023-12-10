@@ -1,5 +1,5 @@
 import {Outlet, useNavigate} from "react-router-dom";
-import {Nav} from "../components/Nav/Nav";
+import Nav from "../components/Nav/Nav";
 import {UserRole} from "../utils/userRoles";
 import {useEffect} from "react";
 import useUserRole from "../hooks/useUserRole";
@@ -8,7 +8,7 @@ import classes from "../sass/layouts/main.module.scss";
 interface MainLayoutProps {
 	minPermLevel: UserRole
 }
-export function MainLayout({minPermLevel}: MainLayoutProps) {
+function MainLayout({minPermLevel}: MainLayoutProps) {
 	const navigate = useNavigate()
 	const {isAuthorized, isLoggedIn} = useUserRole(minPermLevel)
 	useEffect(() => {

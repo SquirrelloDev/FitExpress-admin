@@ -1,20 +1,20 @@
-import useUserListQuery from "../queries/users/listing";
-import useAuthStore from "../stores/authStore";
-import Table from "../components/Table/Table";
+import useUserListQuery from "../../queries/users/listing";
+import useAuthStore from "../../stores/authStore";
+import Table from "../../components/Table/Table";
 import {createColumnHelper, getCoreRowModel, useReactTable} from "@tanstack/react-table";
 import {useMemo, useState} from "react";
-import {UserFullData} from "../types/dbtypes/UserData";
-import {UserRole} from "../utils/userRoles";
-import RowActions from "../components/Table/RowActions";
-import useTableListing from "../hooks/useTableListing";
-import {TableListingType} from "../types/table/tableListing";
-import Modal from "../components/Modal/Modal";
-import UserDelete from "../components/Modal/Views/UserDelete";
-import useUserDelete from "../queries/users/delete";
-import {ModalType} from "../types/table/modalType";
-import UserDetails from "../components/Modal/Views/UserDetails";
+import {UserFullData} from "../../types/dbtypes/UserData";
+import {UserRole} from "../../utils/userRoles";
+import RowActions from "../../components/Table/RowActions";
+import useTableListing from "../../hooks/useTableListing";
+import {TableListingType} from "../../types/table/tableListing";
+import Modal from "../../components/Modal/Modal";
+import UserDelete from "../../components/Modal/Views/UserDelete";
+import useUserDelete from "../../queries/users/delete";
+import {ModalType} from "../../types/table/modalType";
+import UserDetails from "../../components/Modal/Views/UserDetails";
 
-export function Users() {
+function Users() {
     const columnHelper = createColumnHelper<UserFullData>()
     const [modalOpen, setModalOpen] = useState<{isOpen: boolean, modalType: ModalType}>({isOpen: false, modalType: ModalType.none});
     const [itemId, setItemId] = useState<string>("");
@@ -85,3 +85,4 @@ export function Users() {
         </>
     )
 }
+export default Users

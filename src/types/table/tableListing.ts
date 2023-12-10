@@ -9,5 +9,6 @@ export enum TableListingType {
     addresses,
     reports,
     promocodes,
+    tags,
     deliveryPoints
 }

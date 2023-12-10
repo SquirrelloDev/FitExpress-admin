@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import useLoginMutation, {LoginFormDataSchema, LoginFormSchema} from "../queries/auth/login";
 import useSuccessfulLogin from "../hooks/useSuccessfulLogin";
 
-export function Login() {
+function Login() {
 	const handleSuccessfulLogin = useSuccessfulLogin()
 	const methods = useForm({
 		resolver: zodResolver(LoginFormSchema)
@@ -32,3 +32,4 @@ export function Login() {
 		</>
 	)
 }
+export default Login

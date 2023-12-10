@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../utils/routes";
 
-export function Unauthorized() {
+function Unauthorized() {
 	const navigate = useNavigate()
 	const returnToSafe = () => {
 	  navigate(appRoutes.login)
@@ -9,9 +9,10 @@ export function Unauthorized() {
 	return (
 		<main>
 			<h1>Zawróć!</h1>
-			<p>Zawędrowałeś tam, gdzie diabeł idzie spać</p>
-			<p>Użyj przycisku poniżej, by szybko stąd uciec!</p>
-			<button onClick={returnToSafe}>Powrót</button>
+			<p>Nie możesz wykonać tej akcji</p>
+			<p>Zaloguj się ponownie lub skontaktuj się z administratorem</p>
+			<button onClick={returnToSafe}>Powrót do logowania</button>
 		</main>
 	)
 }
+export default Unauthorized

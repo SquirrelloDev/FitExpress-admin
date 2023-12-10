@@ -12,7 +12,7 @@ interface NavItemProps {
 }
 const activeLink = `${classes.nav__container__item} ${classes['nav__container__item--active']}`;
 
-export function NavItem({label, Icon, url, children}: NavItemProps) {
+function NavItem({label, Icon, url, children}: NavItemProps) {
     const [expanded, setExpanded] = useState<boolean>(false);
     if (url) {
         return (

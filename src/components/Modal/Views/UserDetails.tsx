@@ -1,4 +1,4 @@
-import classes from "../../../sass/components/deleteModalView.module.scss";
+import classes from "../../../sass/components/detailsModalView.module.scss";
 import {ModalType} from "../../../types/table/modalType";
 import {IconX} from "@tabler/icons-react";
 import {Dispatch, SetStateAction} from "react";

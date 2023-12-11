@@ -68,6 +68,7 @@ export const apiRoutes = {
     GET_REPORTS: `http://localhost:3001/reports`,
     ADD_REPORT: `http://localhost:3001/reports`,
     GET_REPORTS_USER: (id: string) => `http://localhost:3001/reports/user?userId=${id}`,
+    GET_REPORT_ID: (id: string) => `http://localhost:3001/reports/${id}`,
     EDIT_REPORT: (id: string) => `http://localhost:3001/reports/${id}`,
     EDIT_REPORT_STATUS: (id: string, status: string) => `http://localhost:3001/reports/${id}?status=${status}`,
     DELETE_REPORT: (id: string) => `http://localhost:3001/reports/${id}`,

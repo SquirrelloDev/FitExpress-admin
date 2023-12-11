@@ -78,9 +78,9 @@ export const apiRoutes = {
     EDIT_PROMOCODE: (id: string) => `http://localhost:3001/promocode/${id}`,
     DELETE_PROMOCODE: (id: string) => `http://localhost:3001/promocode/${id}`,
 //     DELIVERY
-    GET_DELIVERY: `http://localhost:3001/promocode`,
-    ADD_DELIVERY: `http://localhost:3001/promocode/new`,
-    GET_DELIVERY_ID: (id: string) => `http://localhost:3001/promocode/${id}`,
-    EDIT_DELIVERY: (id: string) => `http://localhost:3001/promocode/${id}`,
-    DELETE_DELIVERY: (id: string) => `http://localhost:3001/promocode/${id}`,
+    GET_DELIVERY: `http://localhost:3001/delivery`,
+    ADD_DELIVERY: `http://localhost:3001/delivery`,
+    GET_DELIVERY_ID: (id: string) => `http://localhost:3001/delivery/${id}`,
+    EDIT_DELIVERY: (id: string) => `http://localhost:3001/delivery/${id}`,
+    DELETE_DELIVERY: (id: string) => `http://localhost:3001/delivery/${id}`,
 }

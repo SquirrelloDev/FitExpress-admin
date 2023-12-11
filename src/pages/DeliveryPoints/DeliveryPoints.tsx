@@ -60,7 +60,10 @@ function DeliveryPoints() {
 	const polishTableName = useTableListing(TableListingType.deliveryPoints);
 	const {mutate} = useDeliveryDelete();
 	const deleteDelivery = () => {
-		mutate({id: itemId, token:userData.token})
+		mutate({id: itemId, token:userData.token}, {onSuccess: () => {
+				setItemId("")
+				setModalOpen({isOpen: false, modalType: ModalType.none})
+			}})
 	}
 	if (isLoading) return <p>Loading meals...</p>
 	return (

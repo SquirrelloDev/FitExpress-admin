@@ -52,7 +52,10 @@ function Tags() {
 	const polishTableName = useTableListing(TableListingType.tags);
 	const {mutate} = useTagDelete();
 	const deleteMeal = () => {
-		mutate({id: itemId, token:userData.token})
+		mutate({id: itemId, token:userData.token}, {onSuccess: () => {
+				setItemId("")
+				setModalOpen({isOpen: false, modalType: ModalType.none})
+			}})
 	}
 	if (isLoading) return <p>Loading meals...</p>
 	return (

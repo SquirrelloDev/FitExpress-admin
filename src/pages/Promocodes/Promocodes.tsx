@@ -62,7 +62,10 @@ function Promocodes() {
 	const polishTableName = useTableListing(TableListingType.promocodes);
 	const {mutate} = usePromoDelete();
 	const deletePromo = () => {
-		mutate({id: itemId, token:userData.token})
+		mutate({id: itemId, token:userData.token},{onSuccess: () => {
+				setItemId("")
+				setModalOpen({isOpen: false, modalType: ModalType.none})
+			}})
 	}
 	if (isLoading) return <p>Loading meals...</p>
 	return (

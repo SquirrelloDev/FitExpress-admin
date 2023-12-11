@@ -51,15 +51,6 @@ function Orders() {
 			header: 'Kaloryczność diety',
 			cell: ({getValue}) => <p>{`${getValue()} kcal`}</p>
 		}),
-		// columnHelper.accessor('price', {
-		// 	header: 'Cena',
-		// 	cell: ({getValue}) => <p>{getValue()}</p>
-		// }),
-		// columnHelper.accessor('with_weekends', {
-		// 	header: 'Z weekendami?',
-		// 	cell: ({getValue}) => <p>{getValue() ? 'Tak' : 'Nie'}</p>
-		// }),
-
 		columnHelper.accessor('_id', {
 			id: 'actions', header: 'Akcje', cell: ({getValue}) => {
 
@@ -80,7 +71,10 @@ function Orders() {
 	const polishTableName = useTableListing(TableListingType.orders);
 	const {mutate} = useOrderDelete();
 	const deleteOrder = () => {
-		mutate({id: itemId, token:userData.token})
+		mutate({id: itemId, token:userData.token}, {onSuccess: () => {
+				setItemId("")
+				setModalOpen({isOpen: false, modalType: ModalType.none})
+			}})
 	}
 	if (isLoading) return <p>Loading meals...</p>
 	return (

@@ -5,12 +5,12 @@ import useAuthStore from "../../stores/authStore";
 import RowActions from "../../components/Table/RowActions";
 import {TableListingType} from "../../types/table/tableListing";
 import useTableListing from "../../hooks/useTableListing";
-import useTagDelete from "../../queries/tags/delete";
 import Table from "../../components/Table/Table";
 import Modal from "../../components/Modal/Modal";
 import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import {Promocode} from "../../types/dbtypes/Promocode";
 import usePromosListQuery from "../../queries/promocodes/listing";
+import usePromoDelete from "../../queries/promocodes/delete";
 
 function Promocodes() {
 	const columnHelper = createColumnHelper<Promocode>()
@@ -60,7 +60,7 @@ function Promocodes() {
 		getCoreRowModel: getCoreRowModel()
 	})
 	const polishTableName = useTableListing(TableListingType.promocodes);
-	const {mutate} = useTagDelete();
+	const {mutate} = usePromoDelete();
 	const deletePromo = () => {
 		mutate({id: itemId, token:userData.token})
 	}

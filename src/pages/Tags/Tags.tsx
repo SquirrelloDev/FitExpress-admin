@@ -28,6 +28,10 @@ function Tags() {
 			header: 'Nazwa',
 			cell: ({getValue}) => <p>{getValue()}</p>
 		}),
+		columnHelper.accessor('description', {
+			header: 'Opis',
+			cell: ({getValue}) => <p>{getValue()}</p>
+		}),
 		columnHelper.accessor('_id', {
 			id: 'actions', header: 'Akcje', cell: ({getValue}) => {
 

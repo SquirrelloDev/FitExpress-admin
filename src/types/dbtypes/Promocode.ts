@@ -1,5 +1,6 @@
 export type Promocode = {
+    _id: string
     name: string,
     discount: number,
-    expDate: Date
+    exp_date: Date
 }

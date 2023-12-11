@@ -3,12 +3,13 @@ import {UserFullData} from "./UserData";
 
 export type Order = {
     _id: string,
-    dietId: Diet,
-    userId: UserFullData,
+    diet_id: Diet,
+    user_id: UserFullData,
     price: number,
-    subDate: {
+    sub_date: {
         from: Date,
         to: Date
     },
-    withWeekends: boolean
+    calories: number,
+    with_weekends: boolean
 }

@@ -7,7 +7,7 @@ function useDeliveryDelete(
 ) {
     const{mutate, error, isLoading} = useMutation(deletionKey, async({id, token}: {id:string, token: string}) => {
 
-            await axios.delete(apiRoutes.DELETE_TAG(id), {headers: {Authorization: `Bearer ${token}`}})
+            await axios.delete(apiRoutes.DELETE_DELIVERY(id), {headers: {Authorization: `Bearer ${token}`}})
         }, {onSuccess: () => queryClient.invalidateQueries({queryKey: ['DeliveryList']}) , onError: (err: AxiosError) => console.error('Meal not deleted!', err)}
     )
     return {mutate,error,isLoading};

@@ -53,12 +53,12 @@ function MealDetails({id, token, closeModal}:ViewDetailsProps) {
 				<h3>Wykluczenia</h3>
 				<ul>
 					{singleMealData!.meal.exclusions.length < 1 && <li>Brak wykluczeń</li>}
-					{singleMealData!.meal.exclusions.length >=1 && singleMealData?.meal.exclusions.map(excl => <li>{excl.name}</li>)}
+					{singleMealData!.meal.exclusions.length >=1 && singleMealData?.meal.exclusions.map(excl => <li key={excl._id}>{excl.name}</li>)}
 				</ul>
 				<h3>Tagi</h3>
 				<ul>
 					{tags.length < 1 && <li>Brak tagów</li>}
-					{tags.length >= 1 && tags.map(tag => <li>{tag.name}</li>)}
+					{tags.length >= 1 && tags.map(tag => <li key={tag._id}>{tag.name}</li>)}
 				</ul>
 			</div>
 		</div>

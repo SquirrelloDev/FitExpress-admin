@@ -5,7 +5,7 @@ export type DayFixed = {
     _id: string,
     date: Date,
     diets: {
-        dietId: Diet,
+        diet_id: Diet,
         meals: {
             morning: Meal,
             lunch: Meal,

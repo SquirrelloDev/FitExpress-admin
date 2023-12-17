@@ -20,6 +20,8 @@
   background-color: $dark;
   border-radius: 15px;
   animation: slide-in-up .3s ease-out forwards;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 @keyframes slide-in-up {
   from{

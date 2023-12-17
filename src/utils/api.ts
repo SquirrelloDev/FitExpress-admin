@@ -43,8 +43,9 @@ export const apiRoutes = {
     GET_FLEXIS: `http://localhost:3001/days/flexi`,
     ADD_FLEXI: `http://localhost:3001/days/flexi`,
     GET_FLEXI: (date: string) => `http://localhost:3001/days/flexi/day?date=${date}`,
-    EDIT_FLEXI: (date: string) => `http://localhost:3001/days/flexi/day?date=${date}`,
-    DELETE_FLEXI: (date: string) => `http://localhost:3001/days/flexi/day?date=${date}`,
+    GET_FLEXI_ID: (id: string) => `http://localhost:3001/days/flexi/${id}`,
+    EDIT_FLEXI: (id: string) => `http://localhost:3001/days/flexi/${id}`,
+    DELETE_FLEXI: (id: string) => `http://localhost:3001/days/flexi/${id}`,
 //     EXCLUSIONS
     GET_EXCLUSIONS: `http://localhost:3001/exclusions`,
     ADD_EXCLUSION: `http://localhost:3001/exclusions`,

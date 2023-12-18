@@ -10,15 +10,16 @@ interface TableProps<T>{
     isLoading: boolean,
     tableName: string,
     tableListing: TableListingType
+    hideAdding?: boolean
 }
-function Table<T>({headerGroups, rows, isLoading, tableName, tableListing}: TableProps<T>) {
+function Table<T>({headerGroups, rows, isLoading, tableName, tableListing, hideAdding = false}: TableProps<T>) {
     const navigate = useNavigate()
     const linkRoute = useListingRoute(tableListing);
     return (
         <div className={classes.table__container}>
             <div className={classes.table__title}>
                 <h2>{tableName}</h2>
-                <button className={classes['table__title__button-new']} onClick={() => navigate(`${linkRoute}/create`)}><IconPlus stroke={2}/> Dodaj</button>
+                {!hideAdding && <button className={classes['table__title__button-new']} onClick={() => navigate(`${linkRoute}/create`)}><IconPlus stroke={2}/> Dodaj</button>}
             </div>
             <table className={classes.table__table}>
                 <thead>

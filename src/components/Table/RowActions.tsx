@@ -12,8 +12,10 @@ interface RowActionsProps{
 	setItemId: Dispatch<SetStateAction<string>>
 	listingRoute: TableListingType
 	hideDetails?: boolean
+	hideEdit?: boolean
+	hideDelete?: boolean
 }
-function RowActions({id, setModalOpen, setItemId, listingRoute, hideDetails = false}:RowActionsProps) {
+function RowActions({id, setModalOpen, setItemId, listingRoute, hideDetails = false, hideEdit = false, hideDelete = false}:RowActionsProps) {
 	const routeLink = useListingRoute(listingRoute)
 	const navigate = useNavigate()
 	const setIdAndOpenModal = (modalType: ModalType) => {
@@ -26,9 +28,8 @@ function RowActions({id, setModalOpen, setItemId, listingRoute, hideDetails = fa
 	return (
 		<div className={classes.actions}>
 			{!hideDetails && <button className={classes.actions__button} id='details' onClick={() => {setIdAndOpenModal(ModalType.details)}}><IconEye/></button>}
-			<button className={classes.actions__button} id='edit' onClick={navigateToEdit}><IconEdit /></button>
-			<button className={classes.actions__button} id='delete' onClick={() => {setIdAndOpenModal(ModalType.delete)}
-			}><IconTrashX /></button>
+			{!hideEdit && <button className={classes.actions__button} id='edit' onClick={navigateToEdit}><IconEdit /></button>}
+			{!hideDelete && <button className={classes.actions__button} id='delete' onClick={() => {setIdAndOpenModal(ModalType.delete)}}><IconTrashX /></button> }
 		</div>
 	)
 }

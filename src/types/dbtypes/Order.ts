@@ -1,14 +1,18 @@
 import {Diet} from "./Diet";
 import {UserFullData} from "./UserData";
+import {Address} from "./Address";
 
 export type Order = {
     _id: string,
-    dietId: Diet,
-    userId: UserFullData,
+    diet_id: Diet,
+    user_id: UserFullData,
+
+    address_id: Address,
     price: number,
-    subDate: {
+    sub_date: {
         from: Date,
         to: Date
     },
-    withWeekends: boolean
+    calories: number,
+    with_weekends: boolean
 }

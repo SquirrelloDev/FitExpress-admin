@@ -5,10 +5,11 @@ export type Address = {
     street: string,
     city: string,
     postal: string,
-    buildingNo: number,
-    apartmentNo?: number,
+    building_no: number,
+    apartment_no?: number,
     voivodeship: 'Zachodniopomorskie' | 'Pomorskie' | 'Warmińsko-Mazurskie' | 'Kujawsko-Pomorskie' | 'Podlaskie' | 'Lubuskie' | 'Wielkopolskie' | 'Łódzkie' | 'Mazowieckie' | 'Świętokrzyskie' | 'Lubelskie' | 'Dolnośląskie' | 'Opolskie' | 'Śląskie' | 'Małopolskie' | 'Podkarpackie',
-    isWeekend: boolean,
+    is_weekend: boolean,
     isDefault: boolean,
-    userId: UserFullData
+    extra_info: string,
+    user_id: UserFullData
 }

@@ -1,7 +1,9 @@
+import {DailyOrders} from "./DailyOrders/DailyOrders";
+
 function Home() {
 	return (
 		<main>
-			<p>tabela</p>
+			<DailyOrders />
 		</main>
 	)
 }

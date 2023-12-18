@@ -4,16 +4,16 @@ import {Tag} from "./Tags";
 export type Diet = {
     _id: string,
     name: string,
-    dietType: "Fixed" | "Flexi",
+    diet_type: "Fixed" | "Flexi",
     img: {
         imgPath: string,
         uri: string
     },
-    shortDesc: string,
-    longDesc: string,
-    basicInfo: string[],
+    short_desc: string,
+    long_desc: string,
+    basic_info: string[],
     exclusions: Exclusion[],
-    tagsId: Tag[],
+    tags_id: Tag[],
     prices: {
         kcal1200: number,
         kcal1500: number,
@@ -26,5 +26,6 @@ export type Diet = {
         fats: number,
         carbs: number,
         proteins: number
-    }
+    },
+    imageBuffer: string
 }

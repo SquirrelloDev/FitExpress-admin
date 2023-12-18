@@ -9,6 +9,7 @@ export type Meal = {
         imgPath: string,
         uri: string
     },
+    imageBuffer: string
     exclusions: Exclusion[],
     tagsId: Tag[],
     ingredients: string[],

@@ -9,7 +9,7 @@ import RowActions from "../../components/Table/RowActions";
 import useTableListing from "../../hooks/useTableListing";
 import {TableListingType} from "../../types/table/tableListing";
 import Modal from "../../components/Modal/Modal";
-import UserDelete from "../../components/Modal/Views/UserDelete";
+import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useUserDelete from "../../queries/users/delete";
 import {ModalType} from "../../types/table/modalType";
 import UserDetails from "../../components/Modal/Views/UserDetails";
@@ -81,7 +81,7 @@ function Users() {
                    isLoading={isLoading}
                    tableName={polishTableName}
              tableListing={TableListingType.users}/>
-            {modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><UserDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
+            {modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><UserDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
         </>
     )

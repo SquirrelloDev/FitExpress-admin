@@ -1,15 +1,18 @@
 import {UserFullData} from "./UserData";
 import {Diet} from "./Diet";
 import {Meal} from "./Meal";
+import {Order} from "./Order";
 
-type Orders = {
+export type OrdersArr = {
     _id: string,
-    userId: UserFullData,
-    dietId: Diet,
-    selectedMeals: Meal[]
+    user_id: UserFullData,
+    diet_id: Diet,
+    order_id: Order
+    selected_meals: Meal[]
 }
 export type DailyOrder = {
     _id: string,
-    isAddingLocked: boolean,
-    orders: Orders[]
+    date: Date,
+    is_adding_locked: boolean,
+    orders: OrdersArr[]
 }

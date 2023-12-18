@@ -27,6 +27,8 @@ function useListingRoute(listingRoute: TableListingType): string {
             return appRoutes.reports
         case TableListingType.tags:
             return appRoutes.tags
+        default:
+            return appRoutes.home
     }
 }
 export default useListingRoute

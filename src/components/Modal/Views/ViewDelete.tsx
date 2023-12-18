@@ -8,14 +8,14 @@ interface ViewDeleteProps {
 	closeModal: Dispatch<SetStateAction<{ isOpen: boolean; modalType: ModalType; }>>
 	deleteMutation: () => void
 }
-function UserDelete({id, closeModal, deleteMutation}:ViewDeleteProps) {
+function ViewDelete({id, closeModal, deleteMutation}:ViewDeleteProps) {
 	const deleteFn = () => {
 		deleteMutation()
 	}
 	return (
 		<div className={classes.view}>
 			<div className={classes.view__title}>
-				<h2>Usunąć?</h2>
+				<h1>Usunąć?</h1>
 				<button onClick={() => closeModal({isOpen: false, modalType: ModalType.none})}><IconX /></button>
 			</div>
 			<div className={classes.view__info}>
@@ -28,4 +28,4 @@ function UserDelete({id, closeModal, deleteMutation}:ViewDeleteProps) {
 		</div>
 	)
 }
-export default UserDelete
+export default ViewDelete

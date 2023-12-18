@@ -12,7 +12,7 @@ interface ViewDetailsProps {
 }
 function ReportDetails({id, token, closeModal}:ViewDetailsProps) {
 	const {data: singleReportData, isLoading} = useOneReportListQuery({token, id})
-	const {statusPL, categoryPL} = useReportStausCategory(singleReportData!.report.report_status, singleReportData!.report.category)
+	const {statusPL, categoryPL} = useReportStausCategory(singleReportData?.report.report_status, singleReportData?.report.category)
 	if(isLoading) return (
 		<div>
 			<div className={classes.view__title}>

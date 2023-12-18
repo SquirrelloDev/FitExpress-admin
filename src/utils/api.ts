@@ -86,4 +86,8 @@ export const apiRoutes = {
     GET_DELIVERY_ID: (id: string) => `http://localhost:3001/delivery/${id}`,
     EDIT_DELIVERY: (id: string) => `http://localhost:3001/delivery/${id}`,
     DELETE_DELIVERY: (id: string) => `http://localhost:3001/delivery/${id}`,
+//     DAILY ORDERS\
+    GET_DAILY: `http://localhost:3001/daily`,
+    GET_DAILY_DATE: (date: string) => `http://localhost:3001/daily/date?date=${date}`,
+    ADD_DAILY: 'http://localhost:3001/daily'
 }

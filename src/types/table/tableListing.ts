@@ -10,5 +10,6 @@ export enum TableListingType {
     reports,
     promocodes,
     tags,
-    deliveryPoints
+    deliveryPoints,
+    dailyOrders
 }

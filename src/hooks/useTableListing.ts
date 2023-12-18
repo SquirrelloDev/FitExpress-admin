@@ -11,7 +11,9 @@ type polishNamesType = {
     reports: 'Zgłoszenia',
     tags: 'Tagi'
     promocodes: 'Vouchery',
-    deliveryPoints: 'Punkty dostaw'
+    deliveryPoints: 'Punkty dostaw',
+
+    dailyOrders: 'Dzisiejsze zamówienia'
 }
 function useTableListing(tableListing: TableListingType):string {
     const polishNamesTable: polishNamesType = {
@@ -26,8 +28,8 @@ function useTableListing(tableListing: TableListingType):string {
         reports: 'Zgłoszenia',
         tags: 'Tagi',
         promocodes: 'Vouchery',
-        deliveryPoints: 'Punkty dostaw'
-
+        deliveryPoints: 'Punkty dostaw',
+        dailyOrders: 'Dzisiejsze zamówienia'
     }
     return polishNamesTable[TableListingType[tableListing] as keyof polishNamesType]
 }

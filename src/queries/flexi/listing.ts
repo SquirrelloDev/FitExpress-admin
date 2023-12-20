@@ -1,6 +1,6 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {DayFlexi} from "../../types/dbtypes/DayFlexi";
 
 interface paginationInfo {
@@ -37,7 +37,7 @@ interface OneFlexiResponse {
 
 const listFlexi: QueryFunction<FlexiResponse, FlexiListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<FlexiResponse>(apiRoutes.GET_FLEXIS, {
+    const res = await FitExpressClient.getInstance().get<FlexiResponse>(apiRoutes.GET_FLEXIS, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const listFlexi: QueryFunction<FlexiResponse, FlexiListKey> = async ({signal, qu
 }
 const listOneFlexi: QueryFunction<OneFlexiResponse, OneFlexiListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OneFlexiResponse>(apiRoutes.GET_FLEXI_ID(id), {
+    const res = await FitExpressClient.getInstance().get<OneFlexiResponse>(apiRoutes.GET_FLEXI_ID(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

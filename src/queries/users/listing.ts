@@ -1,7 +1,7 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import {UserFullData} from "../../types/dbtypes/UserData";
 import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 
 interface paginationInfo {
     totalItems: number,
@@ -37,7 +37,7 @@ interface OneUserResponse {
 
 const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<UserResponse>(apiRoutes.GET_USERS, {
+    const res = await FitExpressClient.getInstance().get<UserResponse>(apiRoutes.GET_USERS, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, quer
 }
 const listOneUser: QueryFunction<OneUserResponse, OneUserListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OneUserResponse>(apiRoutes.GET_USER(id), {
+    const res = await FitExpressClient.getInstance().get<OneUserResponse>(apiRoutes.GET_USER(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

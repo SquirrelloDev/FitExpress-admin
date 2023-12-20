@@ -1,6 +1,6 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {Promocode} from "../../types/dbtypes/Promocode";
 
 interface paginationInfo {
@@ -37,7 +37,7 @@ interface OnePromoResponse {
 
 const listPromos: QueryFunction<PromosResponse, PromosListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<PromosResponse>(apiRoutes.GET_PROMOCODES, {
+    const res = await FitExpressClient.getInstance().get<PromosResponse>(apiRoutes.GET_PROMOCODES, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const listPromos: QueryFunction<PromosResponse, PromosListKey> = async ({signal,
 }
 const listOnePromo: QueryFunction<OnePromoResponse, OnePromoListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OnePromoResponse>(apiRoutes.GET_MEAL(id), {
+    const res = await FitExpressClient.getInstance().get<OnePromoResponse>(apiRoutes.GET_MEAL(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

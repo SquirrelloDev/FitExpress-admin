@@ -1,6 +1,6 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {DayFixed} from "../../types/dbtypes/DayFixed";
 
 interface paginationInfo {
@@ -37,7 +37,7 @@ interface OneFixedResponse {
 
 const listFixed: QueryFunction<FixedResponse, FixedListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<FixedResponse>(apiRoutes.GET_FIXEDS, {
+    const res = await FitExpressClient.getInstance().get<FixedResponse>(apiRoutes.GET_FIXEDS, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const listFixed: QueryFunction<FixedResponse, FixedListKey> = async ({signal, qu
 }
 const listOneFixed: QueryFunction<OneFixedResponse, OneFixedListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OneFixedResponse>(apiRoutes.GET_FIXED_ID(id), {
+    const res = await FitExpressClient.getInstance().get<OneFixedResponse>(apiRoutes.GET_FIXED_ID(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

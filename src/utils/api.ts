@@ -1,4 +1,6 @@
 import {isServer, QueryClient} from "@tanstack/react-query";
+import axios, {AxiosInstance} from "axios";
+import authStore from "../stores/authStore";
 
 export const queryClient = new QueryClient({
     defaultOptions: {
@@ -8,6 +10,33 @@ export const queryClient = new QueryClient({
         },
     },
 })
+export class FitExpressClient {
+    private static clientInstance: FitExpressClient
+    private axiosInstance: AxiosInstance
+    private constructor() {
+        this.axiosInstance = axios.create({
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+    public static getInstance(){
+        //if instance exists, return the current instance
+        if (this.clientInstance) {
+            return this.clientInstance.axiosInstance
+        }
+        this.clientInstance = new FitExpressClient()
+        this.clientInstance.axiosInstance.interceptors.response.use((response) =>{
+            return response
+        }, (error) => {
+            if(error.response.status === 401 || error.response.data.message === 'jwt expired'){
+                authStore.getState().logout()
+            }
+            return error
+        })
+        return this.clientInstance.axiosInstance;
+    }
+}
 export const apiRoutes = {
     LOGIN: 'http://localhost:3001/users/login/',
     GET_USERS: 'http://localhost:3001/users',

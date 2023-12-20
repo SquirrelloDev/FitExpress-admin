@@ -1,6 +1,6 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {Address} from "../../types/dbtypes/Address";
 
 interface paginationInfo {
@@ -37,7 +37,7 @@ interface OneAddressResponse {
 
 const listAddresses: QueryFunction<AddressesResponse, AddressesListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<AddressesResponse>(apiRoutes.GET_ADDRESSES, {
+    const res = await FitExpressClient.getInstance().get<AddressesResponse>(apiRoutes.GET_ADDRESSES, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const listAddresses: QueryFunction<AddressesResponse, AddressesListKey> = async 
 }
 const listOneAddress: QueryFunction<OneAddressResponse, OneAddressListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OneAddressResponse>(apiRoutes.GET_ADDRESS(id), {
+    const res = await FitExpressClient.getInstance().get<OneAddressResponse>(apiRoutes.GET_ADDRESS(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

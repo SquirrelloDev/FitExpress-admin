@@ -65,7 +65,7 @@ export function DailyOrders() {
 		})
 	]
 	const {dailyOrder} = useMemo(() => ({
-		dailyOrder: isSuccess ? data!.daily.orders.filter((order) => order.order_id !== null && order.diet_id !== null && order.user_id !== null) : []
+		dailyOrder: (isSuccess && data!.daily) ? data!.daily.orders.filter((order) => order.order_id !== null && order.diet_id !== null && order.user_id !== null) : []
 	}), [data, isSuccess])
 	const table = useReactTable({
 		columns,

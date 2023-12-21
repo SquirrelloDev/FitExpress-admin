@@ -11,6 +11,7 @@ import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import {Exclusion} from "../../types/dbtypes/Exclusions";
 import useExclusionDelete from "../../queries/exclusions/delete";
 import useExclusionsListQuery from "../../queries/exclusions/listing";
+import {Grid} from "react-loader-spinner";
 
 function Exclusions() {
 	const columnHelper = createColumnHelper<Exclusion>()
@@ -57,7 +58,7 @@ function Exclusions() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading meals...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

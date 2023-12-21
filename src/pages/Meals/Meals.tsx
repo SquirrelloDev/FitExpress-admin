@@ -16,6 +16,7 @@ import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useMealDelete from "../../queries/meals/delete";
 import {toast} from "react-hot-toast";
 import toastStyle from "../../sass/components/toast.module.scss";
+import {Grid} from "react-loader-spinner";
 
 function Meals() {
     const columnHelper = createColumnHelper<Meal>()
@@ -95,7 +96,7 @@ function Meals() {
             toast.error(`${error.response.status}: ${error.response.data.message}`, {className: toastStyle['toast--error'], id:'authErr'})
         }
     }, [isError, error])
-    if (isLoading) return <p>Loading meals...</p>
+    if (isLoading) return <Grid />
     return (
         <>
             <Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

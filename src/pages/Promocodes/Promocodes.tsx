@@ -11,6 +11,7 @@ import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import {Promocode} from "../../types/dbtypes/Promocode";
 import usePromosListQuery from "../../queries/promocodes/listing";
 import usePromoDelete from "../../queries/promocodes/delete";
+import {Grid} from "react-loader-spinner";
 
 function Promocodes() {
 	const columnHelper = createColumnHelper<Promocode>()
@@ -67,7 +68,7 @@ function Promocodes() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading meals...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

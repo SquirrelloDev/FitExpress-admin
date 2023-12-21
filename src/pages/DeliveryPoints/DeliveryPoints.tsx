@@ -11,6 +11,7 @@ import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import {DeliveryPoint} from "../../types/dbtypes/DeliveryPoint";
 import useDeliveryListQuery from "../../queries/delivery/listing";
 import useDeliveryDelete from "../../queries/delivery/delete";
+import {Grid} from "react-loader-spinner";
 
 function DeliveryPoints() {
 	const columnHelper = createColumnHelper<DeliveryPoint>()
@@ -65,7 +66,7 @@ function DeliveryPoints() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading meals...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

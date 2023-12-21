@@ -24,6 +24,10 @@ function Exclusions() {
 		token: userData.token
 	})
 	const columns = [
+		columnHelper.accessor('_id', {
+			header: 'ID Wykluczenia',
+			cell: ({getValue}) => <p>{getValue()}</p>
+		}),
 		columnHelper.accessor('name', {
 			header: 'Nazwa',
 			cell: ({getValue}) => <p>{getValue()}</p>

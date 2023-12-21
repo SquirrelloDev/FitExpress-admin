@@ -57,7 +57,7 @@ function Exclusions() {
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}
-				   tableName={polishTableName} tableListing={TableListingType.tags}/>
+				   tableName={polishTableName} tableListing={TableListingType.exclusions}/>
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteExclusion}/></Modal>}
 		</>
 	)

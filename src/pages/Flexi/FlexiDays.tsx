@@ -67,7 +67,7 @@ function FlexiDays() {
 	if (isLoading) return <p>Loading days...</p>
 	return (
 		<>
-			<Table isLoading={isLoading} tableName={polishTableName} headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} tableListing={TableListingType.dayFixed}/>
+			<Table isLoading={isLoading} tableName={polishTableName} headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} tableListing={TableListingType.dayFlexi}/>
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><FlexiDetails id={itemId} token={userData.token} closeModal={setModalOpen} /></Modal>}
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
 				<Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDay}/></Modal>}

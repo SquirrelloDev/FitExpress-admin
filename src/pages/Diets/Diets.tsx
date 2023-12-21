@@ -70,7 +70,7 @@ function Diets() {
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}
-				   tableName={polishTableName} tableListing={TableListingType.reports}/>
+				   tableName={polishTableName} tableListing={TableListingType.diets}/>
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><DietDetails id={itemId} token={userData.token} closeModal={setModalOpen} /></Modal>}
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDiet}/></Modal>}
 		</>

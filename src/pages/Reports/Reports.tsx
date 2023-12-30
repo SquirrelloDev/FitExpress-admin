@@ -14,6 +14,7 @@ import useReportsListQuery from "../../queries/reports/listing";
 import useReportDelete from "../../queries/reports/delete";
 import useReportStausCategory from "../../hooks/useReportStausCategory";
 import ReportDetails from "../../components/Modal/Views/ReportDetails";
+import {Grid} from "react-loader-spinner";
 
 function Reports() {
 	const columnHelper = createColumnHelper<Report>()
@@ -84,7 +85,7 @@ function Reports() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading reports...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

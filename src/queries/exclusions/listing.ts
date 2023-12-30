@@ -1,6 +1,5 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
-import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {Exclusion} from "../../types/dbtypes/Exclusions";
 
 interface paginationInfo {
@@ -37,7 +36,7 @@ interface OneExclusionResponse {
 
 const listExclusions: QueryFunction<ExclusionsResponse, ExclusionsListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<ExclusionsResponse>(apiRoutes.GET_EXCLUSIONS, {
+    const res = await FitExpressClient.getInstance().get<ExclusionsResponse>(apiRoutes.GET_EXCLUSIONS, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +47,7 @@ const listExclusions: QueryFunction<ExclusionsResponse, ExclusionsListKey> = asy
 }
 const listOneExclusion: QueryFunction<OneExclusionResponse, OneExclusionListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OneExclusionResponse>(apiRoutes.GET_MEAL(id), {
+    const res = await FitExpressClient.getInstance().get<OneExclusionResponse>(apiRoutes.GET_MEAL(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

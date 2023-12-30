@@ -13,6 +13,7 @@ import useAddressDelete from "../../queries/addresses/delete";
 import useAddressesListQuery from "../../queries/addresses/listing";
 import AddressDetails from "../../components/Modal/Views/AddressDetails";
 import {UserFullData} from "../../types/dbtypes/UserData";
+import {Grid} from "react-loader-spinner";
 
 function Addresses() {
 	const columnHelper = createColumnHelper<Address>()
@@ -85,7 +86,7 @@ function Addresses() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading addresses...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

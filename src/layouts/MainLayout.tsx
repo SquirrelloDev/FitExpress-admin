@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import useUserRole from "../hooks/useUserRole";
 import {appRoutes} from "../utils/routes";
 import classes from "../sass/layouts/main.module.scss";
+import {Toaster} from "react-hot-toast";
 interface MainLayoutProps {
 	minPermLevel: UserRole
 }
@@ -21,6 +22,7 @@ function MainLayout({minPermLevel}: MainLayoutProps) {
 	}, [isAuthorized, isLoggedIn, navigate]);
 	return (
 		<div className={classes.app}>
+			<Toaster position={"top-right"}/>
 			<Nav />
 			<main className={classes.app__main}>
 			<Outlet />

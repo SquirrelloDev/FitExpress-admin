@@ -13,4 +13,10 @@
   &__submit{
     margin-top: 1.5em;
   }
+  p{
+    align-self: flex-start;
+    color: #c91818;
+    font-size: $normal;
+    margin: .5em 0;
+  }
 }

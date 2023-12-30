@@ -1,7 +1,7 @@
 import {MutationFunction, MutationKey, useMutation} from "@tanstack/react-query";
 import {UserData} from "../../types/dbtypes/UserData";
-import axios, {AxiosError} from "axios";
-import {apiRoutes} from "../../utils/api";
+import {AxiosError} from "axios";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {z} from "zod";
 
 export const LoginFormSchema = z.object({
@@ -16,7 +16,7 @@ export type LoginErrorType = AxiosError<{
     errors: { general: string }
 }>
 const loginUser: MutationFunction<LoginResponse, LoginFormDataSchema> = async ({email, password}) => {
-    const {data} = await axios.post<LoginResponse>(
+    const {data} = await FitExpressClient.getInstance().post<LoginResponse>(
         apiRoutes.LOGIN,
         {email, password}
     )
@@ -42,9 +42,10 @@ function useLoginMutation(
         mutate,
         error,
         isLoading,
+        isSuccess,
         reset
     } = useMutation<LoginResponse,LoginErrorType,LoginFormDataSchema>(mutationKey, loginUser, {onSuccess, onError, networkMode: 'always'})
-    return {mutate, error, isLoading, reset}
+    return {mutate, error, isLoading, isSuccess, reset}
 }
 
 export default useLoginMutation

@@ -1,6 +1,5 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
-import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {DailyOrder} from "../../types/dbtypes/DailyOrder";
 
 interface paginationInfo {
@@ -37,7 +36,7 @@ interface OneDailyOrderResponse {
 
 const listDailyOrders: QueryFunction<DailyOrderResponse, DailyOrderListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<DailyOrderResponse>(apiRoutes.GET_DAILY, {
+    const res = await FitExpressClient.getInstance().get<DailyOrderResponse>(apiRoutes.GET_DAILY, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +47,7 @@ const listDailyOrders: QueryFunction<DailyOrderResponse, DailyOrderListKey> = as
 }
 const listOneDailyOrder: QueryFunction<OneDailyOrderResponse, OneDailyOrderListKey> = async ({signal, queryKey}) => {
     const [, {token, date}] = queryKey;
-    const res = await axios.get<OneDailyOrderResponse>(apiRoutes.GET_DAILY_DATE(date), {
+    const res = await FitExpressClient.getInstance().get<OneDailyOrderResponse>(apiRoutes.GET_DAILY_DATE(date), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

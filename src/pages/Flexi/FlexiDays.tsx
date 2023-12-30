@@ -12,6 +12,7 @@ import {DayFlexi} from "../../types/dbtypes/DayFlexi";
 import useFlexiListQuery from "../../queries/flexi/listing";
 import useFlexiDelete from "../../queries/flexi/delete";
 import FlexiDetails from "../../components/Modal/Views/FlexiDetails";
+import {Grid} from "react-loader-spinner";
 
 function FlexiDays() {
 	const columnHelper = createColumnHelper<DayFlexi>()
@@ -64,10 +65,10 @@ function FlexiDays() {
 			}
 		})
 	}
-	if (isLoading) return <p>Loading days...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
-			<Table isLoading={isLoading} tableName={polishTableName} headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} tableListing={TableListingType.dayFixed}/>
+			<Table isLoading={isLoading} tableName={polishTableName} headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} tableListing={TableListingType.dayFlexi}/>
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><FlexiDetails id={itemId} token={userData.token} closeModal={setModalOpen} /></Modal>}
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
 				<Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDay}/></Modal>}

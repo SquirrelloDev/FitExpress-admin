@@ -14,6 +14,7 @@ import Modal from "../../components/Modal/Modal";
 import MealDetails from "../../components/Modal/Views/MealDetails";
 import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useMealDelete from "../../queries/meals/delete";
+import {Grid} from "react-loader-spinner";
 
 function Meals() {
     const columnHelper = createColumnHelper<Meal>()
@@ -88,7 +89,7 @@ function Meals() {
               setModalOpen({isOpen: false, modalType: ModalType.none})
           }})
     }
-    if (isLoading) return <p>Loading meals...</p>
+    if (isLoading) return <Grid />
     return (
         <>
             <Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

@@ -11,6 +11,7 @@ import Modal from "../../components/Modal/Modal";
 import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useTagDelete from "../../queries/tags/delete";
 import useTagsListQuery from "../../queries/tags/listing";
+import {Grid} from "react-loader-spinner";
 
 function Tags() {
 	const columnHelper = createColumnHelper<Tag>()
@@ -57,7 +58,7 @@ function Tags() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading meals...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

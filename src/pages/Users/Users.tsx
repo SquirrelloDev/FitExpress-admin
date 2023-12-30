@@ -13,6 +13,7 @@ import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useUserDelete from "../../queries/users/delete";
 import {ModalType} from "../../types/table/modalType";
 import UserDetails from "../../components/Modal/Views/UserDetails";
+import {Grid} from "react-loader-spinner";
 
 function Users() {
     const columnHelper = createColumnHelper<UserFullData>()
@@ -73,7 +74,7 @@ function Users() {
     })
     const polishTableName = useTableListing(TableListingType.users);
 
-    if (isLoading) return <p>Loading users...</p>
+    if (isLoading) return <Grid />
     return (
         <>
             <Table headerGroups={table.getHeaderGroups()}

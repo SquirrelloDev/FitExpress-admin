@@ -1,6 +1,5 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
-import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {Tag} from "../../types/dbtypes/Tags";
 
 interface paginationInfo {
@@ -37,7 +36,7 @@ interface OneTagResponse {
 
 const listTags: QueryFunction<TagsResponse, TagsListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<TagsResponse>(apiRoutes.GET_TAGS, {
+    const res = await FitExpressClient.getInstance().get<TagsResponse>(apiRoutes.GET_TAGS, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +47,7 @@ const listTags: QueryFunction<TagsResponse, TagsListKey> = async ({signal, query
 }
 const listOneTag: QueryFunction<OneTagResponse, OneTagListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OneTagResponse>(apiRoutes.GET_MEAL(id), {
+    const res = await FitExpressClient.getInstance().get<OneTagResponse>(apiRoutes.GET_MEAL(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

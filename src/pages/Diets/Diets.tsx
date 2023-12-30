@@ -12,6 +12,7 @@ import {Diet} from "../../types/dbtypes/Diet";
 import useDietsListQuery from "../../queries/diets/listing";
 import useDietDelete from "../../queries/diets/delete";
 import DietDetails from "../../components/Modal/Views/DietDetails";
+import {Grid} from "react-loader-spinner";
 
 function Diets() {
 	const columnHelper = createColumnHelper<Diet>()
@@ -66,11 +67,11 @@ function Diets() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading diets...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}
-				   tableName={polishTableName} tableListing={TableListingType.reports}/>
+				   tableName={polishTableName} tableListing={TableListingType.diets}/>
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><DietDetails id={itemId} token={userData.token} closeModal={setModalOpen} /></Modal>}
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDiet}/></Modal>}
 		</>

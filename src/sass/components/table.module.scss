@@ -11,6 +11,7 @@
     &__button-new {
       padding: 0.5em 2em;
       width: 16%;
+      min-width: 130px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -72,6 +73,7 @@
 
       &__cell {
         padding: 1em;
+        text-align: center;
       }
     }
 

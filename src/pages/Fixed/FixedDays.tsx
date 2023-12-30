@@ -12,6 +12,7 @@ import useFixedListQuery from "../../queries/fixed/listing";
 import {createColumnHelper, getCoreRowModel, useReactTable} from "@tanstack/react-table";
 import Table from "../../components/Table/Table";
 import FixedDetails from "../../components/Modal/Views/FixedDetails";
+import {Grid} from "react-loader-spinner";
 
 function FixedDays() {
     const columnHelper = createColumnHelper<DayFixed>()
@@ -64,7 +65,7 @@ function FixedDays() {
             }
         })
     }
-    if (isLoading) return <p>Loading days...</p>
+    if (isLoading) return <Grid />
     return (
         <>
             <Table isLoading={isLoading} tableName={polishTableName} headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} tableListing={TableListingType.dayFixed}/>

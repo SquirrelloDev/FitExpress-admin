@@ -20,7 +20,7 @@ function useListingRoute(listingRoute: TableListingType): string {
         case TableListingType.meals:
             return appRoutes.meals
         case TableListingType.orders:
-            return appRoutes.meals
+            return appRoutes.orders
         case TableListingType.promocodes:
             return appRoutes.promocodes
         case TableListingType.reports:

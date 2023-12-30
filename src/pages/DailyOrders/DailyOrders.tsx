@@ -11,6 +11,7 @@ import {OrdersArr} from "../../types/dbtypes/DailyOrder";
 import {useOneDailyOrderListQuery} from "../../queries/daily-orders/listing";
 import {Address} from "../../types/dbtypes/Address";
 import {DailyDetails} from "../../components/Modal/Views/DailyDetails";
+import {Grid} from "react-loader-spinner";
 
 export function DailyOrders() {
 	const columnHelper = createColumnHelper<OrdersArr>()
@@ -65,7 +66,7 @@ export function DailyOrders() {
 		})
 	]
 	const {dailyOrder} = useMemo(() => ({
-		dailyOrder: isSuccess ? data!.daily.orders.filter((order) => order.order_id !== null && order.diet_id !== null && order.user_id !== null) : []
+		dailyOrder: (isSuccess && data!.daily) ? data!.daily.orders.filter((order) => order.order_id !== null && order.diet_id !== null && order.user_id !== null) : []
 	}), [data, isSuccess])
 	const table = useReactTable({
 		columns,
@@ -73,7 +74,7 @@ export function DailyOrders() {
 		getCoreRowModel: getCoreRowModel()
 	})
 	const polishTableName = useTableListing(TableListingType.dailyOrders);
-	if (isLoading) return <p>Loading days...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table hideAdding isLoading={isLoading} tableName={polishTableName} headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} tableListing={TableListingType.dailyOrders}/>

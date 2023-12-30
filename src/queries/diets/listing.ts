@@ -1,6 +1,5 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
-import axios from "axios";
-import {apiRoutes} from "../../utils/api";
+import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {Diet} from "../../types/dbtypes/Diet";
 
 interface paginationInfo {
@@ -37,7 +36,7 @@ interface OneDietResponse {
 
 const listDiets: QueryFunction<DietsResponse, DietsListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
-    const res = await axios.get<DietsResponse>(apiRoutes.GET_DIETS, {
+    const res = await FitExpressClient.getInstance().get<DietsResponse>(apiRoutes.GET_DIETS, {
         signal,
         headers: {
             'Content-Type': 'application/json',
@@ -48,7 +47,7 @@ const listDiets: QueryFunction<DietsResponse, DietsListKey> = async ({signal, qu
 }
 const listOneDiet: QueryFunction<OneDietResponse, OneDietListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await axios.get<OneDietResponse>(apiRoutes.GET_DIET(id), {
+    const res = await FitExpressClient.getInstance().get<OneDietResponse>(apiRoutes.GET_DIET(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

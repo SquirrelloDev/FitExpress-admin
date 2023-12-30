@@ -12,6 +12,7 @@ import useOrdersListQuery from "../../queries/orders/listing";
 import useOrderDelete from "../../queries/orders/delete";
 import OrderDetails from "../../components/Modal/Views/OrderDetails";
 import {Order} from "../../types/dbtypes/Order";
+import {Grid} from "react-loader-spinner";
 
 function Orders() {
 	const columnHelper = createColumnHelper<Order>()
@@ -76,7 +77,7 @@ function Orders() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading meals...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}

@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './sass/main.scss'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
@@ -47,6 +46,7 @@ import TagCreate from "./pages/Tags/TagCreate";
 import TagEdit from "./pages/Tags/TagEdit";
 import ExclusionCreate from "./pages/Exclusions/ExclusionCreate";
 import ExclusionEdit from "./pages/Exclusions/ExclusionEdit";
+import DeliveryEdit from "./pages/DeliveryPoints/DeliveryEdit";
 
 const router = createBrowserRouter([
     {
@@ -143,7 +143,9 @@ const router = createBrowserRouter([
         path: appRoutes.delivery,
         element: <MainLayout minPermLevel={UserRole.dietetician}/>,
         children: [
-            {element: <DeliveryPoints/>, index: true}
+            {element: <DeliveryPoints/>, index: true},
+            {path: appRoutes.create, element: <DeliveryCreate />},
+            {path: appRoutes.editById, element: <DeliveryEdit />}
         ]
     },
     {
@@ -159,10 +161,10 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
+    <>
         <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools/>
             <RouterProvider router={router}/>
         </QueryClientProvider>
-    </React.StrictMode>,
+    </>,
 )

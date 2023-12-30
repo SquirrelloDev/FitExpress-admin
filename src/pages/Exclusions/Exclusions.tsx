@@ -11,6 +11,7 @@ import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import {Exclusion} from "../../types/dbtypes/Exclusions";
 import useExclusionDelete from "../../queries/exclusions/delete";
 import useExclusionsListQuery from "../../queries/exclusions/listing";
+import {Grid} from "react-loader-spinner";
 
 function Exclusions() {
 	const columnHelper = createColumnHelper<Exclusion>()
@@ -24,6 +25,10 @@ function Exclusions() {
 		token: userData.token
 	})
 	const columns = [
+		columnHelper.accessor('_id', {
+			header: 'ID Wykluczenia',
+			cell: ({getValue}) => <p>{getValue()}</p>
+		}),
 		columnHelper.accessor('name', {
 			header: 'Nazwa',
 			cell: ({getValue}) => <p>{getValue()}</p>
@@ -53,11 +58,11 @@ function Exclusions() {
 				setModalOpen({isOpen: false, modalType: ModalType.none})
 			}})
 	}
-	if (isLoading) return <p>Loading meals...</p>
+	if (isLoading) return <Grid />
 	return (
 		<>
 			<Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}
-				   tableName={polishTableName} tableListing={TableListingType.tags}/>
+				   tableName={polishTableName} tableListing={TableListingType.exclusions}/>
 			{modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteExclusion}/></Modal>}
 		</>
 	)

@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './sass/main.scss'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";

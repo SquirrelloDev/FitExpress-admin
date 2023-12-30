@@ -1,5 +1,5 @@
 import {createColumnHelper, getCoreRowModel, useReactTable} from "@tanstack/react-table";
-import {useEffect, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 import {ModalType} from "../../types/table/modalType";
 import useAuthStore from "../../stores/authStore";
 import useMealListQuery from "../../queries/meals/listing";
@@ -14,8 +14,6 @@ import Modal from "../../components/Modal/Modal";
 import MealDetails from "../../components/Modal/Views/MealDetails";
 import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useMealDelete from "../../queries/meals/delete";
-import {toast} from "react-hot-toast";
-import toastStyle from "../../sass/components/toast.module.scss";
 import {Grid} from "react-loader-spinner";
 
 function Meals() {
@@ -26,7 +24,7 @@ function Meals() {
     });
     const [itemId, setItemId] = useState<string>("");
     const userData = useAuthStore((state) => state.userData);
-    const {isLoading, data, isSuccess, isError, error} = useMealListQuery({
+    const {isLoading, data, isSuccess} = useMealListQuery({
         token: userData.token
     })
     const columns = [
@@ -91,11 +89,6 @@ function Meals() {
               setModalOpen({isOpen: false, modalType: ModalType.none})
           }})
     }
-    useEffect(() => {
-        if(isError){
-            toast.error(`${error.response.status}: ${error.response.data.message}`, {className: toastStyle['toast--error'], id:'authErr'})
-        }
-    }, [isError, error])
     if (isLoading) return <Grid />
     return (
         <>

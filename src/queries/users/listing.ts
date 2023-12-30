@@ -1,6 +1,5 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import {UserFullData} from "../../types/dbtypes/UserData";
-import axios from "axios";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
 
 interface paginationInfo {

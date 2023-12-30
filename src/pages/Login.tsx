@@ -33,9 +33,9 @@ function Login() {
 			{/*@ts-expect-error*/}
 			<form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
 				<input type='text' className={inputStyles.input} placeholder={'Adres e-mail'} {...register('email')}/>
-				{errors['email'] && <p>{errors['email'].message}</p>}
+				{errors['email'] && <p>{`${errors['email'].message}`}</p>}
 				<input type='password' className={inputStyles.input} placeholder={"Hasło"} {...register('password')}/>
-				{errors['password'] && <p>{errors['password'].message}</p>}
+				{errors['password'] && <p>{`${errors['password'].message}`}</p>}
 				<button type='submit' className={`${classes.form__submit} ${btnStyles.btn}`}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Zaloguj"}</button>
 			</form>
 		</>

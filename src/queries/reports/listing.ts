@@ -1,5 +1,4 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
-import axios from "axios";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {Report} from "../../types/dbtypes/Report";
 

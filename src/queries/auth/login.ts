@@ -1,6 +1,6 @@
 import {MutationFunction, MutationKey, useMutation} from "@tanstack/react-query";
 import {UserData} from "../../types/dbtypes/UserData";
-import axios, {AxiosError} from "axios";
+import {AxiosError} from "axios";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {z} from "zod";
 
@@ -42,9 +42,10 @@ function useLoginMutation(
         mutate,
         error,
         isLoading,
+        isSuccess,
         reset
     } = useMutation<LoginResponse,LoginErrorType,LoginFormDataSchema>(mutationKey, loginUser, {onSuccess, onError, networkMode: 'always'})
-    return {mutate, error, isLoading, reset}
+    return {mutate, error, isLoading, isSuccess, reset}
 }
 
 export default useLoginMutation

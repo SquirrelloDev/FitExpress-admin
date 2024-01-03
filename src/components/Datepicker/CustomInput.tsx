@@ -1,5 +1,5 @@
 import inputStyles from '../../sass/components/text-input.module.scss'
-import React, { forwardRef, useId } from 'react'
+import { forwardRef, useId } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { InputProps } from '../Input/types'
 
@@ -13,8 +13,7 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>(
       placeholderClassName,
       name,
       ...props
-    },
-    ref
+    }
   ) => {
     const id = useId()
     const {
@@ -31,7 +30,6 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>(
           </label>
         <input
           id={id}
-          ref={ref}
           placeholder=" "
           type={type}
           className={className ? className : inputStyles.input}

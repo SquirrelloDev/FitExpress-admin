@@ -10,7 +10,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((
 	name,
 	...props
 	},
-	ref
 ) => {
 	const id = useId();
 	const {
@@ -22,7 +21,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((
 			<label htmlFor={id} className={inputStyles['text-area__label']}>
 				{placeholder}
 			</label>
-			<textarea id={id} ref={ref} className={className ? className : inputStyles['text-area']}
+			<textarea id={id} className={className ? className : inputStyles['text-area']}
 				{...register(`${name}`)}
 				{...props}
 			/>

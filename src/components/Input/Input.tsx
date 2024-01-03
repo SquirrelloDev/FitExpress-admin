@@ -1,5 +1,5 @@
 import inputStyles from '../../sass/components/text-input.module.scss'
-import React, { forwardRef, useId } from 'react'
+import { forwardRef, useId } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { InputProps } from './types'
 

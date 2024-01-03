@@ -17,6 +17,7 @@ function ControlledSelect({
   options,
   control,
   name = '',
+  placeholder = '',
   isDisabled,
   isRequired = false,
   ...props
@@ -33,7 +34,7 @@ function ControlledSelect({
         fieldState: { isTouched },
       }) => (
         <div>
-            <label className={classes.select__label}>Mój select</label>
+            <label className={classes.select__label}>{placeholder}</label>
           <Select
             options={options}
             value={options.find((option) => option.value === value)}

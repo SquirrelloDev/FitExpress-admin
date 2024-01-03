@@ -1,4 +1,9 @@
 .form{
+  &__wrapper{
+    justify-content: flex-start;
+  }
+  &__form{
   display: flex;
   flex-direction: column;
+  }
 }

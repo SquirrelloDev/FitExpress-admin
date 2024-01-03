@@ -1,0 +1,30 @@
+@use "../utils" as *;
+.react-datepicker-ignore-onclickoutside{
+  margin: 1em 0;
+  padding: 1em .5em;
+  background: none;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  color: $text-color-primary;
+  font-family: $family;
+  font-size: 2rem;
+}
+.react-datepicker{
+  &__triangle{
+    display: none;
+  }
+  &__month{
+    padding: 1em;
+  }
+  &__week{
+    display: flex;
+    justify-content: space-around;
+  }
+  &__day{
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

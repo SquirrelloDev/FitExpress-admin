@@ -1,0 +1,22 @@
+@use "../utils" as *;
+.select{
+  &__label{
+  }
+  &__control{
+    padding: .25em 0;
+    background-color: $page-bg;
+    border: 1px solid #404040;
+  }
+  &__menu{
+    background-color: $dark;
+  }
+  &__input{
+    color: $text-color-primary;
+  }
+  &__option{
+    color: $text-color-primary;
+    &:hover, &--selected{
+      background-color: $cta;
+    }
+  }
+}

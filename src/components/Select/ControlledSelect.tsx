@@ -39,12 +39,14 @@ function ControlledSelect({
             options={options}
             value={options.find((option) => option.value === value)}
             onBlur={onBlur}
-            onChange={(val: unknown) => {
+            //@ts-expect-error value is correct
+            onChange={
+              (val: SelectOption) => {
               if (!val) {
                 onChange(null)
                 return
               }
-              onChange(val)
+              onChange(val.value)
             }}
             styles={{
                 control: (base) => ({

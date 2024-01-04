@@ -33,6 +33,7 @@ function ControlledDatePicker({
             onChange={onChange}
             dateFormat="dd/MM/yyyy"
             onBlur={onBlur}
+            wrapperClassName={'wrapper'}
             customInput={<CustomInput name={name} />}
             nextMonthButtonLabel=">"
             previousMonthButtonLabel="<"

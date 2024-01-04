@@ -1,9 +1,13 @@
 @use "../utils" as *;
+.wrapper{
+  width: 100%;
+}
 .react-datepicker-ignore-onclickoutside{
   margin: 1em 0;
   padding: 1em .5em;
   background: none;
   border: 1px solid #404040;
+  width: 100%;
   border-radius: 8px;
   color: $text-color-primary;
   font-family: $family;
@@ -26,5 +30,4 @@
     justify-content: center;
     align-items: center;
   }
-
 }

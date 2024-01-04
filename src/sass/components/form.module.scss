@@ -1,9 +1,21 @@
 .form{
   &__wrapper{
-    justify-content: flex-start;
+    width: 60%;
+    h2{
+      margin: 1.25em 0;
+      &:first-child{
+        margin-top: 0;
+      }
+    }
   }
   &__form{
   display: flex;
   flex-direction: column;
+    &__submit{
+      margin-top: 1em;
+      width: 50%;
+      max-width: 350px;
+      min-width: 150px;
+    }
   }
 }

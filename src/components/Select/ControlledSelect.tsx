@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Control, Controller, useFormContext } from 'react-hook-form'
 import Select, {
-  Props as SelectProps,
+    Props as SelectProps,
 } from 'react-select'
 import { SelectOption } from './types'
 import classes from "../../sass/components/select.module.scss";
@@ -46,11 +46,27 @@ function ControlledSelect({
               }
               onChange(val)
             }}
+            styles={{
+                control: (base) => ({
+                    ...base,
+                    backgroundColor: '#1a1a1a',
+                    borderRadius: '8px'
+                }),
+                menu: (baseStyles) => ({
+                    ...baseStyles,
+                    backgroundColor: '#252525FF'
+                }),
+                singleValue: (baseStyles) => ({
+                    ...baseStyles,
+                    color: '#fff'
+                }),
+                option: (baseStyles, state) => ({
+                    ...baseStyles,
+                    backgroundColor: state.isSelected ? '#46C367FF' : 'none'
+                })
+            }}
             classNames={{
                 control: () => classes.select__control,
-                menu: () => classes.select__menu,
-                valueContainer: () => classes['select__value-container'],
-                singleValue: () => classes.select__input,
                 option: ({ isSelected }) =>
                     clsx(
                         classes.select__option,
@@ -66,7 +82,7 @@ function ControlledSelect({
           )}
           {!errors[name] && isTouched && !value && isRequired && (
             <p>
-              {'requirttjtyjed'}
+              {'required'}
             </p>
           )}
         </div>

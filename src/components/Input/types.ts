@@ -1,0 +1,5 @@
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  error?: string
+  placeholderClassName?: string
+}

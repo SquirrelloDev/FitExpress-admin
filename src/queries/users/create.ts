@@ -47,8 +47,8 @@ export type UserPostData = {
     birth_date: Date,
     healthData: HealthData
 }
-type UserError = AxiosError<{errors: {general: string}}>
-type UserResponse = {message: string}
+export type UserError = AxiosError<{errors: {general: string}}>
+export type UserResponse = {message: string}
 const createUser:MutationFunction<UserResponse, UserPostData> = async (user) => {
     const res = await FitExpressClient.getInstance().post<UserResponse, UserError>(apiRoutes.ADD_USER, {
         ...user

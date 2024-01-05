@@ -52,6 +52,7 @@ export const apiRoutes = {
     DELETE_MEAL: (id: string) => `http://localhost:3001/meals/${id}`,
 //     TAGS
     GET_TAGS: `http://localhost:3001/tags`,
+    GET_TAG: (id: string) => `http://localhost:3001/tags/${id}`,
     ADD_TAG: `http://localhost:3001/tags`,
     EDIT_TAG: (id: string) => `http://localhost:3001/tags/${id}`,
     DELETE_TAG: (id: string) => `http://localhost:3001/tags/${id}`,

@@ -47,6 +47,7 @@ import ExclusionCreate from "./pages/Exclusions/ExclusionCreate";
 import ExclusionEdit from "./pages/Exclusions/ExclusionEdit";
 import DeliveryEdit from "./pages/DeliveryPoints/DeliveryEdit";
 import {UserEditPage} from "./components/EditForms/UserEditPage";
+import {TagEditPage} from "./components/EditForms/TagEditPage";
 
 const router = createBrowserRouter([
     {
@@ -124,7 +125,7 @@ const router = createBrowserRouter([
         path: appRoutes.tags, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <Tags/>},
             {path: appRoutes.create, element: <TagCreate/>},
-            {path: appRoutes.editById, element: <TagEdit/>}
+            {path: appRoutes.editById, element: <TagEditPage/>}
         ]
     },
     {

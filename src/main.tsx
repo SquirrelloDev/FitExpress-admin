@@ -50,6 +50,7 @@ import {UserEditPage} from "./components/EditForms/UserEditPage";
 import {TagEditPage} from "./components/EditForms/TagEditPage";
 import {ExclusionEditPage} from "./components/EditForms/ExclusionEditPage";
 import {PromocodeEditPage} from "./components/EditForms/PromocodeEditPage";
+import {DeliveryEditPage} from "./components/EditForms/DeliveryEditPage";
 
 const router = createBrowserRouter([
     {
@@ -143,7 +144,7 @@ const router = createBrowserRouter([
         children: [
             {element: <DeliveryPoints/>, index: true},
             {path: appRoutes.create, element: <DeliveryCreate />},
-            {path: appRoutes.editById, element: <DeliveryEdit />}
+            {path: appRoutes.editById, element: <DeliveryEditPage />}
         ]
     },
     {

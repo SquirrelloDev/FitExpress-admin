@@ -1,4 +1,5 @@
 import {UserFullData} from "./UserData";
+import {DeliveryPoint} from "./DeliveryPoint";
 
 export type Address = {
     _id: string,
@@ -11,5 +12,6 @@ export type Address = {
     is_weekend: boolean,
     isDefault: boolean,
     extra_info: string,
+    linked_points: DeliveryPoint[],
     user_id: UserFullData
 }

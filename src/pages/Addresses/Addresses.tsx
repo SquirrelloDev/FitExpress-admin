@@ -14,6 +14,7 @@ import useAddressesListQuery from "../../queries/addresses/listing";
 import AddressDetails from "../../components/Modal/Views/AddressDetails";
 import {UserFullData} from "../../types/dbtypes/UserData";
 import {Grid} from "react-loader-spinner";
+import {DeliveryPoint} from "../../types/dbtypes/DeliveryPoint";
 
 function Addresses() {
 	const columnHelper = createColumnHelper<Address>()
@@ -60,6 +61,19 @@ function Addresses() {
 		columnHelper.accessor('voivodeship', {
 			header: 'Województwo',
 			cell: ({getValue}) => <p>{getValue()}</p>
+		}),
+		columnHelper.accessor('linked_points', {
+			header: 'Powiązane punkty',
+			cell: ({getValue}) => {
+				const points = getValue() as DeliveryPoint[];
+				const pointsNames = points.map(point => point.name);
+				if(pointsNames.length > 0){
+				return <p>{pointsNames.length}</p>
+				}
+				else{
+					return <p style={{color: 'red'}}>{'Brak!'}</p>
+				}
+			}
 		}),
 		columnHelper.accessor('_id', {
 			id: 'actions', header: 'Akcje', cell: ({getValue}) => {

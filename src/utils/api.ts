@@ -108,7 +108,8 @@ export const apiRoutes = {
 //     PROMOCODES
     GET_PROMOCODES: `http://localhost:3001/promocode`,
     ADD_PROMOCODE: `http://localhost:3001/promocode/new`,
-    GET_PROMOCODE: (name: string) => `http://localhost:3001/promocode/${name}`,
+    GET_PROMOCODE_ID: (id: string) => `http://localhost:3001/promocode/${id}`,
+    GET_PROMOCODE_NAME: (name: string) => `http://localhost:3001/promocode/by-name/${name}`,
     EDIT_PROMOCODE: (id: string) => `http://localhost:3001/promocode/${id}`,
     DELETE_PROMOCODE: (id: string) => `http://localhost:3001/promocode/${id}`,
 //     DELIVERY

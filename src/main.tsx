@@ -49,6 +49,7 @@ import DeliveryEdit from "./pages/DeliveryPoints/DeliveryEdit";
 import {UserEditPage} from "./components/EditForms/UserEditPage";
 import {TagEditPage} from "./components/EditForms/TagEditPage";
 import {ExclusionEditPage} from "./components/EditForms/ExclusionEditPage";
+import {PromocodeEditPage} from "./components/EditForms/PromocodeEditPage";
 
 const router = createBrowserRouter([
     {
@@ -114,7 +115,7 @@ const router = createBrowserRouter([
         path: appRoutes.promocodes, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <Promocodes/>},
             {path: appRoutes.create, element: <PromoCreate/>},
-            {path: appRoutes.editById, element: <PromoEdit/>}
+            {path: appRoutes.editById, element: <PromocodeEditPage/>}
         ]
     }, {
         path: appRoutes.reports, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [

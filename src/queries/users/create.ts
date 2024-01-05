@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../../utils/routes";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-const dateErrorMap: z.ZodErrorMap = (error) => {
+export const dateErrorMap: z.ZodErrorMap = (error) => {
     if (error.code === z.ZodIssueCode.invalid_date) {
         return { message: errorMessages.required }
     }

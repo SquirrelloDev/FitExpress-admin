@@ -3,14 +3,28 @@ import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
-import {UserError, UserPostData, UserResponse} from "./create";
+import {dateErrorMap, selectErrorMap, UserError, UserResponse} from "./create";
+import {z} from "zod";
+import errorMessages from "../../utils/errorMessages";
 export type UserPutData = {
-    user: UserPostData,
+    user: {
+        name: string,
+        email: string,
+        role: number,
+        birth_date: Date
+    },
     authInfo: {
         token: string,
         id: string
     }
 }
+export const userPutSchema = z.object({
+    name: z.string().min(1, errorMessages.required),
+    email: z.string().email(errorMessages.invalidMail),
+    birth_date: z.coerce.date({errorMap: dateErrorMap}),
+    role: z.coerce.number({errorMap: selectErrorMap}),
+})
+export type UserPutSchema = z.infer<typeof userPutSchema>;
 const updateUser:MutationFunction<UserResponse, UserPutData> = async (user) => {
     const res = await FitExpressClient.getInstance().put<UserResponse, UserError>(apiRoutes.EDIT_USER(user.authInfo.id), {
         ...user.user

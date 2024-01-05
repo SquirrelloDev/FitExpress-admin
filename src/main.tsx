@@ -25,7 +25,6 @@ import {queryClient} from "./utils/api";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import Users from "./pages/Users/Users";
 import UserCreate from "./pages/Users/UserCreate";
-import UserEdit from "./pages/Users/UserEdit";
 import AddressCreate from "./pages/Addresses/AddressCreate";
 import AddressEdit from "./pages/Addresses/AddressEdit";
 import DeliveryCreate from "./pages/DeliveryPoints/DeliveryCreate";
@@ -47,6 +46,7 @@ import TagEdit from "./pages/Tags/TagEdit";
 import ExclusionCreate from "./pages/Exclusions/ExclusionCreate";
 import ExclusionEdit from "./pages/Exclusions/ExclusionEdit";
 import DeliveryEdit from "./pages/DeliveryPoints/DeliveryEdit";
+import {UserEditPage} from "./components/EditForms/UserEditPage";
 
 const router = createBrowserRouter([
     {
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
         path: appRoutes.users, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <Users/>},
             {path: appRoutes.create, element: <UserCreate/>},
-            {path: appRoutes.editById, element: <UserEdit/>}
+            {path: appRoutes.editById, element: <UserEditPage/>}
         ]
     }, {
         path: appRoutes.addresses, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
@@ -126,13 +126,8 @@ const router = createBrowserRouter([
             {path: appRoutes.create, element: <TagCreate/>},
             {path: appRoutes.editById, element: <TagEdit/>}
         ]
-    }, {
-        path: appRoutes.users, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
-            {index: true, element: <Users/>},
-            {path: appRoutes.create, element: <UserCreate/>},
-            {path: appRoutes.editById, element: <UserEdit/>}
-        ]
-    },{
+    },
+    {
         path: appRoutes.exclusions, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <Exclusions/>},
             {path: appRoutes.create, element: <ExclusionCreate/>},

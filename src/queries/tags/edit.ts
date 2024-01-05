@@ -20,12 +20,12 @@ export type UserPutData = {
 }
 export const tagsPutSchema = z.object({
     name: z.string().min(1, errorMessages.required),
-    description: z.string().email(errorMessages.required),
+    description: z.string().min(1, errorMessages.required),
 })
 export type TagsPutSchema = z.infer<typeof tagsPutSchema>;
 export type TagsPutData = TagsPostData & {id: string}
 const updateTag:MutationFunction<TagsResponse, TagsPutData> = async (tag) => {
-    const res = await FitExpressClient.getInstance().put<TagsResponse, TagsError>(apiRoutes.EDIT_USER(tag.id), {
+    const res = await FitExpressClient.getInstance().put<TagsResponse, TagsError>(apiRoutes.EDIT_TAG(tag.id), {
         ...tag.tag
     }, {headers: {'Content-Type': "application/json", Authorization: `Bearer ${tag.token}`}})
     if(res.response?.status && res.response?.status !== 200){
@@ -36,7 +36,7 @@ const updateTag:MutationFunction<TagsResponse, TagsPutData> = async (tag) => {
 function useTagEdit(){
     const navigate = useNavigate();
     const {mutate, isError, isLoading, isSuccess, error} = useMutation<TagsResponse, TagsError, TagsPutData>(['Tags-Update'], updateTag, {onSuccess: () => {
-            toast.success('Użytkownik zedytowany!');
+            toast.success('Tag zedytowany!');
             queryClient.invalidateQueries(['TagsList'])
             navigate(appRoutes.tags);
         },

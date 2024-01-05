@@ -78,6 +78,7 @@ export const apiRoutes = {
     DELETE_FLEXI: (id: string) => `http://localhost:3001/days/flexi/${id}`,
 //     EXCLUSIONS
     GET_EXCLUSIONS: `http://localhost:3001/exclusions`,
+    GET_EXCLUSION: (id: string) => `http://localhost:3001/exclusions/${id}`,
     ADD_EXCLUSION: `http://localhost:3001/exclusions`,
     EDIT_EXCLUSION: (id: string) => `http://localhost:3001/exclusions/${id}`,
     DELETE_EXCLUSION: (id: string) => `http://localhost:3001/exclusions/${id}`,

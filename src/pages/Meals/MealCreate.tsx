@@ -51,8 +51,8 @@ function MealCreate() {
 					<Input name={'calories'} type={'number'} placeholder='Kalorie (kcal)'/>
 					<Input name={'carbs'} type={'number'} placeholder='Węglowodany (g)'/>
 					<Input name={'fats'} type={'number'} placeholder='Tłuszcze (g)'/>
-					<Input name={'proteins'} placeholder='Białka (g)'/>
-					<Input name={'salt'} placeholder='Sól (g)'/>
+					<Input name={'proteins'} type={'number'} placeholder='Białka (g)'/>
+					<Input name={'salt'} type={'number'} placeholder='Sól (g)'/>
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
 				</form>
 			</div>

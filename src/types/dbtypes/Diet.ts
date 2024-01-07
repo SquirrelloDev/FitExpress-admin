@@ -15,12 +15,12 @@ export type Diet = {
     exclusions: Exclusion[],
     tags_id: Tag[],
     prices: {
-        kcal1200: number,
         kcal1500: number,
         kcal1800: number,
         kcal2000: number,
         kcal2200: number,
         kcal2500: number
+        kcal2800: number,
     },
     macros: {
         fats: number,

@@ -18,12 +18,17 @@
       min-width: 150px;
     }
   }
-  &__fixed-container{
+  &__day-container{
     display: grid;
-    grid-template-columns: repeat(5,1fr);
     gap: 20px;
+    &--fixed{
+    grid-template-columns: repeat(5,1fr);
+    }
+    &--flexi{
+    grid-template-columns: repeat(3,1fr);
+    }
     &__wrapper{
-      margin: .5em 0;
+      margin: 1em 0;
     }
   }
 }

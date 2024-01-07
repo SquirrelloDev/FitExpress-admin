@@ -27,7 +27,7 @@ const updateDayFixed: MutationFunction<FixedResponse, FixedPutData> = async (day
         diets: dietsMealsArr
     }
     const res = await FitExpressClient.getInstance().put<FixedResponse, FixedError>(apiRoutes.EDIT_FIXED(dayFixed.id), postObj,
-        {headers: {'Content-Type': "multipart/form-data", Authorization: `Bearer ${dayFixed.token}`}})
+        {headers: { Authorization: `Bearer ${dayFixed.token}`}})
     if (res.response?.status && res.response?.status !== 200) {
         throw new Error('Coś poszło nie tak')
     }

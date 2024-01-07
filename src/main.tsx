@@ -56,6 +56,7 @@ import {MealEditPage} from "./components/EditForms/MealEditPage";
 import DietCreate from "./pages/Diets/DietCreate";
 import {DietEditPage} from "./components/EditForms/DietEditPage";
 import {FixedEditPage} from "./components/EditForms/FixedEditPage";
+import {FlexiEditPage} from "./components/EditForms/FlexiEditPage";
 
 const router = createBrowserRouter([
     {
@@ -103,7 +104,7 @@ const router = createBrowserRouter([
         path: appRoutes.flexiDays, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <FlexiDays/>},
             {path: appRoutes.create, element: <FlexiCreate/>},
-            {path: appRoutes.editById, element: <FlexiEdit/>}
+            {path: appRoutes.editById, element: <FlexiEditPage/>}
         ]
     }, {
         path: appRoutes.meals, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [

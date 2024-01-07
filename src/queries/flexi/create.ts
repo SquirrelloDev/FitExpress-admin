@@ -30,6 +30,9 @@ const createDayFlexi: MutationFunction<FlexiResponse, FlexiPostData> = async (da
 
     }
     const res = await FitExpressClient.getInstance().post<FlexiResponse, FlexiError>(apiRoutes.ADD_FLEXI, postObj, {headers: {Authorization: `Bearer ${dayFlexi.token}`}})
+    if(res.response?.status === 409){
+        throw new Error('Dzień z tą datą już istnieje!');
+    }
     if (res.response?.status && res.response?.status !== 201) {
         throw new Error('Coś poszło nie tak')
     }

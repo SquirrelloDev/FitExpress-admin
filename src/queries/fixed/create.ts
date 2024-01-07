@@ -37,6 +37,9 @@ const createDayFixed: MutationFunction<FixedResponse, FixedPostData> = async (da
         diets: dietsMealsArr
     }
     const res = await FitExpressClient.getInstance().post<FixedResponse, FixedError>(apiRoutes.ADD_FIXED, postObj, {headers: {Authorization: `Bearer ${dayFixed.token}`}})
+    if(res.response?.status === 409){
+        throw new Error('Dzień z tą datą już istnieje!');
+    }
     if (res.response?.status && res.response?.status !== 201) {
         throw new Error('Coś poszło nie tak')
     }

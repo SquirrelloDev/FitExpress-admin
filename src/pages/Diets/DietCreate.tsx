@@ -46,12 +46,12 @@ function DietCreate() {
 				<TextArea name={'longDesc'} placeholder='Dłuższy opis diety'/>
 				<Input name={'image'} type={'file'} accept={'image/jpeg, image/png'} placeholder={'Główne zdjęcie diety'}/>
 				<h3>Rozpiska cenowa dla kaloryczności</h3>
-				<Input name={'kcal1500'} type={'number'} placeholder='1500 kcal'/>
-				<Input name={'kcal1800'} type={'number'} placeholder='1800 kcal'/>
-				<Input name={'kcal2000'} type={'number'} placeholder='2000 kcal'/>
-				<Input name={'kcal2200'} type={'number'} placeholder='2200 kcal'/>
-				<Input name={'kcal2500'} type={'number'} placeholder='2500 kcal'/>
-				<Input name={'kcal2800'} type={'number'} placeholder='2800 kcal'/>
+				<Input name={'kcal1500'} type={'number'} step={0.01} placeholder='1500 kcal'/>
+				<Input name={'kcal1800'} type={'number'} step={0.01} placeholder='1800 kcal'/>
+				<Input name={'kcal2000'} type={'number'} step={0.01} placeholder='2000 kcal'/>
+				<Input name={'kcal2200'} type={'number'} step={0.01} placeholder='2200 kcal'/>
+				<Input name={'kcal2500'} type={'number'} step={0.01} placeholder='2500 kcal'/>
+				<Input name={'kcal2800'} type={'number'} step={0.01} placeholder='2800 kcal'/>
 				<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
 			</form>
 		</div>

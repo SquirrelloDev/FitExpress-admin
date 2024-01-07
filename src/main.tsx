@@ -55,6 +55,7 @@ import {AddressEditPage} from "./components/EditForms/AddressEditPage";
 import {MealEditPage} from "./components/EditForms/MealEditPage";
 import DietCreate from "./pages/Diets/DietCreate";
 import {DietEditPage} from "./components/EditForms/DietEditPage";
+import {FixedEditPage} from "./components/EditForms/FixedEditPage";
 
 const router = createBrowserRouter([
     {
@@ -96,7 +97,7 @@ const router = createBrowserRouter([
         path: appRoutes.fixedDays, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <FixedDays/>},
             {path: appRoutes.create, element: <FixedCreate/>},
-            {path: appRoutes.editById, element: <FixedEdit/>}
+            {path: appRoutes.editById, element: <FixedEditPage/>}
         ]
     }, {
         path: appRoutes.flexiDays, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [

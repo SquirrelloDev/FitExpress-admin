@@ -1,6 +1,6 @@
 .form{
   &__wrapper{
-    width: 60%;
+    width: 100%;
     h2{
       margin: 1.25em 0;
       &:first-child{
@@ -16,6 +16,14 @@
       width: 50%;
       max-width: 350px;
       min-width: 150px;
+    }
+  }
+  &__fixed-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 20px;
+    &__wrapper{
+      margin: .5em 0;
     }
   }
 }

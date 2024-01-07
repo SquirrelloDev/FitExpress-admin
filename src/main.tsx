@@ -52,6 +52,7 @@ import {ExclusionEditPage} from "./components/EditForms/ExclusionEditPage";
 import {PromocodeEditPage} from "./components/EditForms/PromocodeEditPage";
 import {DeliveryEditPage} from "./components/EditForms/DeliveryEditPage";
 import {AddressEditPage} from "./components/EditForms/AddressEditPage";
+import {MealEditPage} from "./components/EditForms/MealEditPage";
 
 const router = createBrowserRouter([
     {
@@ -105,7 +106,7 @@ const router = createBrowserRouter([
         path: appRoutes.meals, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <Meals/>},
             {path: appRoutes.create, element: <MealCreate/>},
-            {path: appRoutes.editById, element: <MealEdit/>}
+            {path: appRoutes.editById, element: <MealEditPage/>}
         ]
     }, {
         path: appRoutes.orders, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [

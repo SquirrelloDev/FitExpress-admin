@@ -54,7 +54,7 @@ function MealEdit({data, token, id}:MealEditProps) {
 	return (
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
-				<h2>Nowy posiłek</h2>
+				<h2>Edytuj posiłek</h2>
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa posiłku'/>
@@ -69,7 +69,7 @@ function MealEdit({data, token, id}:MealEditProps) {
 					<Input name={'fats'} type={'number'} placeholder='Tłuszcze (g)'/>
 					<Input name={'proteins'} placeholder='Białka (g)'/>
 					<Input name={'salt'} placeholder='Sól (g)'/>
-					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
+					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>
 			</div>
 			<DevTool control={methods.control}/>

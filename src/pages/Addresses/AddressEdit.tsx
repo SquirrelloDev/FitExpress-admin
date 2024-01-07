@@ -45,6 +45,7 @@ const voivodeships: SelectOption[] = [
 	{label: 'Podkarpackie', value: 'Podkarpackie'},
 ]
 function AddressEdit({data,token,id}: AddressEditProps) {
+	const selectDeliveryIds = data.linked_points.map(point => point._id);
 	const methods = useForm({
 		resolver: zodResolver(addressSchema),
 		defaultValues: {
@@ -54,7 +55,7 @@ function AddressEdit({data,token,id}: AddressEditProps) {
 			postal: data.postal,
 			city: data.city,
 			voivodeship: data.voivodeship,
-			linked_points: data.linked_points.map(point => point._id),
+			linked_points: selectDeliveryIds,
 			isDefault: data.isDefault,
 			isWeekend: data.is_weekend,
 			extraInfo: data.extra_info,
@@ -64,7 +65,6 @@ function AddressEdit({data,token,id}: AddressEditProps) {
 	const {mutate, isLoading} = useAddressEdit()
 	const selectUsers = useUserOwner()
 	const selectDelivery = useDeliveryOwner()
-	const selectDeliveryIds = data.linked_points.map(point => point._id);
 	const { handleSubmit } = methods
 	const onSubmit = (data: AddressSchema) => {
 		const newAddress:AddressPutData = {

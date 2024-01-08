@@ -44,8 +44,6 @@ function Meals() {
                 return <p>{...exclusionNames}</p>
             }
         }),
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
         columnHelper.accessor('tags_id', {
             header: 'Tagi',
             cell: ({getValue}) =>{

@@ -48,7 +48,6 @@ function FlexiEdit({data, token, id}:FlexiEditProps) {
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
 				<h2>Edytuj dzień Flexi</h2>
-				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<ControlledDatePicker name={'date'} control={methods.control} placeholderText={'Data'}/>
 					<h3 style={{margin: '15px 0'}}>Poziomy subskrypcji</h3>

@@ -54,7 +54,6 @@ function MealEdit({data, token, id}:MealEditProps) {
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
 				<h2>Edytuj posiłek</h2>
-				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa posiłku'/>
 					<ControlledMultiSelect options={tags} defaultValue={tags.filter(tag => selectTagIds.includes(tag.value as string))} control={methods.control} name={'tagsId'} placeholder={'Tagi dla posiłku'}/>

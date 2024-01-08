@@ -72,7 +72,6 @@ function ReportEdit({reportData, orderData, token, id}:ReportEditProps) {
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
 				<h2>Edytuj zgłoszenie</h2>
-				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<ControlledSelect options={reportCategories} control={methods.control} name={'category'} placeholder={'Kategoria zgłoszenia'}/>
 					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Wybierz klienta'}/>

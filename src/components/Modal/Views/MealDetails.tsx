@@ -12,11 +12,7 @@ interface ViewDetailsProps {
 }
 function MealDetails({id, token, closeModal}:ViewDetailsProps) {
 	const {data: singleMealData, isLoading} = useOneMealListQuery({token, id})
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-expect-error
 	const nutritionVals = singleMealData?.meal.nutrition_values
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-expect-error
 	const tags = singleMealData?.meal.tags_id as Tag[]
 	if(isLoading) return (
 		<div>
@@ -44,11 +40,11 @@ function MealDetails({id, token, closeModal}:ViewDetailsProps) {
 				</ul>
 					<h3>Wartości odżywcze:</h3>
 				<ul>
-					<li>Kalorie: {nutritionVals.calories} kcal</li>
-					<li>Węglowodany: {nutritionVals.carbs} g</li>
-					<li>Tłuszcze: {nutritionVals.fats} g</li>
-					<li>Białko: {nutritionVals.proteins} g</li>
-					<li>Sól: {nutritionVals.salt} g</li>
+					<li>Kalorie: {nutritionVals?.calories} kcal</li>
+					<li>Węglowodany: {nutritionVals?.carbs} g</li>
+					<li>Tłuszcze: {nutritionVals?.fats} g</li>
+					<li>Białko: {nutritionVals?.proteins} g</li>
+					<li>Sól: {nutritionVals?.salt} g</li>
 				</ul>
 				<h3>Wykluczenia</h3>
 				<ul>

@@ -58,7 +58,6 @@ function DietEdit({data,token,id}: DietEditProps) {
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
 				<h2>Edytuj dietę</h2>
-				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa diety'/>
 					<ControlledSelect options={[{label: 'Fixed', value: 'Fixed'}, {label: 'Flexi', value: 'Flexi'}]} control={methods.control} name={'dietType'} placeholder={'Typ diety'}/>

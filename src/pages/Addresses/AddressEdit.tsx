@@ -87,7 +87,7 @@ function AddressEdit({data,token,id}: AddressEditProps) {
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
 				<h2>Edytuj adres</h2>
-				{/*@ts-expect-error data is fetched correctly*/}
+
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'street'} placeholder='Ulica'/>
 					<Input name={'buildingNumber'} type={'number'} placeholder='Nr budynku'/>

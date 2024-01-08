@@ -39,7 +39,7 @@ function AddressDetails({id, token, closeModal}:ViewDetailsProps) {
 				<h3>Dane dodatkowe</h3>
 				<p>Powiązane punkty FitExpress z tym adresem</p>
 				{singleAddressData?.address.linked_points.length === 0 && <p style={{color:'red'}}>{'Brak powiązanych punktów'}</p>}
-				{singleAddressData?.address.linked_points.length > 0 && (
+				{singleAddressData!.address.linked_points.length > 0 && (
 					<ul>
 						{singleAddressData?.address.linked_points.map(point => <li>{point.name}</li>)}
 					</ul>

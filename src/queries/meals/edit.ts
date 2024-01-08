@@ -24,8 +24,8 @@ const updateMeal: MutationFunction<MealResponse, MealPutData> = async (meal) => 
     }
     const dataObjText = JSON.stringify(dataObj);
     formData.append('data', dataObjText)
-    if (meal.image?.length > 0) {
-        formData.append('image', meal.image?.item(0))
+    if (meal.image && meal.image!.length > 0) {
+        formData.append('image', meal.image!.item(0) as Blob)
     }
     const res = await FitExpressClient.getInstance().put<MealResponse, MealError>(apiRoutes.EDIT_MEAL(meal.id), formData,
         {headers: {'Content-Type': "multipart/form-data", Authorization: `Bearer ${meal.token}`}})

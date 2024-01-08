@@ -56,8 +56,8 @@ const createDiet: MutationFunction<DietResponse, DietPostData> = async (diet) =>
     }
     const dataObjText = JSON.stringify(dataObj);
     formData.append('data', dataObjText)
-    if(diet.image?.length > 0){
-        formData.append('image', diet.image?.item(0))
+    if(diet.image && diet.image!.length > 0){
+        formData.append('image', diet.image!.item(0) as Blob)
     }
     const res = await FitExpressClient.getInstance().post<DietResponse, DietError>(apiRoutes.ADD_DIET, formData, {headers: {'Content-Type': "multipart/form-data", Authorization: `Bearer ${diet.token}`}})
     if (res.response?.status && res.response?.status !== 201) {

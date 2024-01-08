@@ -45,7 +45,6 @@ function DeliveryEdit({data,token,id}:DeliveryEditProps) {
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
 				<h2>Edytuj punkt FitExpress</h2>
-				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa punktu'/>
 					<Input name={'lat'} type={'number'} min={-90} max={90} step={'any'} placeholder='Szerokość geograficzna'/>

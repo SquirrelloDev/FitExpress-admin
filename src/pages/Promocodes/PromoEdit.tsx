@@ -43,7 +43,6 @@ function PromoEdit({data, token, id}:PromoEditProps) {
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
 				<h2>Edytuj voucher</h2>
-				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa vouchera'/>
 					<Input name={'discount'} type={'number'} min={1} max={75} placeholder='Wartość zniżki w %'/>

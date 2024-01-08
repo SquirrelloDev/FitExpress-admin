@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../../utils/routes";
 import {dateErrorMap, selectErrorMap} from "../users/create";
 export const orderSchema = z.object({
+    name: z.string().min(1, errorMessages.required),
     dietId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
     userId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
     addressId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
@@ -29,6 +30,7 @@ export const orderSchema = z.object({
 export type OrderSchema = z.infer<typeof orderSchema>
 export type OrderPostData = {
     order:{
+        name: string,
         dietId: string,
         userId: string,
         addressId: string,

@@ -29,6 +29,7 @@ function OrderEdit({addressData, orderData, token, id}:OrderEditProps) {
 	const methods = useForm({
 		resolver: zodResolver(orderSchema),
 		defaultValues: {
+			name: orderData.name,
 			dietId: orderData.diet_id._id,
 			userId: orderData.user_id._id,
 			addressId: orderData.address_id._id,
@@ -49,6 +50,7 @@ function OrderEdit({addressData, orderData, token, id}:OrderEditProps) {
 	const onSubmit = (data: OrderSchema) => {
 		const newOrder:OrderPutData = {
 			order: {
+				name: data.name,
 				dietId: data.dietId,
 				userId: data.userId,
 				addressId: data.addressId,
@@ -71,6 +73,7 @@ function OrderEdit({addressData, orderData, token, id}:OrderEditProps) {
 				<h2>Edytuj zamówienie</h2>
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
+					<Input name={'name'} placeholder={'Nazwa zamówienia'}/>
 					<ControlledSelect options={selectDiets} control={methods.control} name={'dietId'} placeholder={'Dieta'}/>
 					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Klient dla tej diety'}/>
 					<ControlledSelect options={selectedUserAddresses} control={methods.control} name={'addressId'} placeholder={'Adres klienta'}/>

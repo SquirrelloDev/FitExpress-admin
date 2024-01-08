@@ -43,6 +43,7 @@ function OrderCreate({data, token}:OrderCreateProps) {
 	const onSubmit = (data: OrderSchema) => {
 		const newOrder:OrderPostData = {
 			order: {
+				name: data.name,
 				dietId: data.dietId,
 				userId: data.userId,
 				addressId: data.addressId,
@@ -64,6 +65,7 @@ function OrderCreate({data, token}:OrderCreateProps) {
 				<h2>Nowe zamówienie</h2>
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
+					<Input name={'name'} placeholder={'Nazwa zamówienia'}/>
 					<ControlledSelect options={selectDiets} control={methods.control} name={'dietId'} placeholder={'Dieta'}/>
 					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Klient dla tej diety'}/>
 					<ControlledSelect options={selectedUserAddresses} control={methods.control} name={'addressId'} placeholder={'Adres klienta'}/>

@@ -57,6 +57,8 @@ import DietCreate from "./pages/Diets/DietCreate";
 import {DietEditPage} from "./components/EditForms/DietEditPage";
 import {FixedEditPage} from "./components/EditForms/FixedEditPage";
 import {FlexiEditPage} from "./components/EditForms/FlexiEditPage";
+import {OrderCreatePage} from "./components/EditForms/OrderCreatePage";
+import {OrderEditPage} from "./components/EditForms/OrderEditPage";
 
 const router = createBrowserRouter([
     {
@@ -115,8 +117,8 @@ const router = createBrowserRouter([
     }, {
         path: appRoutes.orders, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <Orders/>},
-            {path: appRoutes.create, element: <OrderCreate/>},
-            {path: appRoutes.editById, element: <OrderEdit/>}
+            {path: appRoutes.create, element: <OrderCreatePage/>},
+            {path: appRoutes.editById, element: <OrderEditPage/>}
         ]
     }, {
         path: appRoutes.promocodes, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [

@@ -3,10 +3,7 @@ import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
-import {
-    MealError,
-    MealResponse, MealPostData,
-} from "./create";
+import {MealError, MealPostData, MealResponse,} from "./create";
 
 export type MealPutData = MealPostData & { id: string }
 const updateMeal: MutationFunction<MealResponse, MealPutData> = async (meal) => {

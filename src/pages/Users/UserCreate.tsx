@@ -12,6 +12,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import useUserCreate, {UserPostData, UserSchema, userSchema} from "../../queries/users/create";
 import {calculateAge, calculateBMI, calculateDemands} from "../../utils/calculateUserData";
 import {TailSpin} from "react-loader-spinner";
+
 const palActive: SelectOption[] = [
     {label: 'Brak treningów / jeden lekki', value: 1.2},
     {label: 'Pojedyncze treningi', value: 1.4},

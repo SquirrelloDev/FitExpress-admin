@@ -2,7 +2,6 @@ import useAuthStore from "../stores/authStore";
 import {useMemo} from "react";
 import {SelectOption} from "../components/Select/types";
 import useDietsListQuery from "../queries/diets/listing";
-import diets from "../pages/Diets/Diets";
 
 function useDeliveryOwner(){
     const userData = useAuthStore((state) => state.userData);

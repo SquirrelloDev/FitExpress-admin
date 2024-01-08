@@ -6,12 +6,13 @@ import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
 import {DevTool} from "@hookform/devtools";
-import useDayFixedCreate, {FixedPostData, fixedSchema, FixedSchema} from "../../queries/fixed/create";
+import {fixedSchema, FixedSchema} from "../../queries/fixed/create";
 import useDietsListQuery from "../../queries/diets/listing";
 import useMealOwner from "../../hooks/useMealOwner";
 import {zodResolver} from "@hookform/resolvers/zod";
 import useDayFixedEdit, {FixedPutData} from "../../queries/fixed/edit";
 import {DayFixed} from "../../types/dbtypes/DayFixed";
+
 interface FixedEditProps {
 	data: DayFixed,
 	token: string,

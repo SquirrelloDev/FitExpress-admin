@@ -3,10 +3,7 @@ import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
-import {
-    MealError,
-    MealResponse, MealPostData, DietPostData, DietResponse, DietError, FixedPostData, FixedResponse, FixedError,
-} from "./create";
+import {FixedError, FixedPostData, FixedResponse,} from "./create";
 
 export type FixedPutData = FixedPostData & { id: string }
 const updateDayFixed: MutationFunction<FixedResponse, FixedPutData> = async (dayFixed) => {

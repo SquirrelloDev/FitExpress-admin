@@ -1,6 +1,5 @@
 import {FormProvider, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import useTagsCreate, {TagsPostData, TagsSchema, tagsSchema} from "../../queries/tags/create";
 import useAuthStore from "../../stores/authStore";
 import classes from "../../sass/components/form.module.scss";
 import Input from "../../components/Input/Input";

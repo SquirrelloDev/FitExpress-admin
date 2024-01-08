@@ -7,6 +7,7 @@ import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../../utils/routes";
 import {selectErrorMap} from "../users/create";
+
 export const addressSchema = z.object({
     street: z.string().min(1, errorMessages.required),
     buildingNumber: z.coerce.number().min(1, errorMessages.required),

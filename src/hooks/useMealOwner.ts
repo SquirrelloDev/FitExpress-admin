@@ -1,7 +1,6 @@
 import useAuthStore from "../stores/authStore";
 import {useMemo} from "react";
 import {SelectOption} from "../components/Select/types";
-import useDeliveryListQuery from "../queries/delivery/listing";
 import useMealListQuery from "../queries/meals/listing";
 
 function useMealOwner(){

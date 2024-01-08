@@ -1,7 +1,6 @@
 import {FormProvider, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import useDietCreate, {DietPostData, DietSchema, dietSchema} from "../../queries/diets/create";
-import useAuthStore from "../../stores/authStore";
+import {DietSchema, dietSchema} from "../../queries/diets/create";
 import useTagsOwner from "../../hooks/useTagsOwner";
 import useExclusionsOwner from "../../hooks/useExclusionsOwner";
 import classes from "../../sass/components/form.module.scss";
@@ -13,9 +12,9 @@ import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
 import {DevTool} from "@hookform/devtools";
-import {Meal} from "../../types/dbtypes/Meal";
 import {Diet} from "../../types/dbtypes/Diet";
 import useDietEdit, {DietPutData} from "../../queries/diets/edit";
+
 interface DietEditProps {
 	data: Diet
 	token: string,

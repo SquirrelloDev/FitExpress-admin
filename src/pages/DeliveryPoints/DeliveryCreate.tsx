@@ -1,10 +1,8 @@
 import {FormProvider, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import usePromoCreate, {PromocodePostData, PromocodeSchema, promocodeSchema} from "../../queries/promocodes/create";
 import useAuthStore from "../../stores/authStore";
 import classes from "../../sass/components/form.module.scss";
 import Input from "../../components/Input/Input";
-import ControlledDatePicker from "../../components/Datepicker/ControlledDatePicker";
 import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";

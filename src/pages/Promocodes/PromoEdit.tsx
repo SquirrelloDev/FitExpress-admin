@@ -1,7 +1,5 @@
-import {Tag} from "../../types/dbtypes/Tags";
 import {FormProvider, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import useTagEdit, {TagsPutData, TagsPutSchema, tagsPutSchema} from "../../queries/tags/edit";
 import classes from "../../sass/components/form.module.scss";
 import Input from "../../components/Input/Input";
 import clsx from "clsx";

@@ -6,6 +6,7 @@ import {appRoutes} from "../../utils/routes";
 import {z} from "zod";
 import errorMessages from "../../utils/errorMessages";
 import {TagsError, TagsPostData, TagsResponse} from "./create";
+
 export type UserPutData = {
     user: {
         name: string,

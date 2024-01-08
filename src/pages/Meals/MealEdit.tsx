@@ -8,13 +8,12 @@ import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
 import {DevTool} from "@hookform/devtools";
 import {zodResolver} from "@hookform/resolvers/zod";
-import useMealCreate, {MealPostData, MealSchema, mealSchema} from "../../queries/meals/create";
-import useAuthStore from "../../stores/authStore";
+import {MealSchema, mealSchema} from "../../queries/meals/create";
 import useTagsOwner from "../../hooks/useTagsOwner";
 import useExclusionsOwner from "../../hooks/useExclusionsOwner";
-import {Address} from "../../types/dbtypes/Address";
 import {Meal} from "../../types/dbtypes/Meal";
 import useMealEdit, {MealPutData} from "../../queries/meals/edit";
+
 interface MealEditProps {
 	data: Meal
 	token: string,

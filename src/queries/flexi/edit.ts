@@ -3,11 +3,7 @@ import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
-import {
-    FlexiResponse,
-    FlexiError,
-    FlexiPostData,
-} from "./create";
+import {FlexiError, FlexiPostData, FlexiResponse,} from "./create";
 
 export type FlexiPutData = FlexiPostData & { id: string }
 const updateDayFlexi: MutationFunction<FlexiResponse, FlexiPutData> = async (dayFlexi) => {

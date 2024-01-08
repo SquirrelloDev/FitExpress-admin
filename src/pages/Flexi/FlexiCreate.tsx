@@ -1,8 +1,6 @@
 import {FormProvider, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import useDayFixedCreate, {FixedPostData, FixedSchema, fixedSchema} from "../../queries/fixed/create";
 import useAuthStore from "../../stores/authStore";
-import useDietsListQuery from "../../queries/diets/listing";
 import useMealOwner from "../../hooks/useMealOwner";
 import classes from "../../sass/components/form.module.scss";
 import ControlledDatePicker from "../../components/Datepicker/ControlledDatePicker";

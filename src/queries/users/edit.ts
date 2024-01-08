@@ -6,6 +6,7 @@ import {appRoutes} from "../../utils/routes";
 import {dateErrorMap, selectErrorMap, UserError, UserResponse} from "./create";
 import {z} from "zod";
 import errorMessages from "../../utils/errorMessages";
+
 export type UserPutData = {
     user: {
         name: string,

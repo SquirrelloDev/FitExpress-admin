@@ -3,14 +3,7 @@ import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
-import {
-    ExclusionError,
-    ExclusionPostData,
-    ExclusionResponse,
-    PromocodeError,
-    PromocodePostData,
-    PromocodeResponse
-} from "./create";
+import {PromocodeError, PromocodePostData, PromocodeResponse} from "./create";
 
 export type PromocodePutData = PromocodePostData & {id: string}
 const updatePromo:MutationFunction<PromocodeResponse, PromocodePutData> = async (promo) => {

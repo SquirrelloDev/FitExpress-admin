@@ -3,10 +3,7 @@ import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
-import {
-    AddressError,
-    AddressPostData, AddressResponse, OrderError, OrderPostData, OrderResponse,
-} from "./create";
+import {OrderError, OrderPostData, OrderResponse,} from "./create";
 
 export type OrderPutData = OrderPostData & {id: string}
 const updateOrder:MutationFunction<OrderResponse, OrderPutData> = async (order) => {

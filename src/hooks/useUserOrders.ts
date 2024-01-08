@@ -1,6 +1,5 @@
 import {SelectOption} from "../components/Select/types";
 import {useEffect, useState} from "react";
-import {Address} from "../types/dbtypes/Address";
 import {Order} from "../types/dbtypes/Order";
 
 function useUserOrders(clientId: string, allOrders: Order[]): SelectOption[] {

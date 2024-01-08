@@ -7,6 +7,7 @@ import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../../utils/routes";
 import {dateErrorMap} from "../users/create";
+
 export const promocodeSchema = z.object({
     name: z.string().min(1, errorMessages.required),
     discount: z.coerce.number().min(1, 'Zniżka powinna mieć conajmniej 1%').max(75, 'Maksymalna wartość zniżki: 75%'),

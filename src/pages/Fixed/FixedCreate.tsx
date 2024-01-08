@@ -1,14 +1,8 @@
 import {FormProvider, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
-import useDietCreate, {DietPostData, DietSchema, dietSchema} from "../../queries/diets/create";
 import useAuthStore from "../../stores/authStore";
-import useTagsOwner from "../../hooks/useTagsOwner";
-import useExclusionsOwner from "../../hooks/useExclusionsOwner";
 import classes from "../../sass/components/form.module.scss";
-import Input from "../../components/Input/Input";
 import ControlledSelect from "../../components/Select/ControlledSelect";
-import ControlledMultiSelect from "../../components/Select/ControlledMultiSelect";
-import TextArea from "../../components/TextArea/TextArea";
 import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";

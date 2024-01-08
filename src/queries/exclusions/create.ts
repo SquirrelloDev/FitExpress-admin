@@ -6,6 +6,7 @@ import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../../utils/routes";
+
 export const exclusionSchema = z.object({
     name: z.string().min(1, errorMessages.required),
 })

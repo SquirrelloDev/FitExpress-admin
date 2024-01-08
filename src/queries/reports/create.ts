@@ -1,5 +1,5 @@
 import {MutationFunction, useMutation} from "@tanstack/react-query";
-import {z, ZodString} from 'zod'
+import {z} from 'zod'
 import errorMessages from "../../utils/errorMessages";
 import {AxiosError} from "axios";
 import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
@@ -7,6 +7,7 @@ import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../../utils/routes";
 import {dateErrorMap, selectErrorMap} from "../users/create";
+
 export const reportSchema = z.object({
     category: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
     userId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),

@@ -3,10 +3,7 @@ import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
-import {
-    AddressError,
-    AddressPostData, AddressResponse,
-} from "./create";
+import {AddressError, AddressPostData, AddressResponse,} from "./create";
 
 export type AddressPutData = AddressPostData & {id: string}
 const updateAddress:MutationFunction<AddressResponse, AddressPutData> = async (address) => {

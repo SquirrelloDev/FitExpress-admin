@@ -68,7 +68,7 @@ function OrderEdit({addressData, orderData, token, id}:OrderEditProps) {
 	return (
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
-				<h2>Nowe zamówienie</h2>
+				<h2>Edytuj zamówienie</h2>
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<ControlledSelect options={selectDiets} control={methods.control} name={'dietId'} placeholder={'Dieta'}/>
@@ -80,7 +80,7 @@ function OrderEdit({addressData, orderData, token, id}:OrderEditProps) {
 					<Input type={'number'} name={'price'} placeholder={'Cena diety'}/>
 					<Input type={'number'} name={'calories'} placeholder={'Kaloryczność diety'}/>
 					<Checkbox className={inputStyles.checkbox} name={'withWeekends'} placeholder={'Czy z weekendami?'}/>
-					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
+					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>
 			</div>
 			<DevTool control={methods.control}/>

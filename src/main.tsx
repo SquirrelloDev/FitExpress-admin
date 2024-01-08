@@ -26,26 +26,13 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import Users from "./pages/Users/Users";
 import UserCreate from "./pages/Users/UserCreate";
 import AddressCreate from "./pages/Addresses/AddressCreate";
-import AddressEdit from "./pages/Addresses/AddressEdit";
 import DeliveryCreate from "./pages/DeliveryPoints/DeliveryCreate";
-import DietEdit from "./pages/Diets/DietEdit";
 import FixedCreate from "./pages/Fixed/FixedCreate";
-import FixedEdit from "./pages/Fixed/FixedEdit";
 import FlexiCreate from "./pages/Flexi/FlexiCreate";
-import FlexiEdit from "./pages/Flexi/FlexiEdit";
 import MealCreate from "./pages/Meals/MealCreate";
-import MealEdit from "./pages/Meals/MealEdit";
-import OrderCreate from "./pages/Orders/OrderCreate";
-import OrderEdit from "./pages/Orders/OrderEdit";
 import PromoCreate from "./pages/Promocodes/PromoCreate";
-import PromoEdit from "./pages/Promocodes/PromoEdit";
-import ReportCreate from "./pages/Reports/ReportCreate";
-import ReportEdit from "./pages/Reports/ReportEdit";
 import TagCreate from "./pages/Tags/TagCreate";
-import TagEdit from "./pages/Tags/TagEdit";
 import ExclusionCreate from "./pages/Exclusions/ExclusionCreate";
-import ExclusionEdit from "./pages/Exclusions/ExclusionEdit";
-import DeliveryEdit from "./pages/DeliveryPoints/DeliveryEdit";
 import {UserEditPage} from "./components/EditForms/UserEditPage";
 import {TagEditPage} from "./components/EditForms/TagEditPage";
 import {ExclusionEditPage} from "./components/EditForms/ExclusionEditPage";
@@ -68,16 +55,6 @@ const router = createBrowserRouter([
         element: <MainLayout minPermLevel={UserRole.dietetician}/>,
         children: [
             {element: <Home/>, index: true},
-            // {path: appRoutes.addresses, element: <Addresses/>},
-            // {path: appRoutes.diets, element: <Diets/>},
-            // {path: appRoutes.exclusions, element: <Exclusions/>},
-            // {path: appRoutes.fixedDays, element: <FixedDays/>},
-            // {path: appRoutes.flexiDays, element: <FlexiDays/>},
-            // {path: appRoutes.meals, element: <Meals/>},
-            // {path: appRoutes.orders, element: <Orders/>},
-            // {path: appRoutes.promocodes, element: <Promocodes/>},
-            // {path: appRoutes.reports, element: <Reports/>},
-            // {path: appRoutes.tags, element: <Tags/>},
         ]
     },
     {

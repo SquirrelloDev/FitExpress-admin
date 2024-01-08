@@ -20,7 +20,7 @@ const updateOrder:MutationFunction<OrderResponse, OrderPutData> = async (order) 
 }
 function useOrderEdit(){
     const navigate = useNavigate();
-    const {mutate, isError, isLoading, isSuccess, error} = useMutation<OrderResponse, OrderError, OrderPutData>(['Address-Update'], updateOrder, {onSuccess: () => {
+    const {mutate, isError, isLoading, isSuccess, error} = useMutation<OrderResponse, OrderError, OrderPutData>(['Order-Update'], updateOrder, {onSuccess: () => {
             toast.success('Zamówienie zedytowane!');
             queryClient.invalidateQueries(['OrdersList'])
             queryClient.invalidateQueries(['OrderList'])

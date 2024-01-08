@@ -15,46 +15,57 @@ import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
 import {DevTool} from "@hookform/devtools";
 import TextArea from "../../components/TextArea/TextArea";
+import {SelectOption} from "../../components/Select/types";
+import useUserOrders from "../../hooks/useUserOrders";
+import {Address} from "../../types/dbtypes/Address";
+import {Order} from "../../types/dbtypes/Order";
+import useReportCreate, {ReportPostData, reportSchema, ReportSchema} from "../../queries/reports/create";
 
-function ReportCreate() {
+const reportCategories: SelectOption[] =[
+	{label: 'Otwarta paczka', value: 'openedPackage'},
+	{label: 'Brak posiłku', value: 'missingMeal'},
+	{label: 'Słaba jakość posiłku', value: 'lowQualityMeal'},
+	{label: 'Posiłek inny niż w zamówieniu', value: 'differentMeal'},
+	{label: 'Uszkodzona paczka', value: 'damagedPackage'},
+	{label: 'Brakująca paczka', value: 'missingPackage'},
+	{label: 'Inne', value: 'other'},
+]
+interface ReportCreateProps {
+	data: Order[],
+	token: string
+}
+function ReportCreate({data, token}:ReportCreateProps) {
 	const methods = useForm({
-		resolver: zodResolver(orderSchema),
+		resolver: zodResolver(reportSchema),
 	})
 	const { handleSubmit, watch } = methods
-	const clientId = watch('userId');
-	const allAdresses = data
-	const selectDiets = useDietOwner();
+	const clientId = watch('userId')
 	const selectUsers = useUserOwner();
-	const selectedUserAddresses = useUserAddresses(clientId, allAdresses)
-	const {mutate, isLoading} = useOrderCreate()
-	const onSubmit = (data: OrderSchema) => {
-		const newOrder:OrderPostData = {
-			order: {
-				dietId: data.dietId,
+	const selectOrders = useUserOrders(clientId, data)
+	const {mutate, isLoading} = useReportCreate()
+	const onSubmit = (data: ReportSchema) => {
+		const newReport:ReportPostData = {
+			report: {
 				userId: data.userId,
-				addressId: data.addressId,
-				subDate: {
-					from: new Date(data.subDateFrom.setHours(1,0,0,0)),
-					to: new Date(data.subDateTo.setHours(1,0,0,0))
-				},
-				price: data.price,
-				calories: data.calories,
-				withWeekends: data.withWeekends
+				orderId: data.orderId,
+				deliveryDate: new Date(data.deliveryDate.setHours(1,0,0,0)),
+				category: data.category,
+				message: data.message
 			},
 			token: token
 		}
-		mutate(newOrder)
+		mutate(newReport)
 	}
 	return (
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
-				<h2>Nowe zamówienie</h2>
+				<h2>Nowe zgłoszenie</h2>
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
-					<ControlledSelect options={selectDiets} control={methods.control} name={'dietId'} placeholder={'Dieta'}/>
-					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Klient dla tej diety'}/>
-					<ControlledDatePicker control={methods.control} name={'subDateFrom'} placeholderText={'Od'}/>
-					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Klient dla tej diety'}/>
+					<ControlledSelect options={reportCategories} control={methods.control} name={'category'} placeholder={'Kategoria zgłoszenia'}/>
+					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Wybierz klienta'}/>
+					<ControlledSelect options={selectOrders} control={methods.control} name={'orderId'} placeholder={'Wybierz zamówenie klienta'}/>
+					<ControlledDatePicker control={methods.control} name={'deliveryDate'} placeholderText={'Data dostawy'}/>
 					<TextArea name={'message'}  placeholder={'Treść zgłoszenia'}/>
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
 				</form>

@@ -59,6 +59,8 @@ import {FixedEditPage} from "./components/EditForms/FixedEditPage";
 import {FlexiEditPage} from "./components/EditForms/FlexiEditPage";
 import {OrderCreatePage} from "./components/EditForms/OrderCreatePage";
 import {OrderEditPage} from "./components/EditForms/OrderEditPage";
+import {ReportCreatePage} from "./components/EditForms/ReportCreatePage";
+import {ReportEditPage} from "./components/EditForms/ReportEditPage";
 
 const router = createBrowserRouter([
     {
@@ -129,8 +131,8 @@ const router = createBrowserRouter([
     }, {
         path: appRoutes.reports, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [
             {index: true, element: <Reports/>},
-            {path: appRoutes.create, element: <ReportCreate/>},
-            {path: appRoutes.editById, element: <ReportEdit/>}
+            {path: appRoutes.create, element: <ReportCreatePage/>},
+            {path: appRoutes.editById, element: <ReportEditPage/>}
         ]
     }, {
         path: appRoutes.tags, element: <MainLayout minPermLevel={UserRole.dietetician}/>, children: [

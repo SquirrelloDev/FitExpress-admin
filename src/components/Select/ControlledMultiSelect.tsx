@@ -1,19 +1,17 @@
 import clsx from 'clsx'
-import { Control, Controller, useFormContext } from 'react-hook-form'
-import Select, {
-    Props as SelectProps,
-} from 'react-select'
-import { SelectOption } from './types'
+import {Control, Controller, FieldValues, Path, useFormContext} from 'react-hook-form'
+import Select, {Props as SelectProps,} from 'react-select'
+import {SelectOption} from './types'
 import classes from "../../sass/components/select.module.scss";
 
-interface ControlledSelectProps extends Omit<SelectProps, 'options'> {
+interface ControlledSelectProps<T extends FieldValues> extends Omit<SelectProps, 'options'> {
   options: SelectOption[]
-  control: Control
+  control: Control<T>
   name: string
   error?: string
   isRequired?: boolean
 }
-function ControlledSelect({
+function ControlledSelect<T extends FieldValues>({
   options,
   control,
   name = '',
@@ -21,13 +19,13 @@ function ControlledSelect({
   isDisabled,
   isRequired = false,
   ...props
-}: ControlledSelectProps) {
+}: ControlledSelectProps<T>) {
   const {
     formState: { errors },
   } = useFormContext()
   return (
     <Controller
-      name={name}
+      name={name as Path<T>}
       control={control}
       render={({
         field: { onChange, onBlur, value },

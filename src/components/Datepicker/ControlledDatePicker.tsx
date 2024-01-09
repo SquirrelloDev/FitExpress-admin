@@ -1,8 +1,10 @@
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import "../../sass/components/date-picker.scss"
+import inputStyles from '../../sass/components/text-input.module.scss'
 import {Control, Controller, FieldValues, Path, useFormContext} from 'react-hook-form'
 import CustomInput from "./CustomInput";
+import errorMessages from "../../utils/errorMessages";
 
 interface ControlledDatepickerProps<T extends FieldValues>
   extends Omit<ReactDatePickerProps, 'onChange'> {
@@ -40,13 +42,13 @@ function ControlledDatePicker<T extends FieldValues>({
             {...props}
           />
           {errors[name] && (
-            <p>
+            <p className={inputStyles.error}>
               {`${errors[name as string]?.message}`}
             </p>
           )}
           {!errors[name] && isTouched && !value && (
-            <p>
-                {'required'}
+            <p className={inputStyles.error}>
+                {errorMessages.required}
             </p>
           )}
         </div>

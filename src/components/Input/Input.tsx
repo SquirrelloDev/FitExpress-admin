@@ -39,7 +39,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {errors[name!] && (
-          <p>
+          <p className={inputStyles.error}>
             {`${errors[name!]?.message}`}
           </p>
         )}

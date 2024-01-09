@@ -5,6 +5,7 @@ import Select, {
 } from 'react-select'
 import { SelectOption } from './types'
 import classes from "../../sass/components/select.module.scss";
+import errorMessages from "../../utils/errorMessages";
 
 interface ControlledSelectProps<T extends FieldValues> extends Omit<SelectProps, 'options'> {
   options: SelectOption[]
@@ -78,13 +79,13 @@ function ControlledSelect<T extends FieldValues>({
             {...props}
           />
           {errors[name] && (
-            <p >
+            <p className={classes.select__error}>
               {`${errors[name]?.message}`}
             </p>
           )}
           {!errors[name] && isTouched && !value && isRequired && (
-            <p>
-              {'required'}
+            <p className={classes.select__error}>
+              {errorMessages.required}
             </p>
           )}
         </div>

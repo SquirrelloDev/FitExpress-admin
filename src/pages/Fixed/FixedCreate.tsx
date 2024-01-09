@@ -43,7 +43,7 @@ function FixedCreate() {
 						{dietData?.diets.map(diet =>
 							(
 								<div key={diet._id} className={classes['form__day-container__wrapper']}>
-									<h4>{diet.name}</h4>
+									<h4 style={{marginBottom: '10px'}}>{diet.name}</h4>
 									<div className={clsx(classes['form__day-container--fixed'], classes['form__day-container'])}>
 										<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${diet._id}.0`} placeholder={'Śniadanie'}/>
 										<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${diet._id}.1`} placeholder={'Lunch'}/>

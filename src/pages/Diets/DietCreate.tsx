@@ -44,7 +44,7 @@ function DietCreate() {
 				<Input name={'shortDesc'} placeholder='Krótki opis diety'/>
 				<TextArea name={'longDesc'} placeholder='Dłuższy opis diety'/>
 				<Input name={'image'} type={'file'} accept={'image/jpeg, image/png'} placeholder={'Główne zdjęcie diety'}/>
-				<h3>Rozpiska cenowa dla kaloryczności</h3>
+				<h3 style={{marginBottom: '10px'}}>Rozpiska cenowa dla kaloryczności (w PLN)</h3>
 				<Input name={'kcal1500'} type={'number'} step={0.01} placeholder='1500 kcal'/>
 				<Input name={'kcal1800'} type={'number'} step={0.01} placeholder='1800 kcal'/>
 				<Input name={'kcal2000'} type={'number'} step={0.01} placeholder='2000 kcal'/>

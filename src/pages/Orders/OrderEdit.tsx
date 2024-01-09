@@ -76,7 +76,7 @@ function OrderEdit({addressData, orderData, token, id}:OrderEditProps) {
 					<ControlledSelect options={selectDiets} control={methods.control} name={'dietId'} placeholder={'Dieta'}/>
 					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Klient dla tej diety'}/>
 					<ControlledSelect options={selectedUserAddresses} control={methods.control} name={'addressId'} placeholder={'Adres klienta'}/>
-					<h3 style={{}}>Okres trwania diety</h3>
+					<h3 style={{marginBottom: '10px'}}>Okres trwania diety</h3>
 					<ControlledDatePicker control={methods.control} name={'subDateFrom'} placeholderText={'Od'}/>
 					<ControlledDatePicker control={methods.control} name={'subDateTo'} placeholderText={'Do'}/>
 					<Input type={'number'} name={'price'} placeholder={'Cena diety'}/>

@@ -15,7 +15,7 @@ function FlexiCreate() {
 	const methods = useForm({
 		resolver: zodResolver(flexiSchema),
 	})
-	const dayParts = ['morning', 'lunch', 'dinner', 'teatime', 'supper']
+	const dayParts = [{name: 'morning', plName: 'Śniadanie'}, {name: 'lunch', plName: 'lunch'}, {name: 'dinner', plName: 'Obiad'}, {name: 'teatime', plName: 'Podwieczorek'}, {name: 'supper', plName: 'kolacja'}]
 	const userData = useAuthStore((state) => state.userData);
 	const {mutate, isLoading: isFormLoading} = useDayFlexiCreate()
 	const selectMeals = useMealOwner()
@@ -38,15 +38,15 @@ function FlexiCreate() {
 							<h3 style={{margin: '15px 0'}}>Poziomy subskrypcji</h3>
 							{dayParts.map(dayPart =>
 								(
-									<div key={dayPart} className={classes['form__day-container__wrapper']}>
-										<h4>{dayPart}</h4>
+									<div key={dayPart.name} className={classes['form__day-container__wrapper']}>
+										<h4>{dayPart.plName}</h4>
 										<div className={clsx(classes['form__day-container--flexi'], classes['form__day-container'])}>
-											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart}.0`} placeholder={'Basic'}/>
-											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart}.1`} placeholder={'Basic'}/>
-											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart}.2`} placeholder={'Basic'}/>
-											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart}.3`} placeholder={'Plus'}/>
-											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart}.4`} placeholder={'All-in'}/>
-											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart}.5`} placeholder={'All-in'}/>
+											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart.name}.0`} placeholder={'Basic'}/>
+											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart.name}.1`} placeholder={'Basic'}/>
+											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart.name}.2`} placeholder={'Basic'}/>
+											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart.name}.3`} placeholder={'Plus'}/>
+											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart.name}.4`} placeholder={'All-in'}/>
+											<ControlledSelect control={methods.control} options={selectMeals} name={`meals.${dayPart.name}.5`} placeholder={'All-in'}/>
 										</div>
 									</div>
 								)

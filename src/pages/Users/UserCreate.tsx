@@ -82,9 +82,9 @@ function UserCreate() {
                 <ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"}/>
                 <ControlledSelect options={userRoles} control={methods.control} name={'role'} isRequired placeholder={'Rola'} />
                 <h2>Dane zdrowotne</h2>
-                <Input name={'user_height'} type='number' min={120} max={250} placeholder={'Wzrost'} />
-                <Input name={'user_weight_current'} type='number' min={40} max={500} placeholder={'Aktualna waga'} />
-                <Input name={'user_weight_planned'} type='number' min={40} max={500} placeholder={'Planowana waga'} />
+                <Input name={'user_height'} type='number' min={120} max={250} placeholder={'Wzrost (w cm)'} />
+                <Input name={'user_weight_current'} type='number' min={40} max={500} placeholder={'Aktualna waga (w kg)'} />
+                <Input name={'user_weight_planned'} type='number' min={40} max={500} placeholder={'Planowana waga (w kg)'} />
                 <ControlledSelect options={[{label: 'Mężczyzna', value: 'M'}, {label: 'Kobieta', value: 'F'}]} control={methods.control} name={'gender'} placeholder={'Płeć'} isRequired/>
                 <ControlledSelect options={palActive} control={methods.control} name={'pal_active'} placeholder={'Aktywność treningowa w tygodniu'}/>
                 <ControlledSelect options={palPassive} control={methods.control} name={'pal_passive'} placeholder={'Aktywność pozatreningowa'}/>

@@ -61,7 +61,7 @@ function MealEdit({data, token, id}:MealEditProps) {
 					<TextArea name={'description'} placeholder='Opis posiłku'/>
 					<Input name={'ingredients'} placeholder='Składniki (oddziel składniki przecinkami)'/>
 					<Input name={'image'} type={'file'}  accept={'image/jpeg, image/png'} placeholder={'Zdjęcie posiłku'}/>
-					<h3>Wartości odżywcze</h3>
+					<h3 style={{marginBottom: '10px'}}>Wartości odżywcze</h3>
 					<Input name={'calories'} type={'number'} placeholder='Kalorie (kcal)'/>
 					<Input name={'carbs'} type={'number'} placeholder='Węglowodany (g)'/>
 					<Input name={'fats'} type={'number'} placeholder='Tłuszcze (g)'/>

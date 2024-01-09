@@ -57,9 +57,7 @@ function UserEdit({data, token, id}:UserEditProps) {
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa'/>
 					<Input name={'email'} type='email' placeholder='Adres email'/>
-					{/*@ts-expect-error type is correct*/}
 					<ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"}/>
-					{/*@ts-expect-error type is correct*/}
 					<ControlledSelect options={userRoles} control={methods.control} name={'role'} isRequired placeholder={'Rola'} />
 					<h2>Dane zdrowotne</h2>
 					<p>Dane dotyczące zdrowia są niedostępne do edycji</p>

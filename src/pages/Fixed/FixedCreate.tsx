@@ -36,7 +36,7 @@ function FixedCreate() {
 				<h2>Nowy dzień Fixed</h2>
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
-					<ControlledDatePicker name={'date'} control={methods.control} placeholder='Data'/>
+					<ControlledDatePicker name={'date'} control={methods.control} placeholderText='Data'/>
 					{!isDietsLoading && (
 						<>
 						<h3 style={{margin: '15px 0'}}>Diety</h3>

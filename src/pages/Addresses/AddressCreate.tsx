@@ -78,7 +78,6 @@ function AddressCreate() {
 					<Input name={'apartmentNumber'} type={'number'} placeholder='Nr lokalu'/>
 					<Input name={'city'} placeholder='Miasto'/>
 					<Input name={'postal'} placeholder='Kod pocztowy'/>
-					{/*@ts-expect-error values are correct*/}
 					<ControlledSelect options={voivodeships} control={methods.control} name={'voivodeship'} placeholder={'Województwo'}/>
 					<ControlledMultiSelect options={selectDelivery} control={methods.control} name={'linked_points'} placeholder={'Powiązane punkty'}/>
 					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Właściciel adresu'}/>

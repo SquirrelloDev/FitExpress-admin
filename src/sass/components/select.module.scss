@@ -11,4 +11,8 @@
       background-color: $cta;
     }
   }
+  &__error{
+    margin: .75em 0;
+    color: $cta-red;
+  }
 }

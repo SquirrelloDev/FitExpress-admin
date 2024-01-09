@@ -37,6 +37,13 @@ function AddressDetails({id, token, closeModal}:ViewDetailsProps) {
 				<p>Województwo: {singleAddressData?.address.voivodeship}</p>
 				<p>Czy jest to adres weekendowy?: {singleAddressData?.address.is_weekend ? 'Tak':'Nie'}</p>
 				<h3>Dane dodatkowe</h3>
+				<p>Powiązane punkty FitExpress z tym adresem</p>
+				{singleAddressData?.address.linked_points.length === 0 && <p style={{color:'red'}}>{'Brak powiązanych punktów'}</p>}
+				{singleAddressData!.address.linked_points.length > 0 && (
+					<ul>
+						{singleAddressData?.address.linked_points.map(point => <li>{point.name}</li>)}
+					</ul>
+				)}
 				<p>{singleAddressData?.address.extra_info}</p>
 			</div>
 		</div>

@@ -1,4 +1,5 @@
 import {TableListingType} from "../types/table/tableListing";
+
 type polishNamesType = {
     users: 'Użytkownicy',
     meals: 'Posiłki',

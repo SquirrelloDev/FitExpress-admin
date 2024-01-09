@@ -1,27 +1,29 @@
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import "../../sass/components/date-picker.scss"
-import { Control, Controller, useFormContext } from 'react-hook-form'
+import inputStyles from '../../sass/components/text-input.module.scss'
+import {Control, Controller, FieldValues, Path, useFormContext} from 'react-hook-form'
 import CustomInput from "./CustomInput";
+import errorMessages from "../../utils/errorMessages";
 
-interface ControlledDatepickerProps
+interface ControlledDatepickerProps<T extends FieldValues>
   extends Omit<ReactDatePickerProps, 'onChange'> {
-  control: Control
+  control: Control<T>
   name: string
   error?: string
 }
 
-function ControlledDatePicker({
+function ControlledDatePicker<T extends FieldValues>({
   control,
-  name = '',
+  name,
   ...props
-}: ControlledDatepickerProps) {
+}: ControlledDatepickerProps<T>) {
   const {
     formState: { errors },
   } = useFormContext()
   return (
     <Controller
-      name={name}
+      name={name as Path<T>}
       control={control}
       render={({
         field: { onChange, onBlur, value },
@@ -33,19 +35,20 @@ function ControlledDatePicker({
             onChange={onChange}
             dateFormat="dd/MM/yyyy"
             onBlur={onBlur}
+            wrapperClassName={'wrapper'}
             customInput={<CustomInput name={name} />}
             nextMonthButtonLabel=">"
             previousMonthButtonLabel="<"
             {...props}
           />
           {errors[name] && (
-            <p>
+            <p className={inputStyles.error}>
               {`${errors[name]?.message}`}
             </p>
           )}
           {!errors[name] && isTouched && !value && (
-            <p>
-                {'required'}
+            <p className={inputStyles.error}>
+                {errorMessages.required}
             </p>
           )}
         </div>

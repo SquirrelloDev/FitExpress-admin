@@ -15,6 +15,7 @@ import MealDetails from "../../components/Modal/Views/MealDetails";
 import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useMealDelete from "../../queries/meals/delete";
 import {Grid} from "react-loader-spinner";
+import {IconPhotoOff} from "@tabler/icons-react";
 
 function Meals() {
     const columnHelper = createColumnHelper<Meal>()
@@ -43,8 +44,6 @@ function Meals() {
                 return <p>{...exclusionNames}</p>
             }
         }),
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
         columnHelper.accessor('tags_id', {
             header: 'Tagi',
             cell: ({getValue}) =>{
@@ -59,6 +58,9 @@ function Meals() {
         columnHelper.accessor('imageBuffer', {
             header: 'Zdjęcie',
             cell: ({getValue}) => {
+                if(!getValue()){
+                    return <IconPhotoOff size={30}/>
+                }
                 return (
                     <img src={'data:;base64,' + `${getValue()}`} width={80} height={80}/>
                 )

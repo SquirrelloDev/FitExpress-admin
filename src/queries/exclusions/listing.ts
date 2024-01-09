@@ -47,7 +47,7 @@ const listExclusions: QueryFunction<ExclusionsResponse, ExclusionsListKey> = asy
 }
 const listOneExclusion: QueryFunction<OneExclusionResponse, OneExclusionListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await FitExpressClient.getInstance().get<OneExclusionResponse>(apiRoutes.GET_MEAL(id), {
+    const res = await FitExpressClient.getInstance().get<OneExclusionResponse>(apiRoutes.GET_EXCLUSION(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

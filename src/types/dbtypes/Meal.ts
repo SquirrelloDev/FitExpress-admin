@@ -11,9 +11,9 @@ export type Meal = {
     },
     imageBuffer: string
     exclusions: Exclusion[],
-    tagsId: Tag[],
+    tags_id: Tag[],
     ingredients: string[],
-    nutritionValues: {
+    nutrition_values: {
         calories: number,
         carbs: number,
         fats: number,

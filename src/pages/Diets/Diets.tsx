@@ -13,6 +13,7 @@ import useDietsListQuery from "../../queries/diets/listing";
 import useDietDelete from "../../queries/diets/delete";
 import DietDetails from "../../components/Modal/Views/DietDetails";
 import {Grid} from "react-loader-spinner";
+import {IconPhotoOff} from "@tabler/icons-react";
 
 function Diets() {
 	const columnHelper = createColumnHelper<Diet>()
@@ -40,7 +41,14 @@ function Diets() {
 		}),
 		columnHelper.accessor('imageBuffer', {
 			header: 'Zdjęcie',
-			cell: ({getValue}) => <img src={'data:;base64,' + `${getValue()}`} width={80} height={80}/>
+			cell: ({getValue}) => {
+				if(!getValue()){
+					return <IconPhotoOff size={30}/>
+				}
+				return (
+					<img src={'data:;base64,' + `${getValue()}`} width={80} height={80}/>
+				)
+			}
 		}),
 		columnHelper.accessor('_id', {
 			id: 'actions', header: 'Akcje', cell: ({getValue}) => {

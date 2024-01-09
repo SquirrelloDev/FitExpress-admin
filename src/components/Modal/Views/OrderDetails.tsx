@@ -32,6 +32,7 @@ function OrderDetails({id, token, closeModal}:ViewDetailsProps) {
 			</div>
 			<div className={classes.view__info}>
 				<p>Identyfikator zamówienia: {id}</p>
+				<p>Nazwa planu dietetycznego: {singleOrderData!.order.name}</p>
 				<p>Nazwa diety: {singleOrderData!.order.diet_id.name}</p>
 				<p>Identyfikator klienta: {singleOrderData!.order.user_id._id}</p>
 				<p>Adres email klienta: {singleOrderData!.order.user_id.email}</p>

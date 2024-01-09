@@ -4,7 +4,7 @@ import classes from "../../../sass/components/detailsModalView.module.scss";
 import {IconX} from "@tabler/icons-react";
 import {useOneDietListQuery} from "../../../queries/diets/listing";
 
-type KcalPrices = { kcal1200: number; kcal1500: number; kcal1800: number; kcal2000: number; kcal2200: number; kcal2500: number; }
+type KcalPrices = { kcal2800: number; kcal1500: number; kcal1800: number; kcal2000: number; kcal2200: number; kcal2500: number; }
 interface ViewDetailsProps {
 	id: string,
 	token: string,

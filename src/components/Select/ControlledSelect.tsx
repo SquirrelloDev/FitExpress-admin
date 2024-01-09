@@ -1,19 +1,20 @@
 import clsx from 'clsx'
-import { Control, Controller, useFormContext } from 'react-hook-form'
+import {Control, Controller, FieldValues, Path, useFormContext} from 'react-hook-form'
 import Select, {
     Props as SelectProps,
 } from 'react-select'
 import { SelectOption } from './types'
 import classes from "../../sass/components/select.module.scss";
+import errorMessages from "../../utils/errorMessages";
 
-interface ControlledSelectProps extends Omit<SelectProps, 'options'> {
+interface ControlledSelectProps<T extends FieldValues> extends Omit<SelectProps, 'options'> {
   options: SelectOption[]
-  control: Control
+  control: Control<T, unknown>
   name: string
   error?: string
   isRequired?: boolean
 }
-function ControlledSelect({
+function ControlledSelect<T extends FieldValues>({
   options,
   control,
   name = '',
@@ -21,13 +22,13 @@ function ControlledSelect({
   isDisabled,
   isRequired = false,
   ...props
-}: ControlledSelectProps) {
+}: ControlledSelectProps<T>) {
   const {
     formState: { errors },
   } = useFormContext()
   return (
     <Controller
-      name={name}
+      name={name as Path<T>}
       control={control}
       render={({
         field: { onChange, onBlur, value },
@@ -39,18 +40,21 @@ function ControlledSelect({
             options={options}
             value={options.find((option) => option.value === value)}
             onBlur={onBlur}
-            onChange={(val: unknown) => {
+            //@ts-expect-error value is correct
+            onChange={
+              (val: SelectOption) => {
               if (!val) {
                 onChange(null)
                 return
               }
-              onChange(val)
+              onChange(val.value)
             }}
             styles={{
                 control: (base) => ({
                     ...base,
                     backgroundColor: '#1a1a1a',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    margin: '10px 0'
                 }),
                 menu: (baseStyles) => ({
                     ...baseStyles,
@@ -76,13 +80,13 @@ function ControlledSelect({
             {...props}
           />
           {errors[name] && (
-            <p >
+            <p className={classes.select__error}>
               {`${errors[name]?.message}`}
             </p>
           )}
           {!errors[name] && isTouched && !value && isRequired && (
-            <p>
-              {'required'}
+            <p className={classes.select__error}>
+              {errorMessages.required}
             </p>
           )}
         </div>

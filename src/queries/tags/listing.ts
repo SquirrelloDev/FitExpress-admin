@@ -47,7 +47,7 @@ const listTags: QueryFunction<TagsResponse, TagsListKey> = async ({signal, query
 }
 const listOneTag: QueryFunction<OneTagResponse, OneTagListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await FitExpressClient.getInstance().get<OneTagResponse>(apiRoutes.GET_MEAL(id), {
+    const res = await FitExpressClient.getInstance().get<OneTagResponse>(apiRoutes.GET_TAG(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

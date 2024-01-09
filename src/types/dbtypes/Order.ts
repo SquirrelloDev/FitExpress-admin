@@ -4,6 +4,7 @@ import {Address} from "./Address";
 
 export type Order = {
     _id: string,
+    name: string,
     diet_id: Diet,
     user_id: UserFullData,
 

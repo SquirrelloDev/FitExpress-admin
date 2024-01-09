@@ -38,7 +38,7 @@ const Checkbox = forwardRef<HTMLInputElement, InputProps>(
               {placeholder}
           </label>
         {errors[name!] && (
-          <p>
+          <p className={inputStyles.error}>
             {`${errors[name!]?.message}`}
           </p>
         )}

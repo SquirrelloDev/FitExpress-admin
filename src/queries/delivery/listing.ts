@@ -15,10 +15,10 @@ interface paginationInfo {
 type AuthParams = {
     token: string,
 }
-// type OneAuthParams = {
-//     token: string,
-//     id: string
-// }
+type OneAuthParams = {
+    token: string,
+    id: string
+}
 const userPartialKey = 'DeliveryList'
 type DeliveryListKey = [typeof userPartialKey, AuthParams]
 
@@ -27,12 +27,12 @@ interface DeliveryResponse {
     paginationInfo: paginationInfo
 }
 
-// const oneTagPartialKey = 'TagList'
-// type OneTagListKey = [typeof oneTagPartialKey, OneAuthParams]
+const oneTagPartialKey = 'DeliveryOneList'
+type OneDeliveryListKey = [typeof oneTagPartialKey, OneAuthParams]
 
-// interface OneTagResponse {
-//     tag: Tag
-// }
+interface OneDeliveryResponse {
+    delivery: DeliveryPoint
+}
 
 const listDelivery: QueryFunction<DeliveryResponse, DeliveryListKey> = async ({signal, queryKey}) => {
     const [, {token}] = queryKey
@@ -45,16 +45,16 @@ const listDelivery: QueryFunction<DeliveryResponse, DeliveryListKey> = async ({s
     })
     return res.data as DeliveryResponse
 }
-// const listOneTag: QueryFunction<OneTagResponse, OneTagListKey> = async ({signal, queryKey}) => {
-//     const [, {token, id}] = queryKey;
-//     const res = await FitExpressClient.getInstance().get<OneTagResponse>(apiRoutes.GET_MEAL(id), {
-//         signal, headers: {
-//             'Content-Type': 'application/json',
-//             Authorization: `Bearer ${token}`
-//         }
-//     })
-//     return {tag: res.data as unknown} as OneTagResponse
-// }
+const listOneDelivery: QueryFunction<OneDeliveryResponse, OneDeliveryListKey> = async ({signal, queryKey}) => {
+    const [, {token, id}] = queryKey;
+    const res = await FitExpressClient.getInstance().get<OneDeliveryResponse>(apiRoutes.GET_DELIVERY_ID(id), {
+        signal, headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    })
+    return {delivery: res.data as unknown} as OneDeliveryResponse
+}
 
 function useDeliveryListQuery(params: AuthParams) {
     const queryKey = ['DeliveryList', params] as DeliveryListKey
@@ -64,13 +64,13 @@ function useDeliveryListQuery(params: AuthParams) {
     )
     return {data, error, isError, isSuccess, isLoading}
 }
-// export function useOneTagListQuery(params: OneAuthParams){
-//     const queryKey = ['TagList', params] as OneTagListKey
-//     const {data, error, isLoading, isSuccess, isError} = useQuery({
-//             queryKey, queryFn: listOneTag
-//         }
-//     )
-//     return {data, error, isError, isSuccess, isLoading}
-// }
+export function useOneDeliveryListQuery(params: OneAuthParams){
+    const queryKey = ['DeliveryOneList', params] as OneDeliveryListKey
+    const {data, error, isLoading, isSuccess, isError} = useQuery({
+            queryKey, queryFn: listOneDelivery
+        }
+    )
+    return {data, error, isError, isSuccess, isLoading}
+}
 
 export default useDeliveryListQuery

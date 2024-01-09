@@ -6,6 +6,8 @@
     display: flex;
     justify-content: center;
     padding: 2em;
-    //align-items: center;
+    &--form{
+      justify-content: flex-start;
+    }
   }
 }

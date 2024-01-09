@@ -26,7 +26,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>((
 				{...props}
 			/>
 			{errors[name!] && (
-				<p>
+				<p className={inputStyles.error}>
 					{`${errors[name!]?.message}`}
 				</p>
 			)}

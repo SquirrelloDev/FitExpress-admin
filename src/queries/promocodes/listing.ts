@@ -47,7 +47,7 @@ const listPromos: QueryFunction<PromosResponse, PromosListKey> = async ({signal,
 }
 const listOnePromo: QueryFunction<OnePromoResponse, OnePromoListKey> = async ({signal, queryKey}) => {
     const [, {token, id}] = queryKey;
-    const res = await FitExpressClient.getInstance().get<OnePromoResponse>(apiRoutes.GET_MEAL(id), {
+    const res = await FitExpressClient.getInstance().get<OnePromoResponse>(apiRoutes.GET_PROMOCODE_ID(id), {
         signal, headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

@@ -52,6 +52,7 @@ export const apiRoutes = {
     DELETE_MEAL: (id: string) => `http://localhost:3001/meals/${id}`,
 //     TAGS
     GET_TAGS: `http://localhost:3001/tags`,
+    GET_TAG: (id: string) => `http://localhost:3001/tags/${id}`,
     ADD_TAG: `http://localhost:3001/tags`,
     EDIT_TAG: (id: string) => `http://localhost:3001/tags/${id}`,
     DELETE_TAG: (id: string) => `http://localhost:3001/tags/${id}`,
@@ -77,6 +78,7 @@ export const apiRoutes = {
     DELETE_FLEXI: (id: string) => `http://localhost:3001/days/flexi/${id}`,
 //     EXCLUSIONS
     GET_EXCLUSIONS: `http://localhost:3001/exclusions`,
+    GET_EXCLUSION: (id: string) => `http://localhost:3001/exclusions/${id}`,
     ADD_EXCLUSION: `http://localhost:3001/exclusions`,
     EDIT_EXCLUSION: (id: string) => `http://localhost:3001/exclusions/${id}`,
     DELETE_EXCLUSION: (id: string) => `http://localhost:3001/exclusions/${id}`,
@@ -106,7 +108,8 @@ export const apiRoutes = {
 //     PROMOCODES
     GET_PROMOCODES: `http://localhost:3001/promocode`,
     ADD_PROMOCODE: `http://localhost:3001/promocode/new`,
-    GET_PROMOCODE: (name: string) => `http://localhost:3001/promocode/${name}`,
+    GET_PROMOCODE_ID: (id: string) => `http://localhost:3001/promocode/${id}`,
+    GET_PROMOCODE_NAME: (name: string) => `http://localhost:3001/promocode/by-name/${name}`,
     EDIT_PROMOCODE: (id: string) => `http://localhost:3001/promocode/${id}`,
     DELETE_PROMOCODE: (id: string) => `http://localhost:3001/promocode/${id}`,
 //     DELIVERY

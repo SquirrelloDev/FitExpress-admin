@@ -43,7 +43,7 @@ function ControlledDatePicker<T extends FieldValues>({
           />
           {errors[name] && (
             <p className={inputStyles.error}>
-              {`${errors[name as string]?.message}`}
+              {`${errors[name]?.message}`}
             </p>
           )}
           {!errors[name] && isTouched && !value && (

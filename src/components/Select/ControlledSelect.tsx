@@ -53,7 +53,8 @@ function ControlledSelect<T extends FieldValues>({
                 control: (base) => ({
                     ...base,
                     backgroundColor: '#1a1a1a',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    margin: '10px 0'
                 }),
                 menu: (baseStyles) => ({
                     ...baseStyles,

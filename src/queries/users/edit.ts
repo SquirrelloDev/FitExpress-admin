@@ -1,5 +1,5 @@
 import {MutationFunction, useMutation} from "@tanstack/react-query";
-import {apiRoutes, FitExpressClient} from "../../utils/api";
+import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {appRoutes} from "../../utils/routes";
@@ -40,6 +40,8 @@ function useUserEdit(){
     const navigate = useNavigate();
     const {mutate, isError, isLoading, isSuccess, error} = useMutation<UserResponse, UserError, UserPutData>(['User-Update'], updateUser, {onSuccess: () => {
             toast.success('Użytkownik zedytowany!');
+            queryClient.invalidateQueries(['UsersList'])
+            queryClient.invalidateQueries(['UserList'])
             navigate(appRoutes.users);
         },
         onError: (error) => {

@@ -2,7 +2,7 @@ import {MutationFunction, useMutation} from "@tanstack/react-query";
 import {z} from 'zod'
 import errorMessages from "../../utils/errorMessages";
 import {AxiosError} from "axios";
-import {apiRoutes, FitExpressClient} from "../../utils/api";
+import {apiRoutes, FitExpressClient, queryClient} from "../../utils/api";
 import {HealthData} from "../../types/dbtypes/HealthData";
 import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
@@ -57,7 +57,7 @@ const createUser:MutationFunction<UserResponse, UserPostData> = async (user) => 
     if(res.response?.status === 409){
         throw new Error('User istnieje!');
     }
-    else if(res.response?.status !== 201){
+    else if(res.response && res.response?.status !== 201){
         throw new Error('Coś poszło nie tak')
     }
     return { message: res.message }
@@ -66,6 +66,7 @@ function useUserCreate(){
     const navigate = useNavigate();
     const {mutate, isError, isLoading, isSuccess, error} = useMutation<UserResponse, UserError, UserPostData>(['User-Create'], createUser, {onSuccess: () => {
             toast.success('Użytkownik stworzony!');
+            queryClient.invalidateQueries(['UsersList'])
             navigate(appRoutes.users);
         },
         onError: (error) => {

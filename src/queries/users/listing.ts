@@ -14,6 +14,8 @@ interface paginationInfo {
 
 type AuthParams = {
     token: string,
+    pageIndex: number,
+    pageSize: number
 }
 type OneAuthParams = {
     token: string,
@@ -35,8 +37,9 @@ interface OneUserResponse {
 }
 
 const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<UserResponse>(apiRoutes.GET_USERS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    console.log(pageSize, pageIndex)
+    const res = await FitExpressClient.getInstance().get<UserResponse>(apiRoutes.GET_USERS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

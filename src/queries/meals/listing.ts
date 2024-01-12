@@ -35,8 +35,8 @@ interface OneMealResponse {
 }
 
 const listMeals: QueryFunction<MealResponse, MealsListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<MealResponse>(apiRoutes.GET_MEALS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<MealResponse>(apiRoutes.GET_MEALS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

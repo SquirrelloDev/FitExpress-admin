@@ -35,8 +35,8 @@ interface OneDeliveryResponse {
 }
 
 const listDelivery: QueryFunction<DeliveryResponse, DeliveryListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<DeliveryResponse>(apiRoutes.GET_DELIVERY, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<DeliveryResponse>(apiRoutes.GET_DELIVERY(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

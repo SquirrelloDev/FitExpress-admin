@@ -35,8 +35,8 @@ interface OneReportResponse {
 }
 
 const listReports: QueryFunction<ReportsResponse, ReportsListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<ReportsResponse>(apiRoutes.GET_REPORTS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<ReportsResponse>(apiRoutes.GET_REPORTS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

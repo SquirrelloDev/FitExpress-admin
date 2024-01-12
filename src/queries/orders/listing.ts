@@ -35,8 +35,8 @@ interface OneOrderResponse {
 }
 
 const listOrders: QueryFunction<OrdersResponse, OrdersListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<OrdersResponse>(apiRoutes.GET_ORDERS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<OrdersResponse>(apiRoutes.GET_ORDERS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

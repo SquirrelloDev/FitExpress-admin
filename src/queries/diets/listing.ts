@@ -35,8 +35,8 @@ interface OneDietResponse {
 }
 
 const listDiets: QueryFunction<DietsResponse, DietsListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<DietsResponse>(apiRoutes.GET_DIETS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<DietsResponse>(apiRoutes.GET_DIETS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

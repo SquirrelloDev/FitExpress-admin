@@ -35,8 +35,8 @@ interface OneExclusionResponse {
 }
 
 const listExclusions: QueryFunction<ExclusionsResponse, ExclusionsListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<ExclusionsResponse>(apiRoutes.GET_EXCLUSIONS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<ExclusionsResponse>(apiRoutes.GET_EXCLUSIONS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

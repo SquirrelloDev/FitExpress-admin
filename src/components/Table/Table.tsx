@@ -1,9 +1,6 @@
 import {flexRender, HeaderGroup, PaginationState, Row,} from "@tanstack/react-table";
 import classes from "../../sass/components/table.module.scss";
-import {IconPlus} from "@tabler/icons-react";
 import {TableListingType} from "../../types/table/tableListing";
-import {useNavigate} from "react-router-dom";
-import useListingRoute from "../../hooks/useListingRoute";
 import TableHeader from "./TableHeader";
 
 interface TableProps<T> {
@@ -35,21 +32,10 @@ function Table<T>({
                       tablePaginationState,
                       pageCount
                   }: TableProps<T>) {
-    const navigate = useNavigate()
-    const linkRoute = useListingRoute(tableListing);
     return (
         <div className={classes.table__container}>
             <TableHeader tableName={tableName} previousPage={previousPage} nextPage={nextPage} hasPreviousPage={hasPreviousPage} hasNextPage={hasNextPage} pageIndex={tablePaginationState.pageIndex + 1} pageCount={pageCount} hideAdding={hideAdding}
             tableListing={tableListing}/>
-            {/*<div className={classes.table__title}>*/}
-            {/*    <h2>{tableName}</h2>*/}
-            {/*    <button onClick={() => previousPage()} disabled={!hasPreviousPage}>test &lt;</button>*/}
-            {/*    <span>{tablePaginationState.pageIndex + 1} z {pageCount}</span>*/}
-            {/*    <button onClick={() => nextPage()} disabled={!hasNextPage}>test &gt;</button>*/}
-            {/*    {!hideAdding && <button className={classes['table__title__button-new']}*/}
-            {/*                            onClick={() => navigate(`${linkRoute}/create`)}><IconPlus stroke={2}/> Dodaj*/}
-            {/*    </button>}*/}
-            {/*</div>*/}
             <table className={classes.table__table}>
                 <thead>
                 {headerGroups.map(headerGroup => <tr key={headerGroup.id} className={classes.table__table__row__header}>

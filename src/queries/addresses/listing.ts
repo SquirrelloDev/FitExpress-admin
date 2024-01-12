@@ -38,8 +38,8 @@ const getUserAddressesPartialKey = 'UserAddresses'
 type UserAddressesKey = [typeof getUserAddressesPartialKey, OneAuthParams]
 
 const listAddresses: QueryFunction<AddressesResponse, AddressesListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<AddressesResponse>(apiRoutes.GET_ADDRESSES, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<AddressesResponse>(apiRoutes.GET_ADDRESSES(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

@@ -16,9 +16,11 @@ import ViewDelete from "../../components/Modal/Views/ViewDelete";
 import useMealDelete from "../../queries/meals/delete";
 import {Grid} from "react-loader-spinner";
 import {IconPhotoOff} from "@tabler/icons-react";
+import usePagination from "../../hooks/usePagination";
 
 function Meals() {
     const columnHelper = createColumnHelper<Meal>()
+    const [paginationParams, setPaginationParams] = usePagination()
     const [modalOpen, setModalOpen] = useState<{ isOpen: boolean, modalType: ModalType }>({
         isOpen: false,
         modalType: ModalType.none
@@ -26,7 +28,9 @@ function Meals() {
     const [itemId, setItemId] = useState<string>("");
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data, isSuccess} = useMealListQuery({
-        token: userData.token
+        token: userData.token,
+        pageIndex: paginationParams.pageIndex,
+        pageSize: paginationParams.pageSize
     })
     const columns = [
         columnHelper.accessor('name', {
@@ -37,7 +41,7 @@ function Meals() {
             header: 'Wykluczenia',
             cell: ({getValue}) => {
                 const exclusions = getValue() as Exclusion[]
-                if(exclusions.length < 1){
+                if (exclusions.length < 1) {
                     return <p>brak</p>
                 }
                 const exclusionNames = exclusions.map(exclusion => `${exclusion.name},`)
@@ -46,19 +50,19 @@ function Meals() {
         }),
         columnHelper.accessor('tags_id', {
             header: 'Tagi',
-            cell: ({getValue}) =>{
+            cell: ({getValue}) => {
                 const tags = getValue() as Tag[]
-                if(tags.length < 1){
+                if (tags.length < 1) {
                     return <p>brak</p>
                 }
                 const prettyTags = tags.map(tag => `${tag.name},`)
-               return <p>{...prettyTags}</p>
+                return <p>{...prettyTags}</p>
             }
         }),
         columnHelper.accessor('imageBuffer', {
             header: 'Zdjęcie',
             cell: ({getValue}) => {
-                if(!getValue()){
+                if (!getValue()) {
                     return <IconPhotoOff size={30}/>
                 }
                 return (
@@ -75,29 +79,46 @@ function Meals() {
             }
         })
     ]
-    const {meals} = useMemo(() => ({
-        meals: isSuccess ? data!.meals : []
+    const {meals, pageCount} = useMemo(() => ({
+        meals: isSuccess ? data!.meals : [],
+        pageCount: isSuccess ? data!.paginationInfo.lastPage : 0
     }), [data, isSuccess])
     const table = useReactTable({
         data: meals,
         columns,
-        getCoreRowModel: getCoreRowModel()
+        getCoreRowModel: getCoreRowModel(),
+        manualPagination: true,
+        pageCount,
+        onPaginationChange: setPaginationParams,
+        state: {
+            pagination: paginationParams
+        }
     })
     const polishTableName = useTableListing(TableListingType.meals);
     const {mutate} = useMealDelete();
     const deleteMeal = () => {
-      mutate({id: itemId, token:userData.token}, {onSuccess: () => {
-              setItemId("")
-              setModalOpen({isOpen: false, modalType: ModalType.none})
-          }})
+        mutate({id: itemId, token: userData.token}, {
+            onSuccess: () => {
+                setItemId("")
+                setModalOpen({isOpen: false, modalType: ModalType.none})
+            }
+        })
     }
-    if (isLoading) return <Grid />
+    if (isLoading) return <Grid/>
     return (
         <>
             <Table headerGroups={table.getHeaderGroups()} rows={table.getRowModel().rows} isLoading={isLoading}
-                   tableName={polishTableName} tableListing={TableListingType.meals}/>
-            {modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteMeal}/></Modal>}
-            {modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><MealDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
+                   tableName={polishTableName} tableListing={TableListingType.meals}
+                   tablePaginationState={table.getState().pagination}
+                   previousPage={table.previousPage}
+                   pageCount={table.getPageCount()}
+                   hasPreviousPage={table.getCanPreviousPage()}
+                   nextPage={table.nextPage}
+                   hasNextPage={table.getCanNextPage()}/>
+            {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
+                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteMeal}/></Modal>}
+            {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
+                <Modal><MealDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
         </>
     )
 }

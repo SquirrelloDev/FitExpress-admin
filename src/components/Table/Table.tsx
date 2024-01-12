@@ -1,30 +1,59 @@
-import {flexRender,  HeaderGroup, Row, } from "@tanstack/react-table";
+import {flexRender, HeaderGroup, PaginationState, Row,} from "@tanstack/react-table";
 import classes from "../../sass/components/table.module.scss";
 import {IconPlus} from "@tabler/icons-react";
 import {TableListingType} from "../../types/table/tableListing";
 import {useNavigate} from "react-router-dom";
 import useListingRoute from "../../hooks/useListingRoute";
-interface TableProps<T>{
+import TableHeader from "./TableHeader";
+
+interface TableProps<T> {
     headerGroups: HeaderGroup<T>[],
     rows: Row<T>[]
     isLoading: boolean,
     tableName: string,
     tableListing: TableListingType
-    hideAdding?: boolean
+    hideAdding?: boolean,
+    tablePaginationState: PaginationState
+    previousPage: () => void,
+    nextPage: () => void,
+    hasPreviousPage: boolean,
+    hasNextPage: boolean,
+    pageCount: number
 }
-function Table<T>({headerGroups, rows, isLoading, tableName, tableListing, hideAdding = false}: TableProps<T>) {
+
+function Table<T>({
+                      headerGroups,
+                      rows,
+                      isLoading,
+                      tableName,
+                      tableListing,
+                      hideAdding = false,
+                      nextPage,
+                      previousPage,
+                      hasNextPage,
+                      hasPreviousPage,
+                      tablePaginationState,
+                      pageCount
+                  }: TableProps<T>) {
     const navigate = useNavigate()
     const linkRoute = useListingRoute(tableListing);
     return (
         <div className={classes.table__container}>
-            <div className={classes.table__title}>
-                <h2>{tableName}</h2>
-                {!hideAdding && <button className={classes['table__title__button-new']} onClick={() => navigate(`${linkRoute}/create`)}><IconPlus stroke={2}/> Dodaj</button>}
-            </div>
+            <TableHeader tableName={tableName} previousPage={previousPage} nextPage={nextPage} hasPreviousPage={hasPreviousPage} hasNextPage={hasNextPage} pageIndex={tablePaginationState.pageIndex + 1} pageCount={pageCount} hideAdding={hideAdding}
+            tableListing={tableListing}/>
+            {/*<div className={classes.table__title}>*/}
+            {/*    <h2>{tableName}</h2>*/}
+            {/*    <button onClick={() => previousPage()} disabled={!hasPreviousPage}>test &lt;</button>*/}
+            {/*    <span>{tablePaginationState.pageIndex + 1} z {pageCount}</span>*/}
+            {/*    <button onClick={() => nextPage()} disabled={!hasNextPage}>test &gt;</button>*/}
+            {/*    {!hideAdding && <button className={classes['table__title__button-new']}*/}
+            {/*                            onClick={() => navigate(`${linkRoute}/create`)}><IconPlus stroke={2}/> Dodaj*/}
+            {/*    </button>}*/}
+            {/*</div>*/}
             <table className={classes.table__table}>
                 <thead>
                 {headerGroups.map(headerGroup => <tr key={headerGroup.id} className={classes.table__table__row__header}>
-                    {headerGroup.headers.map(header =>{
+                    {headerGroup.headers.map(header => {
                         const headerName = header.column.columnDef.header as string;
                         return (
                             <th key={header.id} className={classes.table__table__row__cell}>{headerName}</th>
@@ -35,7 +64,8 @@ function Table<T>({headerGroups, rows, isLoading, tableName, tableListing, hideA
                 <tbody>
                 {
                     rows.map(row => <tr key={row.id} className={classes.table__table__row}>
-                        {row.getVisibleCells().map(cell => <td key={cell.id} className={classes.table__table__row__cell}>
+                        {row.getVisibleCells().map(cell => <td key={cell.id}
+                                                               className={classes.table__table__row__cell}>
                             {flexRender(
                                 cell.column.columnDef.cell,
                                 cell.getContext()
@@ -58,4 +88,5 @@ function Table<T>({headerGroups, rows, isLoading, tableName, tableListing, hideA
         </div>
     )
 }
+
 export default Table

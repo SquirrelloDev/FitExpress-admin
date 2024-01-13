@@ -41,7 +41,6 @@ export type AddressPostData = {
 export type AddressError = AxiosError<{errors: {general: string}}>
 export type AddressResponse = {message: string}
 const createAddress:MutationFunction<AddressResponse, AddressPostData> = async (address) => {
-    console.log(address)
     const res = await FitExpressClient.getInstance().post<AddressResponse, AddressError>(apiRoutes.ADD_ADDRESS, {
         address:{
             ...address.address

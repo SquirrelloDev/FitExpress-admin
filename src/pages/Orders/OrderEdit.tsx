@@ -25,7 +25,6 @@ interface OrderEditProps {
 	id: string
 }
 function OrderEdit({addressData, orderData, token, id}:OrderEditProps) {
-	console.log(orderData)
 	const methods = useForm({
 		resolver: zodResolver(orderSchema),
 		defaultValues: {

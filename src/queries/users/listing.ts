@@ -34,7 +34,6 @@ interface OneUserResponse {
 
 const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, queryKey}) => {
     const [, {token, pageSize, pageIndex}] = queryKey
-    console.log(pageSize, pageIndex)
     const res = await FitExpressClient.getInstance().get<UserResponse>(apiRoutes.GET_USERS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {

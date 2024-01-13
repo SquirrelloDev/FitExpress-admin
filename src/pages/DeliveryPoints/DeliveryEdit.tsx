@@ -28,7 +28,6 @@ function DeliveryEdit({data,token,id}:DeliveryEditProps) {
 	const {mutate, isLoading} = useDeliveryEdit()
 	const { handleSubmit } = methods
 	const onSubmit = (data: DeliverySchema) => {
-		console.log('góno')
 		const newDelivery: DeliveryPutData = {
 			delivery: {
 				name: data.name,

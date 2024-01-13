@@ -36,7 +36,6 @@ function FlexiEdit({data, token, id}:FlexiEditProps) {
 	const selectMeals = useMealOwner()
 	const { handleSubmit } = methods
 	const onSubmit = (data: FlexiSchema) => {
-		console.log(data)
 		const newDay:FlexiPutData = {
 			...data,
 			token: token,

@@ -21,7 +21,6 @@ function FlexiCreate() {
 	const selectMeals = useMealOwner()
 	const { handleSubmit } = methods
 	const onSubmit = (data: FlexiSchema) => {
-		console.log(data)
 		const newDay:FlexiPostData = {
 			...data,
 			token: userData.token as string

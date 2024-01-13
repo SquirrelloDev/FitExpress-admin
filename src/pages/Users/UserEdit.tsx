@@ -35,7 +35,6 @@ function UserEdit({data, token, id}:UserEditProps) {
 	const {mutate, isLoading} = useUserEdit()
 	const { handleSubmit } = methods
 	const onSubmit = (data: UserPutSchema) => {
-		console.log('góno')
 		const newUser: UserPutData = {
 			user: {
 				name: data.name,

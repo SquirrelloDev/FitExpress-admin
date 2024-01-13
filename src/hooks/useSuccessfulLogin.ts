@@ -10,7 +10,6 @@ function useSuccessfulLogin() {
 
     const handleSuccess = useCallback(
         (data:{data: UserData}) => {
-            console.log(data)
             setUserData(data.data)
             navigate(appRoutes.home)
         },

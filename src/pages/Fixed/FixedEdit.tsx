@@ -39,7 +39,6 @@ function FixedEdit({data,token,id}:FixedEditProps) {
 	const selectMeals = useMealOwner()
 	const { handleSubmit } = methods
 	const onSubmit = (data: FixedSchema) => {
-		console.log(data)
 
 		const newDay:FixedPutData = {
 			...data,

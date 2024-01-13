@@ -25,7 +25,6 @@ function TagEdit({data, token, id}:TagEditProps) {
 	const {mutate, isLoading} = useTagEdit()
 	const { handleSubmit } = methods
 	const onSubmit = (data: TagsPutSchema) => {
-		console.log('góno')
 		const newTag: TagsPutData = {
 			tag: {
 				name: data.name,

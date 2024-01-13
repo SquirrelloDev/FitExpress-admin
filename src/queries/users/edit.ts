@@ -30,7 +30,6 @@ const updateUser:MutationFunction<UserResponse, UserPutData> = async (user) => {
     const res = await FitExpressClient.getInstance().put<UserResponse, UserError>(apiRoutes.EDIT_USER(user.authInfo.id), {
         ...user.user
     }, {headers: {'Content-Type': "application/json", Authorization: `Bearer ${user.authInfo.token}`}})
-    console.log(res.response?.status)
     if(res.response?.status && res.response?.status !== 200){
         throw new Error('Coś poszło nie tak')
     }

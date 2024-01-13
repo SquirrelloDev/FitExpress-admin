@@ -28,7 +28,6 @@ function PromoEdit({data, token, id}:PromoEditProps) {
 	const {mutate, isLoading} = usePromoEdit()
 	const { handleSubmit } = methods
 	const onSubmit = (data: PromocodeSchema) => {
-		console.log('góno')
 		const newPromo: PromocodePutData = {
 			promocode: {
 				...data,

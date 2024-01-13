@@ -53,7 +53,6 @@ const createUser:MutationFunction<UserResponse, UserPostData> = async (user) => 
     const res = await FitExpressClient.getInstance().post<UserResponse, UserError>(apiRoutes.ADD_USER, {
         ...user
     }, {headers: {'Content-Type': "application/json"}})
-    console.log(res.response?.status === 409);
     if(res.response?.status === 409){
         throw new Error('User istnieje!');
     }

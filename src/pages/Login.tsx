@@ -36,7 +36,7 @@ function Login() {
 				{errors['email'] && <p>{`${errors['email'].message}`}</p>}
 				<input type='password' className={inputStyles.input} placeholder={"Hasło"} {...register('password')}/>
 				{errors['password'] && <p>{`${errors['password'].message}`}</p>}
-				<button type='submit' className={`${classes.form__submit} ${btnStyles.btn}`}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Zaloguj"}</button>
+				<button type='submit' disabled={isLoading} className={`${classes.form__submit} ${btnStyles.btn}`}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Zaloguj"}</button>
 			</form>
 		</>
 	)

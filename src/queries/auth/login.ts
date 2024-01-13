@@ -3,10 +3,11 @@ import {UserData} from "../../types/dbtypes/UserData";
 import {AxiosError} from "axios";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {z} from "zod";
+import errorMessages from "../../utils/errorMessages";
 
 export const LoginFormSchema = z.object({
-    email: z.string().min(1, 'required').max(60, 'max 60').email('invalid email'),
-    password: z.string().min(8, 'required at least 8 characters')
+    email: z.string().min(1, errorMessages.required).max(60, 'max 60').email(errorMessages.invalidMail),
+    password: z.string().min(8, errorMessages.shortPasswd(8))
 })
 export type LoginFormDataSchema = z.infer<typeof LoginFormSchema>
 type LoginResponse = {

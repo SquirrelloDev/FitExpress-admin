@@ -12,4 +12,11 @@
   &:hover{
     background-color: rgb(80,215,116);
   }
+  &:disabled{
+    background-color: $border;
+    cursor: not-allowed;
+  }
+  &:disabled:hover{
+    background-color: $border;
+  }
 }

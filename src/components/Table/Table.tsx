@@ -34,8 +34,11 @@ function Table<T>({
                   }: TableProps<T>) {
     return (
         <div className={classes.table__container}>
-            <TableHeader tableName={tableName} previousPage={previousPage} nextPage={nextPage} hasPreviousPage={hasPreviousPage} hasNextPage={hasNextPage} pageIndex={tablePaginationState ? tablePaginationState.pageIndex + 1 : 1} pageCount={pageCount !== 0 ? pageCount : 1} hideAdding={hideAdding}
-            tableListing={tableListing}/>
+            <TableHeader tableName={tableName} previousPage={previousPage} nextPage={nextPage}
+                         hasPreviousPage={hasPreviousPage} hasNextPage={hasNextPage}
+                         pageIndex={tablePaginationState ? tablePaginationState.pageIndex + 1 : 1}
+                         pageCount={pageCount !== 0 ? pageCount : 1} hideAdding={hideAdding}
+                         tableListing={tableListing}/>
             <table className={classes.table__table}>
                 <thead>
                 {headerGroups.map(headerGroup => <tr key={headerGroup.id} className={classes.table__table__row__header}>
@@ -51,7 +54,7 @@ function Table<T>({
                 {
                     rows.map(row => <tr key={row.id} className={classes.table__table__row}>
                         {row.getVisibleCells().map(cell => <td key={cell.id}
-                                                               className={classes.table__table__row__cell}>
+                            className={classes.table__table__row__cell}>
                             {flexRender(
                                 cell.column.columnDef.cell,
                                 cell.getContext()

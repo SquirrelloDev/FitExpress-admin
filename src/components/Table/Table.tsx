@@ -34,7 +34,7 @@ function Table<T>({
                   }: TableProps<T>) {
     return (
         <div className={classes.table__container}>
-            <TableHeader tableName={tableName} previousPage={previousPage} nextPage={nextPage} hasPreviousPage={hasPreviousPage} hasNextPage={hasNextPage} pageIndex={tablePaginationState.pageIndex + 1} pageCount={pageCount} hideAdding={hideAdding}
+            <TableHeader tableName={tableName} previousPage={previousPage} nextPage={nextPage} hasPreviousPage={hasPreviousPage} hasNextPage={hasNextPage} pageIndex={tablePaginationState ? tablePaginationState.pageIndex + 1 : 1} pageCount={pageCount !== 0 ? pageCount : 1} hideAdding={hideAdding}
             tableListing={tableListing}/>
             <table className={classes.table__table}>
                 <thead>

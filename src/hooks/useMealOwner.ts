@@ -6,7 +6,7 @@ import useMealListQuery from "../queries/meals/listing";
 function useMealOwner(){
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data} = useMealListQuery({
-        token: userData.token
+        token: userData.token, pageIndex: 1, pageSize: 0
     })
     const meals = useMemo<SelectOption[]>(() => {
         if(!isLoading){

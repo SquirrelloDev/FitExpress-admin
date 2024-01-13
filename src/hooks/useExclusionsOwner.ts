@@ -6,7 +6,7 @@ import useExclusionsListQuery from "../queries/exclusions/listing";
 function useExclusionsOwner(){
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data} = useExclusionsListQuery({
-        token: userData.token
+        token: userData.token, pageIndex: 1, pageSize: 0
     })
     const exclusions = useMemo<SelectOption[]>(() => {
         if(!isLoading){

@@ -20,7 +20,7 @@ interface FixedEditProps {
 }
 function FixedEdit({data,token,id}:FixedEditProps) {
 	const {mutate, isLoading: isFormLoading} = useDayFixedEdit()
-	const {data: dietData,  isLoading: isDietsLoading} = useDietsListQuery({token: token})
+	const {data: dietData,  isLoading: isDietsLoading} = useDietsListQuery({token: token, pageIndex: 1, pageSize: 0})
 	const dietsDefaultVals: Record<string, string> = data!.diets.reduce((acc: Record<string, string>, item) => {
 		acc[`meals.${item.diet_id._id}.0`]  = item.meals.morning._id
 		acc[`meals.${item.diet_id._id}.1`]  = item.meals.lunch._id

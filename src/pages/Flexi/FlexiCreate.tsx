@@ -8,7 +8,6 @@ import ControlledSelect from "../../components/Select/ControlledSelect";
 import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
-import {DevTool} from "@hookform/devtools";
 import useDayFlexiCreate, {FlexiPostData, FlexiSchema, flexiSchema} from "../../queries/flexi/create";
 
 function FlexiCreate() {
@@ -53,7 +52,6 @@ function FlexiCreate() {
 					<button type='submit' disabled={isFormLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isFormLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
 				</form>
 			</div>
-			<DevTool control={methods.control}/>
 		</FormProvider>
 	)
 }

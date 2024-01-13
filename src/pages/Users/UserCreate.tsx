@@ -4,7 +4,6 @@ import Input from "../../components/Input/Input";
 import {FormProvider, useForm} from "react-hook-form";
 
 import ControlledDatePicker from "../../components/Datepicker/ControlledDatePicker";
-import {DevTool} from "@hookform/devtools";
 import ControlledSelect from "../../components/Select/ControlledSelect";
 import clsx from "clsx";
 import {SelectOption} from "../../components/Select/types";
@@ -91,9 +90,7 @@ function UserCreate() {
                 <ControlledSelect options={userGoal} control={methods.control} name={'user_goal'} placeholder={'Cel użytkownika'}/>
                 <button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
             </form>
-			{/*<p>Dane dotyczące zdrowia są niedostępne do edycji</p>*/}
         </div>
-        <DevTool control={methods.control}/>
         </FormProvider>
     )
 }

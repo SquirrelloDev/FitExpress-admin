@@ -5,7 +5,6 @@ import Input from "../../components/Input/Input";
 import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
-import {DevTool} from "@hookform/devtools";
 import useTagEdit, {TagsPutData, TagsPutSchema, tagsPutSchema} from "../../queries/tags/edit";
 import {Tag} from "../../types/dbtypes/Tags";
 
@@ -45,7 +44,6 @@ function TagEdit({data, token, id}:TagEditProps) {
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>
 			</div>
-			<DevTool control={methods.control}/>
 		</FormProvider>
 	)
 }

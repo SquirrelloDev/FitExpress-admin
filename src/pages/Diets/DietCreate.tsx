@@ -10,7 +10,6 @@ import TextArea from "../../components/TextArea/TextArea";
 import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
-import {DevTool} from "@hookform/devtools";
 import ControlledSelect from "../../components/Select/ControlledSelect";
 import useDietCreate, {DietPostData, dietSchema, DietSchema} from "../../queries/diets/create";
 
@@ -54,7 +53,6 @@ function DietCreate() {
 				<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
 			</form>
 		</div>
-		<DevTool control={methods.control}/>
 	</FormProvider>
 	)
 }

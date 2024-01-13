@@ -8,7 +8,6 @@ import clsx from "clsx";
 import ControlledSelect from "../../components/Select/ControlledSelect";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
-import {DevTool} from "@hookform/devtools";
 import {DayFlexi} from "../../types/dbtypes/DayFlexi";
 import useDayFlexiEdit, {FlexiPutData} from "../../queries/flexi/edit";
 
@@ -68,7 +67,6 @@ function FlexiEdit({data, token, id}:FlexiEditProps) {
 					<button type='submit' disabled={isFormLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isFormLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>
 			</div>
-			<DevTool control={methods.control}/>
 		</FormProvider>
 	)
 }

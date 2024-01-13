@@ -7,7 +7,6 @@ import ControlledSelect from "../../components/Select/ControlledSelect";
 import clsx from "clsx";
 import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
-import {DevTool} from "@hookform/devtools";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import ControlledDatePicker from "../../components/Datepicker/ControlledDatePicker";
 import useUserOwner from "../../hooks/useUserOwner";
@@ -69,7 +68,6 @@ function OrderCreate({data, token}:OrderCreateProps) {
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
 				</form>
 			</div>
-			<DevTool control={methods.control}/>
 		</FormProvider>
 	)
 }

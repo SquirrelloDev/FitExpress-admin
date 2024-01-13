@@ -6,7 +6,7 @@ import useDietsListQuery from "../queries/diets/listing";
 function useDeliveryOwner(){
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data} = useDietsListQuery({
-        token: userData.token
+        token: userData.token, pageIndex: 1, pageSize: 0
     })
     const diets = useMemo<SelectOption[]>(() => {
         if(!isLoading){

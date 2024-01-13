@@ -7,7 +7,7 @@ import OrderEdit from "../../pages/Orders/OrderEdit";
 export function OrderEditPage() {
 	const userData = useAuthStore((state) => state.userData)
 	const {id} = useParams()
-	const {data, isLoading: isUserLoading} = useAddressesListQuery({token: userData.token})
+	const {data, isLoading: isUserLoading} = useAddressesListQuery({token: userData.token, pageIndex: 1, pageSize: 0})
 	const {data: orderData, isLoading: isOrdersLoading} = useOneOrderListQuery({token: userData.token as string, id: id as string})
 	return (
 		<>

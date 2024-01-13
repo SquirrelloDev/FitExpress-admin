@@ -1,6 +1,7 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import {UserFullData} from "../../types/dbtypes/UserData";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
+import {AuthParams} from "../../types/queriesTypes/queriesTypes";
 
 interface paginationInfo {
     totalItems: number,
@@ -12,9 +13,6 @@ interface paginationInfo {
 
 }
 
-type AuthParams = {
-    token: string,
-}
 type OneAuthParams = {
     token: string,
     id: string
@@ -35,8 +33,9 @@ interface OneUserResponse {
 }
 
 const listUsers: QueryFunction<UserResponse, UserListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<UserResponse>(apiRoutes.GET_USERS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    console.log(pageSize, pageIndex)
+    const res = await FitExpressClient.getInstance().get<UserResponse>(apiRoutes.GET_USERS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

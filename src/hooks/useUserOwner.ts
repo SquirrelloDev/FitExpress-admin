@@ -6,7 +6,7 @@ import {SelectOption} from "../components/Select/types";
 function useUserOwner(){
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data} = useUserListQuery({
-        token: userData.token
+        token: userData.token, pageIndex: 1, pageSize: 0
     })
     const users = useMemo<SelectOption[]>(() => {
         if(!isLoading){

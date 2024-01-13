@@ -1,6 +1,7 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {Meal} from "../../types/dbtypes/Meal";
+import {AuthParams} from "../../types/queriesTypes/queriesTypes";
 
 interface paginationInfo {
     totalItems: number,
@@ -12,9 +13,6 @@ interface paginationInfo {
 
 }
 
-type AuthParams = {
-    token: string,
-}
 type OneAuthParams = {
     token: string,
     id: string
@@ -35,8 +33,8 @@ interface OneMealResponse {
 }
 
 const listMeals: QueryFunction<MealResponse, MealsListKey> = async ({signal, queryKey}) => {
-    const [, {token}] = queryKey
-    const res = await FitExpressClient.getInstance().get<MealResponse>(apiRoutes.GET_MEALS, {
+    const [, {token, pageSize, pageIndex}] = queryKey
+    const res = await FitExpressClient.getInstance().get<MealResponse>(apiRoutes.GET_MEALS(String(pageIndex + 1), String(pageSize)), {
         signal,
         headers: {
             'Content-Type': 'application/json',

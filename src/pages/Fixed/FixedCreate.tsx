@@ -18,7 +18,7 @@ function FixedCreate() {
 	})
 	const userData = useAuthStore((state) => state.userData);
 	const {mutate, isLoading: isFormLoading} = useDayFixedCreate()
-	const {data: dietData,  isLoading: isDietsLoading} = useDietsListQuery({token: userData.token})
+	const {data: dietData,  isLoading: isDietsLoading} = useDietsListQuery({token: userData.token, pageIndex: 1, pageSize: 0})
 	const selectMeals = useMealOwner()
 	const { handleSubmit } = methods
 	const onSubmit = (data: FixedSchema) => {

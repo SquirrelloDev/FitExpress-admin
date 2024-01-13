@@ -6,7 +6,7 @@ import useDeliveryListQuery from "../queries/delivery/listing";
 function useDeliveryOwner(){
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data} = useDeliveryListQuery({
-        token: userData.token
+        token: userData.token, pageIndex: 1, pageSize: 0
     })
     const points = useMemo<SelectOption[]>(() => {
         if(!isLoading){

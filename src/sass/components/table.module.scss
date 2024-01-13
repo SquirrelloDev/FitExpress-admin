@@ -1,14 +1,14 @@
 @use "../utils" as *;
 
 .table {
-  &__title {
+  &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .5em;
     margin-bottom: 1em;
 
-    &__button-new {
+    &__button {
       padding: 0.5em 2em;
       width: 16%;
       min-width: 130px;
@@ -22,7 +22,18 @@
       font-weight: $bold;
       cursor: pointer;
       transition: background-color .2s;
-
+      &--paginaton{
+        min-width: 60px;
+        max-width: 60px;
+        padding: .5em;
+      }
+      &:disabled{
+        background-color: $border;
+        cursor: not-allowed;
+      }
+      &:disabled:hover{
+        background-color: $border;
+      }
       &:hover {
         background-color: $cta;
       }

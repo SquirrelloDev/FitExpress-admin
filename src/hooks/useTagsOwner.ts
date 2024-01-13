@@ -6,7 +6,7 @@ import useTagsListQuery from "../queries/tags/listing";
 function useTagsOwner(){
     const userData = useAuthStore((state) => state.userData);
     const {isLoading, data} = useTagsListQuery({
-        token: userData.token
+        token: userData.token, pageIndex: 1, pageSize: 0
     })
     const tags = useMemo<SelectOption[]>(() => {
         if(!isLoading){

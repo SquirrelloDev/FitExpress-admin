@@ -1,6 +1,7 @@
 import {QueryFunction, useQuery} from "@tanstack/react-query";
 import {UserFullData} from "../../types/dbtypes/UserData";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
+import {AuthParams} from "../../types/queriesTypes/queriesTypes";
 
 interface paginationInfo {
     totalItems: number,
@@ -12,11 +13,6 @@ interface paginationInfo {
 
 }
 
-type AuthParams = {
-    token: string,
-    pageIndex: number,
-    pageSize: number
-}
 type OneAuthParams = {
     token: string,
     id: string

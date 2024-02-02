@@ -27,6 +27,7 @@ export const userSchema = z.object({
     name: z.string().min(1, errorMessages.required),
     email: z.string().email(errorMessages.invalidMail),
     password: z.string().min(8, errorMessages.shortPasswd(8)),
+    phone: z.string().min(9, errorMessages.required).regex(/[0-9]{9}/, "To nie wygląda jak numer telefonu..."),
     birth_date: z.coerce.date({errorMap: dateErrorMap}),
     role: z.coerce.number({errorMap: selectErrorMap}),
     user_height: z.coerce.number().min(120, errorMessages.minMax(120, 250)).max(250,errorMessages.minMax(120, 250)),
@@ -42,6 +43,7 @@ export type UserSchema = z.infer<typeof userSchema>
 export type UserPostData = {
     name: string,
     email: string,
+    phone: string,
     password: string,
     role: number,
     birth_date: Date,

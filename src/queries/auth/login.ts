@@ -1,6 +1,6 @@
 import {MutationFunction, MutationKey, useMutation} from "@tanstack/react-query";
 import {UserData} from "../../types/dbtypes/UserData";
-import {AxiosError} from "axios";
+import {AxiosError, isAxiosError} from "axios";
 import {apiRoutes, FitExpressClient} from "../../utils/api";
 import {z} from "zod";
 import errorMessages from "../../utils/errorMessages";
@@ -16,13 +16,18 @@ type LoginResponse = {
 export type LoginErrorType = AxiosError<{
     errors: { general: string }
 }>
-const loginUser: MutationFunction<LoginResponse, LoginFormDataSchema> = async ({email, password}) => {
-    const {data} = await FitExpressClient.getInstance().post<LoginResponse>(
+const loginUser: MutationFunction<LoginResponse, LoginFormDataSchema> = async (loginData) => {
+    const res = await FitExpressClient.getInstance().post<LoginResponse>(
         apiRoutes.LOGIN,
-        {email, password}
+        {email: loginData.email, password: loginData.password}
     )
-
-    return {data: data as never}
+    if(isAxiosError(res) && res.response?.status === 404){
+        throw new Error('Użytkownik o podanych danych nie istnieje!')
+    }
+    if(isAxiosError(res) && res.response?.status === 401){
+        throw new Error('Niepoprawne hasło!')
+    }
+    return {data: res.data as never}
 }
 export const mutationKey: MutationKey = ['loginUser']
 export type SuccessFunctionMutation<T> = (

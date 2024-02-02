@@ -12,10 +12,9 @@ export type UserData = {
 export type UserFullData = {
     _id: string,
     name: string,
-
+    phone: string,
     email: string,
     role: UserRole,
-    resetToken: string,
     birth_date: Date,
     addresses: Address[],
     redeemedCodes: Promocode[],

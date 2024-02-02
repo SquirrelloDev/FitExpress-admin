@@ -27,6 +27,7 @@ function UserEdit({data, token, id}:UserEditProps) {
 		defaultValues: {
 			name: data.name,
 			email: data.email,
+			phone: data.phone,
 			birth_date: new Date(data.birth_date),
 			role: data.role
 		}
@@ -38,6 +39,7 @@ function UserEdit({data, token, id}:UserEditProps) {
 			user: {
 				name: data.name,
 				email: data.email,
+				phone: data.phone,
 				role: data.role,
 				birth_date: data.birth_date,
 			},
@@ -55,6 +57,7 @@ function UserEdit({data, token, id}:UserEditProps) {
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa'/>
 					<Input name={'email'} type='email' placeholder='Adres email'/>
+					<Input name={'phone'} type='tel' placeholder='Numer telefonu'/>
 					<ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"}/>
 					<ControlledSelect options={userRoles} control={methods.control} name={'role'} isRequired placeholder={'Rola'} />
 					<h2>Dane zdrowotne</h2>

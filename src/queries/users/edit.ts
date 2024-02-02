@@ -11,6 +11,7 @@ export type UserPutData = {
     user: {
         name: string,
         email: string,
+        phone: string,
         role: number,
         birth_date: Date
     },
@@ -22,6 +23,7 @@ export type UserPutData = {
 export const userPutSchema = z.object({
     name: z.string().min(1, errorMessages.required),
     email: z.string().email(errorMessages.invalidMail),
+    phone: z.string().min(9, errorMessages.required).regex(/[0-9]{9}/, "To nie wygląda jak numer telefonu..."),
     birth_date: z.coerce.date({errorMap: dateErrorMap}),
     role: z.coerce.number({errorMap: selectErrorMap}),
 })

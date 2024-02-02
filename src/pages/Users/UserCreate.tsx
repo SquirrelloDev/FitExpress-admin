@@ -50,6 +50,7 @@ function UserCreate() {
             name: data.name,
             email: data.email,
             role: data.role,
+            phone: data.phone,
             password: data.password,
             birth_date: data.birth_date,
             healthData: {
@@ -77,6 +78,7 @@ function UserCreate() {
             <form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
                 <Input name={'name'} placeholder='Nazwa'/>
                 <Input name={'email'} type='email' placeholder='Adres email'/>
+                <Input name={'phone'} type='tel' placeholder='Numer telefonu'/>
                 <Input name={'password'} type='password' placeholder='Hasło'/>
                 <ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"}/>
                 <ControlledSelect options={userRoles} control={methods.control} name={'role'} isRequired placeholder={'Rola'} />

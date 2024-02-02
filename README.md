@@ -31,5 +31,5 @@ npm install
 ```shell
 npm run dev
 ```
-### 3. Autorzy
+### Autorzy
 - Emil Olejnik

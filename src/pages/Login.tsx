@@ -18,8 +18,8 @@ function Login() {
 	})
 	const {handleSubmit, register, setFocus, formState: {errors}} = methods
 	const {mutate, isLoading} = useLoginMutation((returnVals) => { handleSuccessfulLogin(returnVals) },
-		() => {
-			toast.error('Błąd logowania', {className: clsx(toastStyles.toast, toastStyles['toast--error']), id: 'LoginError'})
+		(err) => {
+			toast.error(err.message, {className: clsx(toastStyles.toast, toastStyles['toast--error']), id: 'LoginError'})
 			setFocus('password')
 		})
 

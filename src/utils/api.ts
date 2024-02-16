@@ -57,7 +57,7 @@ export const apiRoutes = {
     EDIT_TAG: (id: string) => `http://localhost:3001/tags/${id}`,
     DELETE_TAG: (id: string) => `http://localhost:3001/tags/${id}`,
 //     DIETS
-    GET_DIETS: (page: string, pageSize: string) => `http://localhost:3001/diets?page=${page}&pageSize=${pageSize}`,
+    GET_DIETS: (page: string, pageSize: string) => `http://localhost:3001/diets?page=${page}&pageSize=${pageSize}&dietType=Fixed`,
     ADD_DIET: `http://localhost:3001/diets`,
     GET_DIET: (id: string) => `http://localhost:3001/diets/${id}`,
     EDIT_DIET: (id: string) => `http://localhost:3001/diets/${id}`,

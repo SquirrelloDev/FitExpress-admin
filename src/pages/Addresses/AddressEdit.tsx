@@ -66,15 +66,15 @@ function AddressEdit({data,token,id}: AddressEditProps) {
 		const newAddress:AddressPutData = {
 			address: {
 				street: data.street,
-				buildingNumber: data.buildingNumber,
-				apartmentNumber: data.apartmentNumber,
+				building_no: data.buildingNumber,
+				apartment_no: data.apartmentNumber,
 				postal: data.postal,
 				city: data.city,
 				voivodeship: data.voivodeship,
 				linked_points: data.linked_points,
-				isDefault: data.isDefault,
-				isWeekend: data.isWeekend,
-				extraInfo: data.extraInfo
+				is_default: data.isDefault,
+				is_weekend: data.isWeekend,
+				extra_info: data.extraInfo
 			},
 			userId: data.userId,
 			token: token as string,

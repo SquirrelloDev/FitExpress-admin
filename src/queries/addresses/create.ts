@@ -25,15 +25,15 @@ export type AddressSchema = z.infer<typeof addressSchema>
 export type AddressPostData = {
     address:{
         street: string,
-        buildingNumber: number,
-        apartmentNumber?: number,
+        building_no: number,
+        apartment_no?: number,
         postal: string,
         city: string,
         voivodeship: string,
         linked_points: ZodString['_output'][],
-        isWeekend: boolean,
-        isDefault: boolean,
-        extraInfo: string
+        is_weekend: boolean,
+        is_default: boolean,
+        extra_info: string
     }
     userId: string,
     token: string

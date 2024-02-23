@@ -18,7 +18,6 @@ export const addressSchema = z.object({
     linked_points: z.array(z.string()),
     userId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
     isWeekend: z.boolean(),
-    isDefault: z.boolean(),
     extraInfo: z.string().min(1, errorMessages.required)
 })
 export type AddressSchema = z.infer<typeof addressSchema>
@@ -32,7 +31,6 @@ export type AddressPostData = {
         voivodeship: string,
         linked_points: ZodString['_output'][],
         is_weekend: boolean,
-        is_default: boolean,
         extra_info: string
     }
     userId: string,

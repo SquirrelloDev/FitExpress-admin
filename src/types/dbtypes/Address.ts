@@ -10,7 +10,6 @@ export type Address = {
     apartment_no?: number,
     voivodeship: 'Zachodniopomorskie' | 'Pomorskie' | 'Warmińsko-Mazurskie' | 'Kujawsko-Pomorskie' | 'Podlaskie' | 'Lubuskie' | 'Wielkopolskie' | 'Łódzkie' | 'Mazowieckie' | 'Świętokrzyskie' | 'Lubelskie' | 'Dolnośląskie' | 'Opolskie' | 'Śląskie' | 'Małopolskie' | 'Podkarpackie',
     is_weekend: boolean,
-    isDefault: boolean,
     extra_info: string,
     linked_points: DeliveryPoint[],
     user_id: UserFullData

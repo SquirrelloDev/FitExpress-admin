@@ -14,6 +14,7 @@ import OrderDetails from "../../components/Modal/Views/OrderDetails";
 import {Order} from "../../types/dbtypes/Order";
 import {Grid} from "react-loader-spinner";
 import usePagination from "../../hooks/usePagination";
+import calcLowerDate from "../../utils/calcMonth";
 
 function Orders() {
     const columnHelper = createColumnHelper<Order>()
@@ -49,7 +50,7 @@ function Orders() {
             cell: ({getValue}) => {
                 const fromDate = new Date(getValue().from);
                 const toDate = new Date(getValue().to);
-                return <p>{`${fromDate.getDate()}-${fromDate.getMonth() + 1}-${fromDate.getFullYear()} - ${toDate.getDate()}-${toDate.getMonth() + 1}-${toDate.getFullYear()}`}</p>
+                return <p>{`${calcLowerDate(fromDate.getDate())}-${calcLowerDate(fromDate.getMonth() + 1)}-${fromDate.getFullYear()} - ${calcLowerDate(toDate.getDate())}-${calcLowerDate(toDate.getMonth() + 1)}-${toDate.getFullYear()}`}</p>
             }
         }),
         columnHelper.accessor('calories', {

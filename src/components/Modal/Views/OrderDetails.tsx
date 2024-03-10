@@ -3,6 +3,7 @@ import {ModalType} from "../../../types/table/modalType";
 import classes from "../../../sass/components/detailsModalView.module.scss";
 import {IconX} from "@tabler/icons-react";
 import {useOneOrderListQuery} from "../../../queries/orders/listing";
+import calcLowerDate from "../../../utils/calcMonth";
 
 interface ViewDetailsProps {
 	id: string,
@@ -36,8 +37,8 @@ function OrderDetails({id, token, closeModal}:ViewDetailsProps) {
 				<p>Nazwa diety: {singleOrderData!.order.diet_id.name}</p>
 				<p>Identyfikator klienta: {singleOrderData!.order.user_id._id}</p>
 				<p>Adres email klienta: {singleOrderData!.order.user_id.email}</p>
-				<p>Okres trwania zamówienia: {`${fromDate.getDate()}-${fromDate.getMonth() + 1}-${fromDate.getFullYear()} - ${toDate.getDate()}-${toDate.getMonth() + 1}-${toDate.getFullYear()}`}</p>
-				<p>Cena zamówienia: {singleOrderData!.order.price} zł</p>
+				<p>Okres trwania zamówienia: {`${calcLowerDate(fromDate.getDate())}-${calcLowerDate(fromDate.getMonth() + 1)}-${fromDate.getFullYear()} - ${calcLowerDate(toDate.getDate())}-${calcLowerDate(toDate.getMonth() + 1)}-${toDate.getFullYear()}`}</p>
+				<p>Cena zamówienia: {(singleOrderData!.order.price).toFixed(2)} zł</p>
 				<p>Czy dieta jest wysyłana w weekend?: {singleOrderData!.order.with_weekends ? 'Tak' : 'Nie'}</p>
 			</div>
 		</div>

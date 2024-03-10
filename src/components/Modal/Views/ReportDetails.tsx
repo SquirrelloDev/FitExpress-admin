@@ -4,6 +4,7 @@ import classes from "../../../sass/components/detailsModalView.module.scss";
 import {IconX} from "@tabler/icons-react";
 import {useOneReportListQuery} from "../../../queries/reports/listing";
 import useReportStausCategory from "../../../hooks/useReportStausCategory";
+import calcLowerDate from "../../../utils/calcMonth";
 
 interface ViewDetailsProps {
 	id: string,
@@ -39,8 +40,8 @@ function ReportDetails({id, token, closeModal}:ViewDetailsProps) {
 				<p>Adres email klienta: {singleReportData!.report.user_id.email}</p>
 				<p>Status zgłoszenia: {statusPL}</p>
 				<p>Kategoria: {categoryPL}</p>
-				<p>Data dostarczenia opakowania: {`${deliveryDate.getDate()}-${deliveryDate.getMonth()}-${deliveryDate.getFullYear()} ${deliveryDate.getHours()}:${deliveryDate.getMinutes()}`}</p>
-				<p>Data utworzenia zgłoszenia: {`${createdAt.getDate()}-${createdAt.getMonth()}-${createdAt.getFullYear()} ${createdAt.getHours()}:${createdAt.getMinutes()}`}</p>
+				<p>Data dostarczenia opakowania: {`${calcLowerDate(deliveryDate.getDate())}-${calcLowerDate(deliveryDate.getMonth())}-${deliveryDate.getFullYear()}`}</p>
+				<p>Data utworzenia zgłoszenia: {`${calcLowerDate(createdAt.getDate())}-${calcLowerDate(createdAt.getMonth())}-${createdAt.getFullYear()} ${calcLowerDate(createdAt.getHours())}:${calcLowerDate(createdAt.getMinutes())}`}</p>
 				<p>Treść zgłoszenia</p>
 				<p>{singleReportData!.report.message}</p>
 			</div>

@@ -3,6 +3,7 @@ import {ModalType} from "../../../types/table/modalType";
 import classes from "../../../sass/components/detailsModalView.module.scss";
 import {IconX} from "@tabler/icons-react";
 import {useOneFlexiListQuery} from "../../../queries/flexi/listing";
+import calcLowerDate from "../../../utils/calcMonth";
 
 interface ViewDetailsProps {
 	id: string,
@@ -12,7 +13,7 @@ interface ViewDetailsProps {
 function FlexiDetails({id, token, closeModal}:ViewDetailsProps) {
 	const {data: singleFlexiData, isLoading, isSuccess} = useOneFlexiListQuery({token, id})
 	const prettyDate = useMemo(() => {
-		return isSuccess ? `${new Date(singleFlexiData!.day.date).getDate()}-${new Date(singleFlexiData!.day.date).getMonth()}-${new Date(singleFlexiData!.day.date).getFullYear()}` : ''
+		return isSuccess ? `${calcLowerDate(new Date(singleFlexiData!.day.date).getDate())}-${calcLowerDate(new Date(singleFlexiData!.day.date).getMonth())}-${new Date(singleFlexiData!.day.date).getFullYear()}` : ''
 	}, [singleFlexiData, isSuccess])
 	if(isLoading) return (
 		<div>

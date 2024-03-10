@@ -15,6 +15,7 @@ import {ModalType} from "../../types/table/modalType";
 import UserDetails from "../../components/Modal/Views/UserDetails";
 import {Grid} from "react-loader-spinner";
 import usePagination from "../../hooks/usePagination";
+import calcLowerDate from "../../utils/calcMonth";
 
 function Users() {
     const columnHelper = createColumnHelper<UserFullData>()
@@ -48,7 +49,7 @@ function Users() {
             header: 'Data ur.',
             cell: ({getValue}) => {
                 const date = new Date(getValue())
-                return <p>{`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</p>
+                return <p>{`${calcLowerDate( date.getDate())}-${calcLowerDate(date.getMonth() + 1)}-${date.getFullYear()}`}</p>
             }
         }),
         columnHelper.accessor('_id', {

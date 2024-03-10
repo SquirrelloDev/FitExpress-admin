@@ -3,6 +3,7 @@ import {ModalType} from "../../../types/table/modalType";
 import {IconX} from "@tabler/icons-react";
 import {Dispatch, SetStateAction} from "react";
 import {useOneUserListQuery} from "../../../queries/users/listing";
+import calcLowerDate from "../../../utils/calcMonth";
 interface ViewDetailsProps {
 	id: string,
 	token: string,
@@ -35,7 +36,7 @@ function UserDetails({id, token, closeModal}:ViewDetailsProps) {
 				<ul>
 					<li>Nazwa użytkownika: {singleUserData?.user.name}</li>
 					<li>Adres email: {singleUserData?.user.email}</li>
-					<li>Data urodzenia: {`${birthDate.getDate()}-${birthDate.getMonth() + 1}-${birthDate.getFullYear()}`}</li>
+					<li>Data urodzenia: {`${calcLowerDate(birthDate.getDate())}-${calcLowerDate(birthDate.getMonth() + 1)}-${birthDate.getFullYear()}`}</li>
 				</ul>
 			</div>
 		</div>

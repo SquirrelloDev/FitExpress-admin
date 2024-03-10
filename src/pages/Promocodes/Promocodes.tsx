@@ -13,6 +13,7 @@ import usePromosListQuery from "../../queries/promocodes/listing";
 import usePromoDelete from "../../queries/promocodes/delete";
 import {Grid} from "react-loader-spinner";
 import usePagination from "../../hooks/usePagination";
+import calcLowerDate from "../../utils/calcMonth";
 
 function Promocodes() {
     const columnHelper = createColumnHelper<Promocode>()
@@ -44,7 +45,7 @@ function Promocodes() {
             header: 'Ważność kodu',
             cell: ({getValue}) => {
                 const date = new Date(getValue())
-                return <p>{`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</p>
+                return <p>{`${calcLowerDate(date.getDate())}-${calcLowerDate(date.getMonth() + 1)}-${date.getFullYear()}`}</p>
             }
         }),
         columnHelper.accessor('_id', {

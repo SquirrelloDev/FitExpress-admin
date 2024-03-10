@@ -14,6 +14,7 @@ import Table from "../../components/Table/Table";
 import FixedDetails from "../../components/Modal/Views/FixedDetails";
 import {Grid} from "react-loader-spinner";
 import usePagination from "../../hooks/usePagination";
+import calcLowerDate from "../../utils/calcMonth";
 
 function FixedDays() {
     const columnHelper = createColumnHelper<DayFixed>()
@@ -38,7 +39,7 @@ function FixedDays() {
             header: 'Data',
             cell: ({getValue}) => {
                 const date = new Date(getValue());
-                return <p>{`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</p>
+                return <p>{`${calcLowerDate(date.getDate())}-${calcLowerDate(date.getMonth() + 1)}-${date.getFullYear()}`}</p>
             }
         }),
         columnHelper.accessor('_id', {

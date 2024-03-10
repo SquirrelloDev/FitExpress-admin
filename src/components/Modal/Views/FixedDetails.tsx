@@ -3,6 +3,7 @@ import {ModalType} from "../../../types/table/modalType";
 import classes from "../../../sass/components/detailsModalView.module.scss";
 import {IconX} from "@tabler/icons-react";
 import {useOneFixedListQuery} from "../../../queries/fixed/listing";
+import calcLowerDate from "../../../utils/calcMonth";
 
 interface ViewDetailsProps {
 	id: string,
@@ -12,7 +13,7 @@ interface ViewDetailsProps {
 function FixedDetails({id, token, closeModal}:ViewDetailsProps) {
 	const {data: singleFixedData, isLoading, isSuccess} = useOneFixedListQuery({token, id})
 	const prettyDate = useMemo(() => {
-		return isSuccess ? `${new Date(singleFixedData!.day.date).getDate()}-${new Date(singleFixedData!.day.date).getMonth()}-${new Date(singleFixedData!.day.date).getFullYear()}` : ''
+		return isSuccess ? `${calcLowerDate(new Date(singleFixedData!.day.date).getDate())}-${calcLowerDate(new Date(singleFixedData!.day.date).getMonth() + 1)}-${new Date(singleFixedData!.day.date).getFullYear()}` : ''
 	}, [singleFixedData, isSuccess])
 	if(isLoading) return (
 		<div>

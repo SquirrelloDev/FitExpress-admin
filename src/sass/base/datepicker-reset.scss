@@ -1,0 +1,54 @@
+@use '../utils' as *;
+@import 'node_modules/react-datepicker/src/stylesheets/datepicker.scss';
+.react-datepicker{
+  border-color: $border !important;
+  width: 100% !important;
+}
+.react-datepicker__header{
+  background-color: $dark !important;
+  border-bottom-color: $border !important;
+}
+.react-datepicker__navigation{
+  margin-top: 1em !important;
+
+}
+.react-datepicker__month-container{
+  width: 100% !important;
+}
+.react-datepicker__current-month{
+  color: $text-color-primary !important;
+  font-size: $normal !important;
+}
+.react-datepicker__day-names{
+  display: flex !important;
+  justify-content: space-around !important;
+  margin-top: 1em !important;
+}
+.react-datepicker__day-name{
+  color: $text-color-primary !important;
+}
+.react-datepicker__day{
+  color: $text-color-primary !important;
+  padding: 1em 1.45em !important;
+  &:hover{
+    background-color: $light-green !important;
+  }
+  &--disabled{
+    color: $text-color-secondary !important
+  }
+  &--selected{
+    background-color: $cta !important;
+  }
+  &--today,&--in-range, &--in-selecting-range{
+    background-color: $light-green !important;
+  }
+}
+.react-datepicker__month-container {
+  background-color: $dark;
+  color: #969eac;
+  font-size: 1rem;
+
+  .react-datepicker__month {
+    padding: 1em 0;
+  }
+}

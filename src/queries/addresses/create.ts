@@ -24,7 +24,7 @@ export type AddressSchema = z.infer<typeof addressSchema>
 export type AddressPostData = {
     address:{
         street: string,
-        building_no: number,
+        building_no: string,
         apartment_no?: number,
         postal: string,
         city: string,

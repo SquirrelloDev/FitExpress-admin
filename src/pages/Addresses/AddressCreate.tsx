@@ -72,7 +72,7 @@ function AddressCreate() {
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'street'} placeholder='Ulica'/>
-					<Input name={'buildingNumber'} type={'number'} placeholder='Nr budynku'/>
+					<Input name={'buildingNumber'} placeholder='Nr budynku'/>
 					<Input name={'apartmentNumber'} type={'number'} placeholder='Nr lokalu'/>
 					<Input name={'city'} placeholder='Miasto'/>
 					<Input name={'postal'} placeholder='Kod pocztowy'/>

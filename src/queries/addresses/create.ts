@@ -10,7 +10,7 @@ import {selectErrorMap} from "../users/create";
 
 export const addressSchema = z.object({
     street: z.string().min(1, errorMessages.required),
-    buildingNumber: z.coerce.number().min(1, errorMessages.required),
+    buildingNumber: z.string().min(1, errorMessages.required).max(8, 'Numer budynku jest za długi'),
     apartmentNumber: z.coerce.number().optional(),
     postal: z.string().regex(/^\d{2}-\d{3}$/, 'To nie wygląda jak kod pocztowy...'),
     city: z.string().min(1, errorMessages.required),
@@ -18,22 +18,20 @@ export const addressSchema = z.object({
     linked_points: z.array(z.string()),
     userId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
     isWeekend: z.boolean(),
-    isDefault: z.boolean(),
     extraInfo: z.string().min(1, errorMessages.required)
 })
 export type AddressSchema = z.infer<typeof addressSchema>
 export type AddressPostData = {
     address:{
         street: string,
-        buildingNumber: number,
-        apartmentNumber?: number,
+        building_no: number,
+        apartment_no?: number,
         postal: string,
         city: string,
         voivodeship: string,
         linked_points: ZodString['_output'][],
-        isWeekend: boolean,
-        isDefault: boolean,
-        extraInfo: string
+        is_weekend: boolean,
+        extra_info: string
     }
     userId: string,
     token: string

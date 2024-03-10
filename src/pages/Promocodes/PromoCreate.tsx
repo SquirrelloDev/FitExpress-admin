@@ -29,7 +29,7 @@ function PromoCreate() {
 	return (
 		<FormProvider {...methods}>
 			<div className={classes.form__wrapper}>
-				<h2>Nowy wykluczenie</h2>
+				<h2>Nowy voucher</h2>
 				{/*@ts-expect-error data is fetched correctly*/}
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa vouchera'/>

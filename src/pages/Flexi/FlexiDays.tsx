@@ -38,7 +38,7 @@ function FlexiDays() {
             header: 'Data',
             cell: ({getValue}) => {
                 const date = new Date(getValue());
-                return <p>{`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}</p>
+                return <p>{`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`}</p>
             }
         }),
         columnHelper.accessor('_id', {

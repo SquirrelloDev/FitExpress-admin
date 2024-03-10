@@ -22,7 +22,6 @@ import DeliveryPoints from "./pages/DeliveryPoints/DeliveryPoints";
 import {UserRole} from "./utils/userRoles";
 import {QueryClientProvider} from "@tanstack/react-query";
 import {queryClient} from "./utils/api";
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import Users from "./pages/Users/Users";
 import UserCreate from "./pages/Users/UserCreate";
 import AddressCreate from "./pages/Addresses/AddressCreate";
@@ -149,7 +148,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <>
         <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools/>
             <RouterProvider router={router}/>
         </QueryClientProvider>
     </>,

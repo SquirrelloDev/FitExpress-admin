@@ -35,7 +35,7 @@ const createPromo:MutationFunction<PromocodeResponse, PromocodePostData> = async
     const res = await FitExpressClient.getInstance().post<PromocodeResponse, PromocodeError>(apiRoutes.ADD_PROMOCODE, {
         ...promo.promocode
     }, {headers: {Authorization: `Bearer ${promo.token}`}})
-    if(res.response?.status === 409){
+    if(res.response?.status && res.response?.status === 409){
         throw new Error('Kod istnieje!');
     }
     else if(res.response?.status && res.response?.status !== 201){

@@ -52,7 +52,6 @@ function AddressEdit({data,token,id}: AddressEditProps) {
 			city: data.city,
 			voivodeship: data.voivodeship,
 			linked_points: selectDeliveryIds,
-			isDefault: data.isDefault,
 			isWeekend: data.is_weekend,
 			extraInfo: data.extra_info,
 			userId: data.user_id._id
@@ -66,15 +65,14 @@ function AddressEdit({data,token,id}: AddressEditProps) {
 		const newAddress:AddressPutData = {
 			address: {
 				street: data.street,
-				buildingNumber: data.buildingNumber,
-				apartmentNumber: data.apartmentNumber,
+				building_no: data.buildingNumber,
+				apartment_no: data.apartmentNumber,
 				postal: data.postal,
 				city: data.city,
 				voivodeship: data.voivodeship,
 				linked_points: data.linked_points,
-				isDefault: data.isDefault,
-				isWeekend: data.isWeekend,
-				extraInfo: data.extraInfo
+				is_weekend: data.isWeekend,
+				extra_info: data.extraInfo
 			},
 			userId: data.userId,
 			token: token as string,
@@ -97,7 +95,6 @@ function AddressEdit({data,token,id}: AddressEditProps) {
 					<ControlledMultiSelect defaultValue={selectDelivery.filter(deli => selectDeliveryIds.includes(deli.value as string))} options={selectDelivery} control={methods.control} name={'linked_points'} placeholder={'Powiązane punkty'}/>
 					<ControlledSelect options={selectUsers} control={methods.control} name={'userId'} placeholder={'Właściciel adresu'}/>
 					<Checkbox name={'isWeekend'} className={checkboxStyles.checkbox} placeholder={'Czy adres weekendowy?'}/>
-					<Checkbox name={'isDefault'} className={checkboxStyles.checkbox} placeholder={'Czy adres domyślny?'}/>
 					<TextArea name={'extraInfo'} placeholder='Dodatkowe informacje'/>
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>

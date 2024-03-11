@@ -68,7 +68,7 @@ function FlexiDays() {
         }
     })
     const polishTableName = useTableListing(TableListingType.dayFlexi);
-    const {mutate} = useFlexiDelete();
+    const {mutate, isLoading: isDeleting} = useFlexiDelete();
     const deleteDay = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -91,7 +91,7 @@ function FlexiDays() {
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
                 <Modal><FlexiDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDay}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteDay}/></Modal>}
         </>
     )
 }

@@ -68,7 +68,7 @@ function FixedDays() {
         }
     })
     const polishTableName = useTableListing(TableListingType.dayFixed);
-    const {mutate} = useFixedDelete();
+    const {mutate, isLoading: isDeleting} = useFixedDelete();
     const deleteDay = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -91,7 +91,7 @@ function FixedDays() {
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
                 <Modal><FixedDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDay}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteDay}/></Modal>}
         </>
     )
 }

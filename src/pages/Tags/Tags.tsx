@@ -62,7 +62,7 @@ function Tags() {
         }
     })
     const polishTableName = useTableListing(TableListingType.tags);
-    const {mutate} = useTagDelete();
+    const {mutate, isLoading: isDeleting} = useTagDelete();
     const deleteMeal = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -83,7 +83,7 @@ function Tags() {
                    nextPage={table.nextPage}
                    hasNextPage={table.getCanNextPage()}/>
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteMeal}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteMeal}/></Modal>}
         </>
     )
 }

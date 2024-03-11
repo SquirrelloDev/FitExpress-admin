@@ -103,7 +103,7 @@ function Addresses() {
         }
     })
     const polishTableName = useTableListing(TableListingType.addresses);
-    const {mutate} = useAddressDelete();
+    const {mutate, isLoading: isDeleting} = useAddressDelete();
     const deleteAddress = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -126,7 +126,7 @@ function Addresses() {
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
                 <Modal><AddressDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteAddress}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteAddress}/></Modal>}
         </>
     )
 }

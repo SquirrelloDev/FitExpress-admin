@@ -73,7 +73,7 @@ function Promocodes() {
         }
     })
     const polishTableName = useTableListing(TableListingType.promocodes);
-    const {mutate} = usePromoDelete();
+    const {mutate, isLoading: isDeleting} = usePromoDelete();
     const deletePromo = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -94,7 +94,7 @@ function Promocodes() {
                    nextPage={table.nextPage}
                    hasNextPage={table.getCanNextPage()}/>
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deletePromo}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deletePromo}/></Modal>}
         </>
     )
 }

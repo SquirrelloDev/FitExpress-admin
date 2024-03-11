@@ -79,7 +79,7 @@ function Diets() {
         }
     })
     const polishTableName = useTableListing(TableListingType.diets);
-    const {mutate} = useDietDelete();
+    const {mutate, isLoading: isDeleting} = useDietDelete();
     const deleteDiet = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -102,7 +102,7 @@ function Diets() {
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
                 <Modal><DietDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDiet}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteDiet}/></Modal>}
         </>
     )
 }

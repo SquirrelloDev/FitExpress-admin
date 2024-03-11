@@ -60,7 +60,7 @@ function Users() {
             }
         })
     ]
-    const {mutate} = useUserDelete()
+    const {mutate, isLoading: isDeleting} = useUserDelete()
     const deleteUser = () =>{
         mutate({id: itemId, token: userData.token}, {onSuccess: () => {
                 setItemId("")
@@ -98,7 +98,7 @@ function Users() {
                    nextPage={table.nextPage}
                    hasNextPage={table.getCanNextPage()}
              tableListing={TableListingType.users}/>
-            {modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
+            {modalOpen.isOpen && modalOpen.modalType === ModalType.delete && <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteUser}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details && <Modal><UserDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
         </>
     )

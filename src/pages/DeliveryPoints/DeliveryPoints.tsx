@@ -70,7 +70,7 @@ function DeliveryPoints() {
         }
     })
     const polishTableName = useTableListing(TableListingType.deliveryPoints);
-    const {mutate} = useDeliveryDelete();
+    const {mutate, isLoading: isDeleting} = useDeliveryDelete();
     const deleteDelivery = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -91,7 +91,7 @@ function DeliveryPoints() {
                    nextPage={table.nextPage}
                    hasNextPage={table.getCanNextPage()}/>
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteDelivery}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteDelivery}/></Modal>}
         </>
     )
 }

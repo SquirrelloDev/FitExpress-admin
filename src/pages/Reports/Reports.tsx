@@ -89,7 +89,7 @@ function Reports() {
         }
     })
     const polishTableName = useTableListing(TableListingType.reports);
-    const {mutate} = useReportDelete();
+    const {mutate, isLoading: isDeleting} = useReportDelete();
     const deleteReport = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -112,7 +112,7 @@ function Reports() {
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
                 <Modal><ReportDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteReport}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteReport}/></Modal>}
         </>
     )
 }

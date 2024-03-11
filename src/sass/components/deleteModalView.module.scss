@@ -48,6 +48,15 @@
           border-color: $cta;
         }
       }
+      &:disabled{
+        background-color: $border;
+        border-color: $border;
+        color: $text-color-primary;
+        &:hover{
+          background-color: $border;
+          border-color: $border;
+        }
+      }
     }
   }
 }

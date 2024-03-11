@@ -62,7 +62,7 @@ function Exclusions() {
         }
     })
     const polishTableName = useTableListing(TableListingType.exclusions);
-    const {mutate} = useExclusionDelete();
+    const {mutate, isLoading: isDeleting} = useExclusionDelete();
     const deleteExclusion = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -83,7 +83,7 @@ function Exclusions() {
                    nextPage={table.nextPage}
                    hasNextPage={table.getCanNextPage()}/>
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteExclusion}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteExclusion}/></Modal>}
         </>
     )
 }

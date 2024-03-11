@@ -82,7 +82,7 @@ function Orders() {
         }
     })
     const polishTableName = useTableListing(TableListingType.orders);
-    const {mutate} = useOrderDelete();
+    const {mutate, isLoading: isDeleting} = useOrderDelete();
     const deleteOrder = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -105,7 +105,7 @@ function Orders() {
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
                 <Modal><OrderDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteOrder}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteOrder}/></Modal>}
         </>
     )
 }

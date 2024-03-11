@@ -95,7 +95,7 @@ function Meals() {
         }
     })
     const polishTableName = useTableListing(TableListingType.meals);
-    const {mutate} = useMealDelete();
+    const {mutate, isLoading: isDeleting} = useMealDelete();
     const deleteMeal = () => {
         mutate({id: itemId, token: userData.token}, {
             onSuccess: () => {
@@ -116,7 +116,7 @@ function Meals() {
                    nextPage={table.nextPage}
                    hasNextPage={table.getCanNextPage()}/>
             {modalOpen.isOpen && modalOpen.modalType === ModalType.delete &&
-                <Modal><ViewDelete id={itemId} closeModal={setModalOpen} deleteMutation={deleteMeal}/></Modal>}
+                <Modal><ViewDelete isDeleting={isDeleting} id={itemId} closeModal={setModalOpen} deleteMutation={deleteMeal}/></Modal>}
             {modalOpen.isOpen && modalOpen.modalType === ModalType.details &&
                 <Modal><MealDetails id={itemId} token={userData.token} closeModal={setModalOpen}/></Modal>}
         </>

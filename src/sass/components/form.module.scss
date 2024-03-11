@@ -39,4 +39,8 @@
       margin: 1em 0;
     }
   }
+  &__calories{
+    display: flex;
+    justify-content: space-between;
+  }
 }

@@ -39,7 +39,7 @@ const createMeal: MutationFunction<MealResponse, MealPostData> = async (meal) =>
         description: meal.description,
         tagsId: meal.tagsId,
         exclusions: meal.exclusions,
-        ingredients: meal.ingredients.split(','),
+        ingredients: meal.ingredients.split(';'),
         nutritionValues: {
             calories: meal.calories,
             carbs: meal.carbs,

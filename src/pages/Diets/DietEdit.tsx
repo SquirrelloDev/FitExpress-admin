@@ -32,7 +32,7 @@ function DietEdit({data,token,id}: DietEditProps) {
 			exclusions: selectExclusions,
 			shortDesc: data.short_desc,
 			longDesc: data.long_desc,
-			basicInfo: data.basic_info.join(','),
+			basicInfo: data.basic_info.join(';'),
 			kcal1500: data.prices.kcal1500,
 			kcal1800: data.prices.kcal1800,
 			kcal2000: data.prices.kcal2000,
@@ -62,17 +62,19 @@ function DietEdit({data,token,id}: DietEditProps) {
 					<ControlledSelect options={[{label: 'Fixed', value: 'Fixed'}, {label: 'Flexi', value: 'Flexi'}]} control={methods.control} name={'dietType'} placeholder={'Typ diety'}/>
 					<ControlledMultiSelect options={tags} defaultValue={tags.filter(tag => selectTagIds.includes(tag.value as string))} control={methods.control} name={'tagsId'} placeholder={'Tagi dla diety'}/>
 					<ControlledMultiSelect options={exclusions} defaultValue={exclusions.filter(excl => selectExclusions.includes(excl.value as string))} control={methods.control} name={'exclusions'} placeholder={'Wykluczenia dla diety'}/>
-					<Input name={'basicInfo'} placeholder='Podstawowe informacje o diecie (oddziel informacje przecinkami)'/>
+					<Input name={'basicInfo'} placeholder='Podstawowe informacje o diecie (oddziel informacje średnikiem ;)'/>
 					<Input name={'shortDesc'} placeholder='Krótki opis diety'/>
 					<TextArea name={'longDesc'} placeholder='Dłuższy opis diety'/>
-					<Input name={'image'} type={'file'} accept={'image/jpeg, image/png'} placeholder={'Główne zdjęcie diety'}/>
+					<Input name={'image'} type={'file'} accept={'image/jpg, image/png, image/jpeg'} placeholder={'Główne zdjęcie diety'}/>
 					<h3 style={{marginBottom: '10px'}}>Rozpiska cenowa dla kaloryczności (w PLN)</h3>
+					<div className={classes.form__calories}>
 					<Input name={'kcal1500'} type={'number'} placeholder='1500 kcal'/>
 					<Input name={'kcal1800'} type={'number'} placeholder='1800 kcal'/>
 					<Input name={'kcal2000'} type={'number'} placeholder='2000 kcal'/>
 					<Input name={'kcal2200'} type={'number'} placeholder='2200 kcal'/>
 					<Input name={'kcal2500'} type={'number'} placeholder='2500 kcal'/>
 					<Input name={'kcal2800'} type={'number'} placeholder='2800 kcal'/>
+					</div>
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>
 			</div>

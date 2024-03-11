@@ -28,7 +28,7 @@ function MealEdit({data, token, id}:MealEditProps) {
 			description: data.description,
 			tagsId: selectTagIds,
 			exclusions: selectExclusions,
-			ingredients: data.ingredients.join(','),
+			ingredients: data.ingredients.join(';'),
 			calories: data.nutrition_values.calories,
 			carbs: data.nutrition_values.carbs,
 			fats: data.nutrition_values.fats,
@@ -58,14 +58,16 @@ function MealEdit({data, token, id}:MealEditProps) {
 					<ControlledMultiSelect options={tags} defaultValue={tags.filter(tag => selectTagIds.includes(tag.value as string))} control={methods.control} name={'tagsId'} placeholder={'Tagi dla posiłku'}/>
 					<ControlledMultiSelect options={exclusions} defaultValue={exclusions.filter(excl => selectExclusions.includes(excl.value as string))} control={methods.control} name={'exclusions'} placeholder={'Wykluczenia dla posiłku'}/>
 					<TextArea name={'description'} placeholder='Opis posiłku'/>
-					<Input name={'ingredients'} placeholder='Składniki (oddziel składniki przecinkami)'/>
-					<Input name={'image'} type={'file'}  accept={'image/jpeg, image/png'} placeholder={'Zdjęcie posiłku'}/>
+					<Input name={'ingredients'} placeholder='Składniki (oddziel składniki średnikiem ;)'/>
+					<Input name={'image'} type={'file'}  accept={'image/jpg, image/png, image/jpeg'} placeholder={'Zdjęcie posiłku'}/>
 					<h3 style={{marginBottom: '10px'}}>Wartości odżywcze</h3>
-					<Input name={'calories'} type={'number'} placeholder='Kalorie (kcal)'/>
-					<Input name={'carbs'} type={'number'} placeholder='Węglowodany (g)'/>
-					<Input name={'fats'} type={'number'} placeholder='Tłuszcze (g)'/>
-					<Input name={'proteins'} placeholder='Białka (g)'/>
-					<Input name={'salt'} placeholder='Sól (g)'/>
+					<div className={classes.form__calories}>
+					<Input name={'calories'} type={'number'} min={0} placeholder='Kalorie (kcal)'/>
+					<Input name={'carbs'} type={'number'} min={0} placeholder='Węglowodany (g)'/>
+					<Input name={'fats'} type={'number'} min={0} placeholder='Tłuszcze (g)'/>
+					<Input name={'proteins'} type={'number'} min={0} placeholder='Białka (g)'/>
+					<Input name={'salt'} type={"number"} min={0} step={0.01} placeholder='Sól (g)'/>
+					</div>
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>
 			</div>

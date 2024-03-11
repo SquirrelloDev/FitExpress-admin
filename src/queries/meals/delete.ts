@@ -9,7 +9,7 @@ function useMealDelete(
     const{mutate, error, isLoading} = useMutation(deletionKey, async({id, token}: {id:string, token: string}) => {
 
             await FitExpressClient.getInstance().delete(apiRoutes.DELETE_MEAL(id), {headers: {Authorization: `Bearer ${token}`}})
-        }, {onSuccess: () => queryClient.invalidateQueries({queryKey: ['MealsList']}) , onError: (err: AxiosError) => toast.error(`${err}`)}
+        }, {onSuccess: () => queryClient.invalidateQueries({queryKey: ['MealsList']}) , onError: (err: AxiosError) => toast.error(`${err.message}`)}
     )
     return {mutate,error,isLoading};
 }

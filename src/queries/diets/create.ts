@@ -42,7 +42,7 @@ const createDiet: MutationFunction<DietResponse, DietPostData> = async (diet) =>
         dietType: diet.dietType,
         shortDesc: diet.shortDesc,
         longDesc: diet.longDesc,
-        basicInfo: diet.basicInfo.split(','),
+        basicInfo: diet.basicInfo.split(';'),
         exclusions: diet.exclusions,
         tags_id: diet.tagsId,
         prices: {

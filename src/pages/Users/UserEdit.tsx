@@ -22,6 +22,7 @@ const userRoles: SelectOption[] = [
 	{label: 'Administrator', value: 3}
 ]
 function UserEdit({data, token, id}:UserEditProps) {
+	const maxDate = new Date().setFullYear(new Date().getFullYear() - 18, new Date().getMonth(), new Date().getDate())
 	const methods = useForm({
 		resolver: zodResolver(userPutSchema),
 		defaultValues: {
@@ -57,8 +58,8 @@ function UserEdit({data, token, id}:UserEditProps) {
 				<form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
 					<Input name={'name'} placeholder='Nazwa'/>
 					<Input name={'email'} type='email' placeholder='Adres email'/>
-					<Input name={'phone'} type='tel' placeholder='Numer telefonu'/>
-					<ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"}/>
+					<Input name={'phone'} type='tel' max={9} placeholder='Numer telefonu (+48)'/>
+					<ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"} maxDate={new Date(maxDate)}/>
 					<ControlledSelect options={userRoles} control={methods.control} name={'role'} isRequired placeholder={'Rola'} />
 					<h2>Dane zdrowotne</h2>
 					<p>Dane dotyczące zdrowia są niedostępne do edycji</p>

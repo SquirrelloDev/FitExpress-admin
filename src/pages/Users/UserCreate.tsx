@@ -37,6 +37,7 @@ const userRoles: SelectOption[] = [
     {label: 'Administrator', value: 3}
 ]
 function UserCreate() {
+    const maxDate = new Date().setFullYear(new Date().getFullYear() - 18, new Date().getMonth(), new Date().getDate())
     const methods = useForm({
         resolver: zodResolver(userSchema)
     })
@@ -78,9 +79,9 @@ function UserCreate() {
             <form className={classes.form__form} onSubmit={handleSubmit(onSubmit)}>
                 <Input name={'name'} placeholder='Nazwa'/>
                 <Input name={'email'} type='email' placeholder='Adres email'/>
-                <Input name={'phone'} type='tel' placeholder='Numer telefonu'/>
+                <Input name={'phone'} type='tel' max={9} placeholder='Numer telefonu (+48)'/>
                 <Input name={'password'} type='password' placeholder='Hasło'/>
-                <ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"}/>
+                <ControlledDatePicker control={methods.control} name={'birth_date'} placeholderText={"Data urodzenia"} maxDate={new Date(maxDate)}/>
                 <ControlledSelect options={userRoles} control={methods.control} name={'role'} isRequired placeholder={'Rola'} />
                 <h2>Dane zdrowotne</h2>
                 <Input name={'user_height'} type='number' min={120} max={250} placeholder={'Wzrost (w cm)'} />

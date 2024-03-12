@@ -38,7 +38,7 @@ export function DailyDetails({id, ordersArr, closeModal}:ViewDetailsProps) {
 				</ul>
 				<p>Kaloryczność ogólna: {orderData!.order_id.calories}</p>
 				<h4>Dane adresowe</h4>
-				<p>Ulica: {`${orderData!.order_id.address_id.street} ${orderData!.order_id.address_id.building_no}/${orderData!.order_id.address_id.apartment_no}`}</p>
+				<p>Ulica: {`${orderData!.order_id.address_id.street} ${orderData!.order_id.address_id.building_no}${orderData!.order_id.address_id.apartment_no ? `/${orderData!.order_id.address_id.apartment_no}`: ''}`}</p>
 				<p>Kod pocztowy, miasto i województwo: {`${orderData!.order_id.address_id.postal}, ${orderData!.order_id.address_id.city}, woj. ${orderData!.order_id.address_id.voivodeship}`}</p>
 				<p>Dodatkowe informacje od klienta:</p>
 				<p>{orderData!.order_id.address_id.extra_info}</p>

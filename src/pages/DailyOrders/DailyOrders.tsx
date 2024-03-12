@@ -24,7 +24,7 @@ export function DailyOrders() {
     const currentDate = new Date();
     const {isLoading, data, isSuccess} = useOneDailyOrderListQuery({
         token: userData.token,
-        date: `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`
+        date: `${currentDate.getFullYear()}-${currentDate.getMonth() + 1 < 10 ? `0${currentDate.getMonth() + 1}` : currentDate.getMonth() + 1}-${currentDate.getDate()}`
     })
     const columns = [
         columnHelper.accessor('_id', {
@@ -53,7 +53,7 @@ export function DailyOrders() {
             header: 'Adres dostawy',
             cell: ({getValue}) => {
                 const addressObj = getValue() as Address;
-                const addressString = `${addressObj.street} ${addressObj.building_no}/${addressObj.apartment_no ? addressObj.apartment_no : ''}, ${addressObj.city}`
+                const addressString = `${addressObj.street} ${addressObj.building_no}${addressObj.apartment_no ? `/${addressObj.apartment_no}` : ''}, ${addressObj.city}`
                 return <p>{addressString}</p>
             }
         }),

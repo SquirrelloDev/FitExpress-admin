@@ -43,14 +43,20 @@ function DietCreate() {
 				<Input name={'shortDesc'} placeholder='Krótki opis diety'/>
 				<TextArea name={'longDesc'} placeholder='Dłuższy opis diety'/>
 				<Input name={'image'} type={'file'} accept={'image/jpg, image/png, image/jpeg'} placeholder={'Główne zdjęcie diety'}/>
+				<h3 style={{marginBottom: '10px'}}>Wartości odżywcze w %</h3>
+				<div className={classes.form__calories}>
+				<Input name={'macros.fats'} min={1} max={100} step={0.1} type={'number'} placeholder={'Tłuszcze'}/>
+				<Input name={'macros.carbs'} min={1} max={100} step={0.1} type={'number'} placeholder={'Węglowodany'}/>
+				<Input name={'macros.proteins'} min={1} max={100} step={0.1} type={'number'} placeholder={'Białka'}/>
+				</div>
 				<h3 style={{marginBottom: '10px'}}>Rozpiska cenowa dla kaloryczności (w PLN)</h3>
 				<div className={classes.form__calories}>
-				<Input name={'kcal1500'} type={'number'} step={0.01} placeholder='1500 kcal'/>
-				<Input name={'kcal1800'} type={'number'} step={0.01} placeholder='1800 kcal'/>
-				<Input name={'kcal2000'} type={'number'} step={0.01} placeholder='2000 kcal'/>
-				<Input name={'kcal2200'} type={'number'} step={0.01} placeholder='2200 kcal'/>
-				<Input name={'kcal2500'} type={'number'} step={0.01} placeholder='2500 kcal'/>
-				<Input name={'kcal2800'} type={'number'} step={0.01} placeholder='2800 kcal'/>
+				<Input name={'kcal1500'} type={'number'} min={1} step={0.01} placeholder='1500 kcal'/>
+				<Input name={'kcal1800'} type={'number'} min={1} step={0.01} placeholder='1800 kcal'/>
+				<Input name={'kcal2000'} type={'number'} min={1} step={0.01} placeholder='2000 kcal'/>
+				<Input name={'kcal2200'} type={'number'} min={1} step={0.01} placeholder='2200 kcal'/>
+				<Input name={'kcal2500'} type={'number'} min={1} step={0.01} placeholder='2500 kcal'/>
+				<Input name={'kcal2800'} type={'number'} min={1} step={0.01} placeholder='2800 kcal'/>
 				</div>
 				<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Stwórz"}</button>
 			</form>

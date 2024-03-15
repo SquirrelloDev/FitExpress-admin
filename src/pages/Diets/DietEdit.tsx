@@ -13,6 +13,7 @@ import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
 import {Diet} from "../../types/dbtypes/Diet";
 import useDietEdit, {DietPutData} from "../../queries/diets/edit";
+import {DevTool} from "@hookform/devtools";
 
 interface DietEditProps {
 	data: Diet
@@ -32,6 +33,11 @@ function DietEdit({data,token,id}: DietEditProps) {
 			exclusions: selectExclusions,
 			shortDesc: data.short_desc,
 			longDesc: data.long_desc,
+			macros:{
+				fats: data.macros.fats,
+				carbs: data.macros.carbs,
+				proteins: data.macros.proteins
+			},
 			basicInfo: data.basic_info.join(';'),
 			kcal1500: data.prices.kcal1500,
 			kcal1800: data.prices.kcal1800,
@@ -66,6 +72,12 @@ function DietEdit({data,token,id}: DietEditProps) {
 					<Input name={'shortDesc'} placeholder='Krótki opis diety'/>
 					<TextArea name={'longDesc'} placeholder='Dłuższy opis diety'/>
 					<Input name={'image'} type={'file'} accept={'image/jpg, image/png, image/jpeg'} placeholder={'Główne zdjęcie diety'}/>
+					<h3 style={{marginBottom: '10px'}}>Wartości odżywcze w %</h3>
+					<div className={classes.form__calories}>
+						<Input name={'macros.fats'} min={1} max={100} step={0.1} type={'number'} placeholder={'Tłuszcze'}/>
+						<Input name={'macros.carbs'} min={1} max={100} step={0.1} type={'number'} placeholder={'Węglowodany'}/>
+						<Input name={'macros.proteins'} min={1} max={100} step={0.1} type={'number'} placeholder={'Białka'}/>
+					</div>
 					<h3 style={{marginBottom: '10px'}}>Rozpiska cenowa dla kaloryczności (w PLN)</h3>
 					<div className={classes.form__calories}>
 					<Input name={'kcal1500'} type={'number'} placeholder='1500 kcal'/>
@@ -78,6 +90,7 @@ function DietEdit({data,token,id}: DietEditProps) {
 					<button type='submit' disabled={isLoading} className={clsx(btnStyles.btn, classes.form__form__submit)}>{isLoading ? <TailSpin visible={true} color={"#fff"} height={20} width={20}/> : "Edytuj"}</button>
 				</form>
 			</div>
+			<DevTool control={methods.control}/>
 		</FormProvider>
 	)
 }

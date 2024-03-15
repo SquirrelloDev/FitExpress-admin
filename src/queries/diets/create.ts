@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {appRoutes} from "../../utils/routes";
 import {selectErrorMap} from "../users/create";
 import {imageSizeValidator} from "../../utils/imageValidator";
+import {macroValidator} from "../../utils/macroValidator";
 
 export const dietSchema = z.object({
     name: z.string().min(1, errorMessages.required),
@@ -18,6 +19,11 @@ export const dietSchema = z.object({
     longDesc: z.string().min(1, errorMessages.required),
     basicInfo: z.string().min(1, errorMessages.required),
     image: z.custom<FileList>().optional(),
+    macros: z.object({
+        fats: z.coerce.number().min(1, errorMessages.minMax(1, 100)).max(100, errorMessages.minMax(1, 100)),
+        carbs: z.coerce.number().min(1, errorMessages.minMax(1, 100)).max(100, errorMessages.minMax(1, 100)),
+        proteins: z.coerce.number().min(1, errorMessages.minMax(1, 100)).max(100, errorMessages.minMax(1, 100)),
+    }),
     kcal1500: z.coerce.number().min(1, errorMessages.required),
     kcal1800: z.coerce.number().min(1, errorMessages.required),
     kcal2000: z.coerce.number().min(1, errorMessages.required),
@@ -28,7 +34,7 @@ export const dietSchema = z.object({
     .refine(imageSizeValidator, {
         path: ['image'],
         message: 'Rozmiar pliku musi być mniejszy niż 5MB'
-    })
+    }).refine(macroValidator, {path: ['macros.fats'], message: 'Suma wartości musi wynosić 100%'})
 export type DietSchema = z.infer<typeof dietSchema>
 export type DietPostData = DietSchema & {
     token: string
@@ -45,6 +51,11 @@ const createDiet: MutationFunction<DietResponse, DietPostData> = async (diet) =>
         basicInfo: diet.basicInfo.split(';'),
         exclusions: diet.exclusions,
         tags_id: diet.tagsId,
+        macros: {
+            fats: diet.macros.fats,
+            carbs: diet.macros.carbs,
+            proteins: diet.macros.proteins,
+        },
         prices: {
             kcal1500: diet.kcal1500,
             kcal1800: diet.kcal1800,

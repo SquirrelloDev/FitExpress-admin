@@ -13,9 +13,14 @@ const updateDiet: MutationFunction<DietResponse, DietPutData> = async (diet) => 
         dietType: diet.dietType,
         shortDesc: diet.shortDesc,
         longDesc: diet.longDesc,
-        basicInfo: diet.basicInfo.split(','),
+        basicInfo: diet.basicInfo.split(';'),
         exclusions: diet.exclusions,
         tags_id: diet.tagsId,
+        macros: {
+            fats: diet.macros.fats,
+            carbs: diet.macros.carbs,
+            proteins: diet.macros.proteins,
+        },
         prices: {
             kcal1500: diet.kcal1500,
             kcal1800: diet.kcal1800,

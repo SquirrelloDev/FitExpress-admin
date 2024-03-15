@@ -13,7 +13,6 @@ import btnStyles from "../../sass/components/button.module.scss";
 import {TailSpin} from "react-loader-spinner";
 import {Diet} from "../../types/dbtypes/Diet";
 import useDietEdit, {DietPutData} from "../../queries/diets/edit";
-import {DevTool} from "@hookform/devtools";
 
 interface DietEditProps {
 	data: Diet

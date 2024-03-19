@@ -40,7 +40,7 @@ function ReportEdit({reportData, orderData, token, id}:ReportEditProps) {
 		resolver: zodResolver(reportPutSchema),
 		defaultValues: {
 			category: reportData.category,
-			userId: reportData.user_id._id,
+			userId: reportData.user_id ? reportData.user_id._id : null,
 			orderId: reportData.order_id,
 			deliveryDate: new Date(reportData.delivery_date),
 			message: reportData.message,

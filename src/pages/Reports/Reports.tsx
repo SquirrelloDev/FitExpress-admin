@@ -45,7 +45,7 @@ function Reports() {
             cell: ({getValue}) => {
                 const userData = getValue() as UserFullData
                 const email = userData.email as string
-                return <p>{email}</p>
+                return <p>{email ? email : 'N/A'}</p>
             }
         }),
         columnHelper.accessor('report_status', {

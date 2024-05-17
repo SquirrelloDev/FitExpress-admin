@@ -33,7 +33,7 @@ function ReportCreate({data, token}:ReportCreateProps) {
 	const { handleSubmit, watch } = methods
 	const clientId = watch('userId')
 	const selectUsers = useUserOwner();
-	const selectOrders = useUserOrders(clientId, data)
+	const selectOrders = useUserOrders(data, clientId)
 	const {mutate, isLoading} = useReportCreate()
 	const onSubmit = (data: ReportSchema) => {
 		const newReport:ReportPostData = {

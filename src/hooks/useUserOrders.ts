@@ -2,7 +2,7 @@ import {SelectOption} from "../components/Select/types";
 import {useEffect, useState} from "react";
 import {Order} from "../types/dbtypes/Order";
 
-function useUserOrders(clientId: string, allOrders: Order[]): SelectOption[] {
+function useUserOrders(allOrders: Order[], clientId: string | null): SelectOption[] {
     const [selectedUserOrders, setSelectedUserOrders] = useState<SelectOption[]>([])
     useEffect(() => {
         const filteredOrders = allOrders.filter(order => order.user_id._id === clientId)

@@ -10,7 +10,7 @@ import errorMessages from "../../utils/errorMessages";
 
 export const reportPutSchema = z.object({
     category: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
-    userId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
+    userId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required).nullable(),
     orderId: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
     reportStatus: z.string({errorMap: selectErrorMap}).min(1, errorMessages.required),
     deliveryDate: z.coerce.date({errorMap: dateErrorMap}),
@@ -20,7 +20,7 @@ export type ReportPutSchema = z.infer<typeof reportPutSchema>
 export type ReportPutData = {
     report:{
         orderId: string,
-        userId: string,
+        userId: string | null,
         deliveryDate: Date,
         reportStatus: string,
         category: string,

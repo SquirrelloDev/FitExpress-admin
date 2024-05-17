@@ -50,7 +50,7 @@ function ReportEdit({reportData, orderData, token, id}:ReportEditProps) {
 	const { handleSubmit, watch } = methods
 	const clientId = watch('userId')
 	const selectUsers = useUserOwner();
-	const selectOrders = useUserOrders(clientId, orderData)
+	const selectOrders = useUserOrders(orderData, clientId)
 	const {mutate, isLoading} = useReportEdit()
 	const onSubmit = (data: ReportPutSchema) => {
 		const newReport:ReportPutData = {

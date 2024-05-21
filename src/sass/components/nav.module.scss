@@ -4,7 +4,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 200px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 220px;
   min-height: 100vh;
   background-color: $dark;
   &__logo{
@@ -21,9 +25,10 @@
   &__container{
     display: flex;
     flex-direction: column;
-    height: 577px;
+    max-height: 100px;
     overflow-y: auto;
     &__item{
+      margin: .15em 0;
       padding: 1em;
       display: flex;
       align-items: center;
@@ -69,6 +74,34 @@
     }
     &:hover{
       background-color: $desaturated-cta-red;
+    }
+  }
+}
+@media (min-height: 300px) {
+  .nav{
+    &__container{
+      max-height: 200px;
+    }
+  }
+}
+@media (min-height: 500px) {
+  .nav{
+    &__container{
+      max-height: 450px;
+    }
+  }
+}
+@media (min-height: 600px) {
+  .nav{
+    &__container{
+      max-height: 557px;
+    }
+  }
+}
+@media (min-height: 800px) {
+  .nav{
+    &__container{
+      max-height: 770px;
     }
   }
 }
